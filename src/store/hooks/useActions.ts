@@ -1,8 +1,9 @@
+import { studySliceActions } from './../slices/studySlice';
 import { bindActionCreators } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 
 const actions = {
-  // ...slice
+  ...studySliceActions,
 };
 
 const useActions = () => {

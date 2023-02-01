@@ -2,7 +2,6 @@ import { FC, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import setHours from 'date-fns/setHours';
 import setMinutes from 'date-fns/setMinutes';
-import addDay from 'date-fns/setMinutes';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import './home.scss';
@@ -17,7 +16,6 @@ const Home: FC = () => {
     if ((time.getHours() >= 0 && time.getHours() < 8) || time.getHours() > 18) {
       return 'text-red';
     }
-    // return 0 < time.getHours() < 8 ? : "text-error";
     return 'text-green';
   };
 

@@ -1,3 +1,4 @@
+import { studySliceReducer } from './slices/studySlice';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 import {
@@ -12,6 +13,7 @@ import {
 } from 'redux-persist';
 
 import { setupListeners } from '@reduxjs/toolkit/query';
+import { adminApi } from './api/adminApi';
 
 const persistConfig = {
   key: 'root',
@@ -20,8 +22,8 @@ const persistConfig = {
 };
 
 const reducers = combineReducers({
-  // slice: persistReducer(persistConfig, slice), rtk slices
-  // reducerPath for query
+  studySlice: persistReducer(persistConfig, studySliceReducer),
+  [adminApi.reducerPath]: adminApi.reducer,
 });
 
 const store = configureStore({
@@ -31,8 +33,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
-  // .concat(someQueryApi.middleware),
+    }).concat(adminApi.middleware),
 });
 
 setupListeners(store.dispatch);

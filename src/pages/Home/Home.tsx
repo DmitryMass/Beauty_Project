@@ -1,13 +1,14 @@
 import Logo from '@/components/Logo/Logo';
 import { FC } from 'react';
+import Navigation from '../../components/home/Navigation';
 
 import './home.scss';
 
 const Home: FC = () => {
   return (
     <div className='container' >
-      <h5 className='text-white'> Main Page</h5>
       <Logo />
+      <Navigation />
     </div>
   )
 };

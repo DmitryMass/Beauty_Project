@@ -31,7 +31,7 @@ module.exports = {
         darkGrey: '#222222',
         gold: '#F0DDA3',
         white: '#FFFFFF',
-        black: '#0b0b0b',
+        black: '#000000',
         hoverGold: '#f0d47c',
       },
       borderColor: {},

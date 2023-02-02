@@ -4,13 +4,14 @@ import logo from '@/assets/icons/logo.svg';
 
 interface ILogoProps {
   modificator?: string;
+  imgModificator?: string;
 }
 
-const Logo: FC<ILogoProps> = ({ modificator }) => {
+const Logo: FC<ILogoProps> = ({ modificator, imgModificator }) => {
   return (
-    <div className={`${modificator} w-[85px] ml-auto `}>
+    <div className={`${modificator}`}>
       <Link to={'/'}>
-        <img className='w-[85px] h-[90px]' src={logo} alt='mainLogo' />
+        <img className={`${imgModificator}`} src={logo} alt='mainLogo' />
       </Link>
     </div>
   );

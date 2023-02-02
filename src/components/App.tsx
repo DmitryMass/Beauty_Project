@@ -9,7 +9,7 @@ import { ROUTE } from '@/utils/route/route';
 
 const App: FC = () => {
   return (
-    <div className='h-full  '>
+    <div className='h-full'>
       <Routes>
         <Route path={ROUTE.HOME} element={<Home />} />
         <Route path={ROUTE.STUDY} element={<Study />} />

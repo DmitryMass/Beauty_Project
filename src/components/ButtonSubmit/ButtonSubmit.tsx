@@ -8,7 +8,7 @@ interface IButtonSubmitProps {
 const ButtonSubmit: FC<IButtonSubmitProps> = ({ children, modificator }) => {
   return (
     <button
-      className={`bg-gold text-darkGrey text-md leading-s ${modificator}`}
+      className={`bg-gold text-darkGrey text-classic leading-classic ${modificator}`}
       type='submit'
     >
       {children}

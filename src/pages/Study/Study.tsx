@@ -56,7 +56,10 @@ const Study: FC = () => {
   return (
     <div className={study.container}>
       <div className={study.wrapper}>
-        <Logo modificator='mb-[10px]' />
+        <Logo
+          imgModificator='w-[80px] h-[85px]'
+          modificator='w-[85px] ml-auto'
+        />
         <div>
           <h1 className={study.title}>Register for training</h1>
           <p className={study.subtitle}>

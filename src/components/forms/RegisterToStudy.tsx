@@ -38,11 +38,12 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({ data, refetch }) => {
     }
   };
 
+  console.log(data);
   if (!data) return <div>Server error</div>;
   return (
     <div>
       <Formik
-        initialValues={{ email: '', name: '' }}
+        initialValues={{ email: '', name: '', phoneNumber: '' }}
         onSubmit={handleSubmit}
         validationSchema={''}
       >
@@ -68,6 +69,22 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({ data, refetch }) => {
                   value={values.name}
                   name='name'
                   placeholder='Your name'
+                />
+              </label>
+              <label className={study.label} htmlFor='name'>
+                Phone
+                {touched.phoneNumber && errors.phoneNumber && (
+                  <span>{errors.phoneNumber}</span>
+                )}
+                <Field
+                  id='name'
+                  type='number'
+                  className={study.input}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.phoneNumber}
+                  name='number'
+                  placeholder='+380991223445'
                 />
               </label>
               <label className={study.label} htmlFor='email'>

@@ -13,6 +13,7 @@ module.exports = {
         h2: '24px',
         md: '20px',
         sm: '18px',
+        classic: '16px',
       },
       fontFamily: {
         monteCarlo: ['MonteCarlo', 'cursive'],
@@ -31,6 +32,7 @@ module.exports = {
         gold: '#F0DDA3',
         white: '#FFFFFF',
         black: '#0b0b0b',
+        hoverGold: '#f0d47c',
       },
       borderColor: {},
       colors: {

@@ -3,8 +3,8 @@ import { Formik, Field } from 'formik';
 import { ITrainingRegister } from '@/types/user';
 import { IGroup } from '@/types/admin';
 import { useRegisterClientMutation } from '@/store/api/studyApi';
-import useActions from '@/store/hooks/useActions';
-import { useDispatch } from 'react-redux';
+import { study } from '@/styles/study';
+import ButtonSubmit from '../ButtonSubmit/ButtonSubmit';
 
 interface IRegisterToStudyProps {
   data: IGroup | null;
@@ -38,6 +38,7 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({ data, refetch }) => {
     }
   };
 
+  if (!data) return <div>Server error</div>;
   return (
     <div>
       <Formik
@@ -54,26 +55,14 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({ data, refetch }) => {
           touched,
         }) => (
           <form onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor='email'>
-                Number of places
-                {touched.email && errors.email && <span>{errors.email}</span>}
-                <Field
-                  id='email'
-                  type='email'
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.email}
-                  name='email'
-                  placeholder='Your email address'
-                />
-              </label>
-              <label htmlFor='name'>
-                Type
+            <div className='mb-[10px]'>
+              <label className={study.label} htmlFor='name'>
+                Name
                 {touched.name && errors.name && <span>{errors.name}</span>}
                 <Field
                   id='name'
                   type='text'
+                  className={study.input}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.name}
@@ -81,39 +70,59 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({ data, refetch }) => {
                   placeholder='Your name'
                 />
               </label>
+              <label className={study.label} htmlFor='email'>
+                E-mail
+                {touched.email && errors.email && <span>{errors.email}</span>}
+                <Field
+                  className={study.input}
+                  id='email'
+                  type='email'
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.email}
+                  name='email'
+                  placeholder='Example@gmail.com'
+                />
+              </label>
             </div>
             {data ? (
-              <div className='flex gap-[15px] items-center'>
+              <div className='flex gap-[15px] items-center mb-[25px]'>
                 <div className='flex flex-col justify-start'>
-                  <p className='text-white mb-[5px] text-sm leading-m'>Price</p>
-                  <div className='p-[10px] bg-white w-[140px] flex justify-center items-center'>
-                    <p className='text-coal text-sm leading-m font-medium'>
+                  <p className='text-white mb-[5px] text-classic leading-classic'>
+                    Price
+                  </p>
+                  <div className='p-[10px] bg-white w-[140px] flex justify-center items-center rounded-[6px]'>
+                    <p className='text-coal text-classic leading-classic font-medium'>
                       {data.price} UAH
                     </p>
                   </div>
                 </div>
                 <div>
-                  <p className='text-white mb-[5px] text-sm leading-m'>
+                  <p className='text-white mb-[5px] text-classic leading-classic'>
                     Free places
                   </p>
-                  <div className='p-[10px] bg-white w-[140px] flex justify-center items-center'>
-                    <p className='text-coal text-sm leading-m font-medium'>
+                  <div className='p-[10px] bg-white w-[140px] flex justify-center items-center rounded-[6px]'>
+                    <p className='text-coal text-classic leading-classic  font-medium'>
                       {data.countPlaces}
                     </p>
                   </div>
                 </div>
                 <div>
-                  <p className='text-white mb-[5px] text-sm leading-m'>
+                  <p className='text-white mb-[5px] text-classic leading-classic'>
                     Date of start
                   </p>
-                  <div className='p-[10px] bg-white w-[140px] flex justify-center items-center'>
-                    <p className='text-coal text-sm leading-m font-medium'>
+                  <div className='p-[10px] bg-white w-[140px] flex justify-center items-center rounded-[6px]'>
+                    <p className='text-coal text-classic leading-classic  font-medium'>
                       {data.whenStart}
                     </p>
                   </div>
                 </div>
               </div>
             ) : null}
+            <ButtonSubmit
+              modificator='max-w-[200px] w-full py-[10px] font-semibold rounded-[6px] hover:bg-hoverGold transition-all duration-100'
+              children={isLoading ? 'Loading...' : 'Registration'}
+            />
             <button type='submit'>{isLoading ? 'Loading...' : 'Submit'}</button>
           </form>
         )}

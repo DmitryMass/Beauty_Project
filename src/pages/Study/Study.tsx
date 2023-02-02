@@ -23,10 +23,10 @@ const DropDown: FC<IDropDownProps> = ({ setSelected, setToggleDropDown }) => {
   };
 
   return (
-    <div className='absolute top-[70px] left-0 w-full bg-black'>
+    <div className='absolute top-[90px] left-0 w-full bg-darkGrey border-[1px] border-gold  px-[15px] py-[20px] [&>*:nth-child(4)]:mb-0'>
       {options.map((value) => (
         <div
-          className={study.select}
+          className={study.option}
           key={value}
           onClick={() => hanldeClick(value)}
         >
@@ -56,7 +56,7 @@ const Study: FC = () => {
   return (
     <div className={study.container}>
       <div className={study.wrapper}>
-        <Logo modificator='mb-[20px]' />
+        <Logo modificator='mb-[10px]' />
         <div>
           <h1 className={study.title}>Register for training</h1>
           <p className={study.subtitle}>
@@ -64,9 +64,10 @@ const Study: FC = () => {
           </p>
         </div>
         <div className='relative'>
+          <p className={study.label}>Course type</p>
           <div
             onClick={() => setToggleDropDown((prev) => !prev)}
-            className={`${study.select} flex justify-between`}
+            className={`${study.select} flex justify-between mt-[5px]`}
           >
             <p>{selected}</p>
             <p
@@ -84,7 +85,7 @@ const Study: FC = () => {
             />
           ) : null}
         </div>
-        {data ? <RegisterToStudy refetch={refetch} data={data} /> : null}
+        <RegisterToStudy refetch={refetch} data={data} />
       </div>
     </div>
   );

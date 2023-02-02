@@ -3,14 +3,16 @@ import { Link } from 'react-router-dom';
 import logo from '@/assets/icons/logo.svg';
 
 interface ILogoProps {
-  modificator: string;
+  modificator?: string;
 }
 
 const Logo: FC<ILogoProps> = ({ modificator }) => {
   return (
-    <Link to={'/'} className={modificator}>
-      <img src={logo} alt='mainLogo' />
-    </Link>
+    <div className={`${modificator} w-[85px] ml-auto `}>
+      <Link to={'/'}>
+        <img className='w-[85px] h-[90px]' src={logo} alt='mainLogo' />
+      </Link>
+    </div>
   );
 };
 

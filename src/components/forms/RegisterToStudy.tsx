@@ -82,6 +82,38 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({ data, refetch }) => {
                 />
               </label>
             </div>
+            {data ? (
+              <div className='flex gap-[15px] items-center'>
+                <div className='flex flex-col justify-start'>
+                  <p className='text-white mb-[5px] text-sm leading-m'>Price</p>
+                  <div className='p-[10px] bg-white w-[140px] flex justify-center items-center'>
+                    <p className='text-coal text-sm leading-m font-medium'>
+                      {data.price} UAH
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <p className='text-white mb-[5px] text-sm leading-m'>
+                    Free places
+                  </p>
+                  <div className='p-[10px] bg-white w-[140px] flex justify-center items-center'>
+                    <p className='text-coal text-sm leading-m font-medium'>
+                      {data.countPlaces}
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <p className='text-white mb-[5px] text-sm leading-m'>
+                    Date of start
+                  </p>
+                  <div className='p-[10px] bg-white w-[140px] flex justify-center items-center'>
+                    <p className='text-coal text-sm leading-m font-medium'>
+                      {data.whenStart}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ) : null}
             <button type='submit'>{isLoading ? 'Loading...' : 'Submit'}</button>
           </form>
         )}

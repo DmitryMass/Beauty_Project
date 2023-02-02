@@ -8,10 +8,11 @@ module.exports = {
       spacing: {},
       fontSize: {
         carlo: '64px',
-        h1: '36px',
+        xl: '36px',
+        h1: '32px',
         h2: '24px',
-        md: '20',
-        sm: '18',
+        md: '20px',
+        sm: '18px',
       },
       fontFamily: {
         monteCarlo: ['MonteCarlo', 'cursive'],
@@ -37,6 +38,8 @@ module.exports = {
         gold: '#F0DDA3',
         white: '#FFFFFF',
         whiteOpacity: '#ffffffb8',
+        coal: '#181818',
+        goldOpacity: 'rgba(240, 221, 163, 0.5)',
       },
     },
   },

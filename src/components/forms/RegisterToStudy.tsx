@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { Formik, Field } from 'formik';
 import { ITrainingRegister } from '@/types/user';
 import { IGroup } from '@/types/admin';
@@ -18,12 +18,14 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({ data, refetch }) => {
     { resetForm }: any
   ) => {
     resetForm();
+    console.log(values);
     const body = new FormData();
     if (!data) return;
 
     Object.entries(values).forEach((item) => {
-      body.append(item[0], item[1].toLowerCase());
+      body.append(item[0], item[1].toString().toLowerCase());
     });
+
     body.append('groupId', `${data._id}`);
     body.append('whenStart', `${data.whenStart}`);
     body.append('type', `${data.type}`);
@@ -39,6 +41,7 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({ data, refetch }) => {
   };
 
   console.log(data);
+
   if (!data) return <div>Server error</div>;
   return (
     <div>
@@ -71,19 +74,19 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({ data, refetch }) => {
                   placeholder='Your name'
                 />
               </label>
-              <label className={study.label} htmlFor='name'>
+              <label className={study.label} htmlFor='phoneNumber'>
                 Phone
                 {touched.phoneNumber && errors.phoneNumber && (
                   <span>{errors.phoneNumber}</span>
                 )}
                 <Field
-                  id='name'
+                  id='phoneNumber'
                   type='number'
                   className={study.input}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.phoneNumber}
-                  name='number'
+                  name='phoneNumber'
                   placeholder='+380991223445'
                 />
               </label>
@@ -148,4 +151,4 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({ data, refetch }) => {
   );
 };
 
-export default RegisterToStudy;
+export default memo(RegisterToStudy);

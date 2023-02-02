@@ -14,6 +14,7 @@ import {
 
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { adminApi } from './api/adminApi';
+import { studyApi } from './api/studyApi';
 
 const persistConfig = {
   key: 'root',
@@ -24,6 +25,7 @@ const persistConfig = {
 const reducers = combineReducers({
   studySlice: persistReducer(persistConfig, studySliceReducer),
   [adminApi.reducerPath]: adminApi.reducer,
+  [studyApi.reducerPath]: studyApi.reducer,
 });
 
 const store = configureStore({
@@ -33,7 +35,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(adminApi.middleware),
+    }).concat(adminApi.middleware, studyApi.middleware),
 });
 
 setupListeners(store.dispatch);

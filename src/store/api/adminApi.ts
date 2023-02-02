@@ -1,4 +1,3 @@
-import { IGroup } from './../../types/admin';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const URL = 'http://localhost:5005/admin';
@@ -24,6 +23,12 @@ export const adminApi = createApi({
         url: '/members',
       }),
     }),
+
+    getGroup: build.query({
+      query: ({ id }) => ({
+        url: `/group/${id}`,
+      }),
+    }),
   }),
 });
 
@@ -31,4 +36,5 @@ export const {
   useCreateGroupReqMutation,
   useGetGroupsQuery,
   useGetMembersQuery,
+  useGetGroupQuery,
 } = adminApi;

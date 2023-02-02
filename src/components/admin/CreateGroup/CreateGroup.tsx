@@ -57,8 +57,15 @@ const CreateGroup: FC = () => {
                   onBlur={handleBlur}
                   value={values.type}
                   name='type'
-                  placeholder='Basic / Advanced'
+                  placeholder='Type of training'
                 />
+                <ul className='pb-[20px]'>
+                  <li>Type of training</li>
+                  <li className='ml-[20px]'>Basic eyebrow training</li>
+                  <li className='ml-[20px]'>Brows skill up</li>
+                  <li className='ml-[20px]'>Basic manicure training</li>
+                  <li className='ml-[20px]'>Manicure skill up</li>
+                </ul>
               </label>
               <label htmlFor='price' className={createGroup.label}>
                 Price
@@ -80,7 +87,6 @@ const CreateGroup: FC = () => {
                 <DatePicker
                   selected={startDate}
                   onChange={(date: Date) => setStartDate(date)}
-                  //   minDate={startDate}
                   dateFormat='dd/MM/yyyy'
                 />
               </div>

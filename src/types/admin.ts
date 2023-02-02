@@ -7,6 +7,7 @@ export interface ICreateGroupInitialValue {
 }
 
 export interface IGroup {
+  _id?: string;
   countPlaces: string;
   type: string;
   price: string;

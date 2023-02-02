@@ -1,64 +1,50 @@
-import { FC } from 'react';
-import { Formik, Field } from 'formik';
-import { ITrainingRegister } from '@/types/user';
+import { FC, useState } from 'react';
+import RegisterToStudy from '@/components/forms/RegisterToStudy';
+import { useGetGroupQuery } from '@/store/api/adminApi';
+import Logo from '@/components/Logo/Logo';
+import './study.scss';
+
+const options = [
+  'Basic eyebrow training',
+  'Brows skill up',
+  'Basic manicure training',
+  'Manicure skill up',
+];
 
 const Study: FC = () => {
-  const handleSubmit = async (
-    values: ITrainingRegister,
-    { resetForm }: any
-  ) => {
-    console.log(values);
-  };
+  const [selected, setSelected] = useState<any>(options[0]);
+  const {
+    data = null,
+    refetch,
+    isLoading,
+    isError,
+  } = useGetGroupQuery(
+    { id: selected.toLowerCase() },
+    {
+      refetchOnMountOrArgChange: true,
+    }
+  );
+
   return (
-    <div>
-      <div>photo</div>
-      <div>
-        <Formik
-          initialValues={{ email: '', name: '' }}
-          onSubmit={handleSubmit}
-          validationSchema={''}
-        >
-          {({
-            handleSubmit,
-            handleChange,
-            handleBlur,
-            values,
-            errors,
-            touched,
-          }) => (
-            <form onSubmit={handleSubmit}>
-              <div>
-                <label htmlFor='email'>
-                  Number of places
-                  {touched.email && errors.email && <span>{errors.email}</span>}
-                  <Field
-                    id='email'
-                    type='email'
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.email}
-                    name='email'
-                    placeholder='Your email address'
-                  />
-                </label>
-                <label htmlFor='name'>
-                  Type
-                  {touched.name && errors.name && <span>{errors.name}</span>}
-                  <Field
-                    id='name'
-                    type='text'
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.name}
-                    name='name'
-                    placeholder='Your name'
-                  />
-                </label>
-              </div>
-              <button type='submit'>Submit</button>
-            </form>
-          )}
-        </Formik>
+    <div className='study h-full relative max-w-[1340px] mx-auto '>
+      <div className=' w-[50%] h-full ml-auto  bg-black px-[15px]'>
+        <Logo modificator={'flex justify-end'} />
+        <select value={selected} onChange={(e) => setSelected(e.target.value)}>
+          {options.map((value) => (
+            <option value={value} key={value}>
+              {value}
+            </option>
+          ))}
+        </select>
+        {data ? <RegisterToStudy refetch={refetch} data={data} /> : null}
+
+        {data ? (
+          <div>
+            <p>Кол-во мест: {data.countPlaces}</p>
+            <p>Дата: {data.whenStart}</p>
+            <p>Cтоимость: {data.price}</p>
+          </div>
+        ) : null}
       </div>
     </div>
   );

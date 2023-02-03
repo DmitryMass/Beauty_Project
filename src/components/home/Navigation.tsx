@@ -1,18 +1,19 @@
 import React from 'react';
 import { FC } from 'react';
 import '../../pages/Home/home.scss';
+import TranslateNav from './TranslateNav';
 
 const Navigation: FC = () => {
 	return (
 		<div className='menu'>
-			<ul className='menu__link'>
+			<ul className='flex justify-between mt-[50px] menu__link'>
 				<li>Главная</li>
 				<li>Услуги</li>
 				<li>Прайс</li>
 				<li>Мастера</li>
 				<li>Обучение</li>
 				<li>Ещё</li>
-				<li>Рус / Укр</li>
+				<TranslateNav />
 			</ul>
 		</div>
 	);

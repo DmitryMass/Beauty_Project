@@ -1,28 +1,32 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { useGetGroupsQuery } from '@/store/api/adminApi';
 import { IGroup } from '@/types/admin';
-import useTypedSelector from '@/store/hooks/useTypedSelector';
+import { admin } from '@/styles/admin';
 
-const DIsplayGroupData: FC = () => {
-  const { data = null, isLoading, isError, refetch } = useGetGroupsQuery('');
-
-  const { courses } = useTypedSelector((state) => state.studySlice);
-
-  //   пока временно
-  useEffect(() => {
-    refetch();
-  }, [courses]);
-
+const DisplayGroupData: FC = () => {
+  const { data = null, isLoading, isError } = useGetGroupsQuery('');
   return (
-    <div>
+    <div className={admin.displayGroupWrapper}>
       {isLoading ? <div>Loading...</div> : null}
       {data && data.length !== 0
         ? data.map(({ countPlaces, price, type, whenStart }: IGroup) => (
-            <div key={`${countPlaces}${type}`}>
-              <p>Тип курса {type}</p>
-              <p>Кол-во мест {countPlaces}</p>
-              <p>Цена {price}</p>
-              <p>Старт {whenStart}</p>
+            <div
+              className={admin.displayGroupContent}
+              key={`${countPlaces}${type}`}
+            >
+              <p className='text-white'>
+                Тип курса: <br />
+                <span className={admin.displayGroupType}>{type}</span>
+              </p>
+              <p className='text-white'>
+                Кол-во мест : <span className='text-gold'>{countPlaces}</span>
+              </p>
+              <p className='text-white'>
+                Цена: <span className='text-gold'>{price} грн</span>
+              </p>
+              <p className='text-white'>
+                Старт: <span className='text-gold'>{whenStart}</span>
+              </p>
             </div>
           ))
         : null}
@@ -30,4 +34,4 @@ const DIsplayGroupData: FC = () => {
   );
 };
 
-export default DIsplayGroupData;
+export default DisplayGroupData;

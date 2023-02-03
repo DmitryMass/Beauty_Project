@@ -4,15 +4,27 @@ import { createGroupValidation } from '@/utils/validation/createGroupValidation'
 import { createGroup } from '@/styles/forms';
 import DatePicker from 'react-datepicker';
 import { useCreateGroup } from '@/components/customHooks/useCreateGroup';
+import DropDown from '@/components/DropDown/DropDown';
+import 'react-datepicker/dist/react-datepicker.css';
+import ButtonSubmit from '@/components/ButtonSubmit/ButtonSubmit';
+
+const options = [
+  'Basic eyebrow training',
+  'Brows skill up',
+  'Basic manicure training',
+  'Manicure skill up',
+];
 
 const CreateGroup: FC = () => {
   const [startDate, setStartDate] = useState<Date>(new Date());
-  const { handleSubmit, isError, isLoading } = useCreateGroup(startDate);
+  const [selected, setSelected] = useState<string>(options[0]);
+  const [toggleDropDown, setToggleDropDown] = useState<boolean>(false);
+  const { handleSubmit, isLoading } = useCreateGroup(startDate, selected);
 
   return (
     <div className='p-[10px]'>
       <Formik
-        initialValues={{ countPlaces: '', type: '', price: '' }}
+        initialValues={{ countPlaces: '', price: '' }}
         onSubmit={handleSubmit}
         validationSchema={createGroupValidation}
       >
@@ -26,6 +38,23 @@ const CreateGroup: FC = () => {
         }) => (
           <form onSubmit={handleSubmit}>
             <div className={createGroup.inputsWrapper}>
+              <div className='relative w-full py-[10px]'>
+                <div onClick={() => setToggleDropDown((prev) => !prev)}>
+                  <span className='text-white'>Course name</span>
+                  <div className={`${createGroup.input} w-full cursor-pointer`}>
+                    {selected}
+                  </div>
+                </div>
+                {toggleDropDown ? (
+                  <DropDown
+                    styles={createGroup.input}
+                    options={options}
+                    modificator='absolute top-[30 px] left-0 w-full bg-darkGrey border-[3px] border-gold  px-[15px] py-[20px] [&>*:nth-child(4)]:mb-0'
+                    setToggleDropDown={setToggleDropDown}
+                    setSelected={setSelected}
+                  />
+                ) : null}
+              </div>
               <label className={createGroup.label} htmlFor='countPlaces'>
                 Number of places
                 {touched.countPlaces && errors.countPlaces && (
@@ -44,29 +73,6 @@ const CreateGroup: FC = () => {
                   placeholder='Number of places'
                 />
               </label>
-              <label htmlFor='type' className={createGroup.label}>
-                Type
-                {touched.type && errors.type && (
-                  <span className={createGroup.errorSpan}>{errors.type}</span>
-                )}
-                <Field
-                  className={createGroup.input}
-                  id='type'
-                  type='text'
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.type}
-                  name='type'
-                  placeholder='Type of training'
-                />
-                <ul className='pb-[20px]'>
-                  <li>Type of training</li>
-                  <li className='ml-[20px]'>Basic eyebrow training</li>
-                  <li className='ml-[20px]'>Brows skill up</li>
-                  <li className='ml-[20px]'>Basic manicure training</li>
-                  <li className='ml-[20px]'>Manicure skill up</li>
-                </ul>
-              </label>
               <label htmlFor='price' className={createGroup.label}>
                 Price
                 {touched.price && errors.price && (
@@ -83,17 +89,20 @@ const CreateGroup: FC = () => {
                   placeholder='Price UAH'
                 />
               </label>
-              <div>
+              <div className='py-[10px] mb-[20px]'>
+                <span className='text-white'>Date</span>
                 <DatePicker
+                  className={createGroup.input}
                   selected={startDate}
                   onChange={(date: Date) => setStartDate(date)}
                   dateFormat='dd/MM/yyyy'
                 />
               </div>
             </div>
-            <button className={createGroup.btnSubmit} type='submit'>
-              {isLoading ? 'Loading...' : 'Create Group'}
-            </button>
+            <ButtonSubmit
+              children={isLoading ? 'Loading...' : 'Create Group'}
+              modificator={createGroup.btnSubmit}
+            />
           </form>
         )}
       </Formik>

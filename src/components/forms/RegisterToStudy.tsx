@@ -34,7 +34,7 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({ data, refetch }) => {
     try {
       const response: any = await registerClient(body);
       if (response.data) {
-        refetch();
+        await refetch();
         return;
       }
       setResponseData(response?.error?.data?.msg);

@@ -1,24 +1,29 @@
 import { FC } from 'react';
-import { admin } from '@/styles/admin';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import './admin.scss';
 import CreateGroup from '@/components/admin/CreateGroup/CreateGroup';
-import DIsplayGroupData from '@/components/admin/DIsplayGroupData';
 import GetMembers from '@/components/admin/GetMembers';
+import Logo from '@/components/Logo/Logo';
+import DisplayGroupData from '@/components/admin/DIsplayGroupData';
+import { admin } from '@/styles/admin';
+import './admin.scss';
 
 const Admin: FC = () => {
   return (
     <div className={admin.wrapper}>
+      <Logo
+        modificator='w-[85px] ml-auto mb-[20px]'
+        imgModificator='w-[80px] h-[90px]'
+      />
       <Tabs className={admin.tabs}>
-        <TabList className='mb-[40px]'>
-          <Tab>Create Group "Study"</Tab>
-          <Tab>Create Employee</Tab>
-          <Tab>Create Schedule</Tab>
+        <TabList className={admin.tabList}>
+          <Tab>Набор в группу</Tab>
+          <Tab>Сотрудники</Tab>
+          <Tab>График работы</Tab>
         </TabList>
-        <TabPanel className='max-w-[450px] w-full mx-auto'>
+        <TabPanel className={admin.tabPanel}>
           <CreateGroup />
-          <DIsplayGroupData />
+          <DisplayGroupData />
           <GetMembers />
         </TabPanel>
         <TabPanel>

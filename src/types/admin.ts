@@ -1,7 +1,6 @@
 // CreateGroup
 export interface ICreateGroupInitialValue {
   countPlaces: string;
-  type: string;
   price: string;
   whenStart?: string;
 }

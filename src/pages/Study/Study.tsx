@@ -2,51 +2,22 @@ import { FC, useState } from 'react';
 import RegisterToStudy from '@/components/forms/RegisterToStudy';
 import { useGetGroupQuery } from '@/store/api/adminApi';
 import Logo from '@/components/Logo/Logo';
-import './study.scss';
 import { study } from '@/styles/study';
+import DropDown from '@/components/DropDown/DropDown';
+import './study.scss';
 
-const options = [
+export const options = [
   'Basic eyebrow training',
   'Brows skill up',
   'Basic manicure training',
   'Manicure skill up',
 ];
 
-interface IDropDownProps {
-  setSelected: any;
-  setToggleDropDown: any;
-}
-const DropDown: FC<IDropDownProps> = ({ setSelected, setToggleDropDown }) => {
-  const hanldeClick = (value: string) => {
-    setSelected(value);
-    setToggleDropDown(false);
-  };
-
-  return (
-    <div className='absolute top-[90px] left-0 w-full bg-darkGrey border-[1px] border-gold  px-[15px] py-[20px] [&>*:nth-child(4)]:mb-0'>
-      {options.map((value) => (
-        <div
-          className={study.option}
-          key={value}
-          onClick={() => hanldeClick(value)}
-        >
-          {value}
-        </div>
-      ))}
-    </div>
-  );
-};
-
 const Study: FC = () => {
   const [selected, setSelected] = useState<any>(options[0]);
   const [toggleDropDown, setToggleDropDown] = useState(false);
 
-  const {
-    data = null,
-    refetch,
-    isLoading,
-    isError,
-  } = useGetGroupQuery(
+  const { data = null, refetch } = useGetGroupQuery(
     { id: selected.toLowerCase() },
     {
       refetchOnMountOrArgChange: true,
@@ -83,6 +54,9 @@ const Study: FC = () => {
           </div>
           {toggleDropDown ? (
             <DropDown
+              options={options}
+              styles={study.option}
+              modificator='absolute top-[90px] left-0 w-full bg-darkGrey border-[1px] border-gold  px-[15px] py-[20px] [&>*:nth-child(4)]:mb-0'
               setToggleDropDown={setToggleDropDown}
               setSelected={setSelected}
             />

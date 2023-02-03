@@ -1,7 +1,7 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
 interface IButtonSubmitProps {
-  children: string;
+  children: string | ReactNode;
   modificator?: string;
 }
 

@@ -1,10 +1,13 @@
-import { FC, memo } from 'react';
+import { FC, memo, useState } from 'react';
 import { Formik, Field } from 'formik';
 import { ITrainingRegister } from '@/types/user';
 import { IGroup } from '@/types/admin';
 import { useRegisterClientMutation } from '@/store/api/studyApi';
 import { study } from '@/styles/study';
 import ButtonSubmit from '../ButtonSubmit/ButtonSubmit';
+import { trainingRegistrationValidation } from '@/utils/validation/createGroupValidation';
+import Loader from '../Loader/Loader';
+import ErrorHandler from '../ErrorHandler/ErrorHandler';
 
 interface IRegisterToStudyProps {
   data: IGroup | null;
@@ -12,43 +15,44 @@ interface IRegisterToStudyProps {
 }
 
 const RegisterToStudy: FC<IRegisterToStudyProps> = ({ data, refetch }) => {
-  const [registerClient, { isLoading, isError }] = useRegisterClientMutation();
+  const [registerClient, { isLoading }] = useRegisterClientMutation();
+  const [responseData, setResponseData] = useState<string | null>(null);
+
   const handleSubmit = async (
     values: ITrainingRegister,
     { resetForm }: any
   ) => {
     resetForm();
-    console.log(values);
     const body = new FormData();
-    if (!data) return;
-
     Object.entries(values).forEach((item) => {
       body.append(item[0], item[1].toString().toLowerCase());
     });
-
-    body.append('groupId', `${data._id}`);
-    body.append('whenStart', `${data.whenStart}`);
-    body.append('type', `${data.type}`);
+    body.append('groupId', `${data?._id}`);
+    body.append('whenStart', `${data?.whenStart}`);
+    body.append('type', `${data?.type}`);
 
     try {
       const response: any = await registerClient(body);
       if (response.data) {
         refetch();
+        return;
       }
+      setResponseData(response?.error?.data?.msg);
     } catch (err) {
       console.log(`${err} error in register study`);
     }
   };
-
-  console.log(data);
-
   if (!data) return <div>Server error</div>;
+
   return (
     <div>
+      {responseData ? (
+        <ErrorHandler data={responseData} setResponseData={setResponseData} />
+      ) : null}
       <Formik
         initialValues={{ email: '', name: '', phoneNumber: '' }}
         onSubmit={handleSubmit}
-        validationSchema={''}
+        validationSchema={trainingRegistrationValidation}
       >
         {({
           handleSubmit,
@@ -62,7 +66,9 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({ data, refetch }) => {
             <div className='mb-[10px]'>
               <label className={study.label} htmlFor='name'>
                 Name
-                {touched.name && errors.name && <span>{errors.name}</span>}
+                {touched.name && errors.name && (
+                  <span className={study.error}>{errors.name}</span>
+                )}
                 <Field
                   id='name'
                   type='text'
@@ -77,7 +83,7 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({ data, refetch }) => {
               <label className={study.label} htmlFor='phoneNumber'>
                 Phone
                 {touched.phoneNumber && errors.phoneNumber && (
-                  <span>{errors.phoneNumber}</span>
+                  <span className={study.error}>{errors.phoneNumber}</span>
                 )}
                 <Field
                   id='phoneNumber'
@@ -92,7 +98,9 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({ data, refetch }) => {
               </label>
               <label className={study.label} htmlFor='email'>
                 E-mail
-                {touched.email && errors.email && <span>{errors.email}</span>}
+                {touched.email && errors.email && (
+                  <span className={study.error}>{errors.email}</span>
+                )}
                 <Field
                   className={study.input}
                   id='email'
@@ -141,9 +149,8 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({ data, refetch }) => {
             ) : null}
             <ButtonSubmit
               modificator='max-w-[200px] w-full py-[10px] font-semibold rounded-[6px] hover:bg-hoverGold transition-all duration-100'
-              children={isLoading ? 'Loading...' : 'Registration'}
+              children={isLoading ? <Loader /> : 'Registration'}
             />
-            <button type='submit'>{isLoading ? 'Loading...' : 'Submit'}</button>
           </form>
         )}
       </Formik>

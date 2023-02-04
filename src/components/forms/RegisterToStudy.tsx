@@ -8,6 +8,7 @@ import ButtonSubmit from '../ButtonSubmit/ButtonSubmit';
 import { trainingRegistrationValidation } from '@/utils/validation/createGroupValidation';
 import Loader from '../Loader/Loader';
 import ErrorHandler from '../ErrorHandler/ErrorHandler';
+import SuccessResponse from '../SuccessResponse/SuccessResponse';
 
 interface IRegisterToStudyProps {
   data: IGroup | null;
@@ -15,7 +16,8 @@ interface IRegisterToStudyProps {
 }
 
 const RegisterToStudy: FC<IRegisterToStudyProps> = ({ data, refetch }) => {
-  const [registerClient, { isLoading }] = useRegisterClientMutation();
+  const [registerClient, { isLoading, isSuccess, data: registerResponse }] =
+    useRegisterClientMutation();
   const [responseData, setResponseData] = useState<string | null>(null);
 
   const handleSubmit = async (
@@ -36,18 +38,25 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({ data, refetch }) => {
       if (response.data) {
         await refetch();
         return;
+      } else if (response?.error?.data?.msg) {
+        setResponseData(response?.error?.data?.msg);
+        return;
+      } else {
+        setResponseData('Sorry failed connect to server...');
+        return;
       }
-      setResponseData(response?.error?.data?.msg);
     } catch (err) {
       console.log(`${err} error in register study`);
     }
   };
-  if (!data) return <div>Server error</div>;
 
   return (
     <div>
       {responseData ? (
         <ErrorHandler data={responseData} setResponseData={setResponseData} />
+      ) : null}
+      {isSuccess ? (
+        <SuccessResponse register success type={registerResponse.type} />
       ) : null}
       <Formik
         initialValues={{ email: '', name: '', phoneNumber: '' }}

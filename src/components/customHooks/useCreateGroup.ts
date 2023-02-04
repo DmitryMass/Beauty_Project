@@ -6,7 +6,8 @@ import {
 import { ICreateGroupInitialValue } from '@/types/admin';
 
 export const useCreateGroup = (date: Date, type: string) => {
-  const [createGroupReq, { isError, isLoading }] = useCreateGroupReqMutation();
+  const [createGroupReq, { isError, isLoading, isSuccess, data }] =
+    useCreateGroupReqMutation();
   const { refetch } = useGetGroupsQuery('');
 
   const handleSubmit = async (
@@ -14,7 +15,7 @@ export const useCreateGroup = (date: Date, type: string) => {
     { resetForm }: any
   ) => {
     resetForm();
-    console.log(values);
+
     const trainingDate = transformDate(date);
     const body = new FormData();
     Object.entries(values).forEach((item) => {
@@ -35,5 +36,7 @@ export const useCreateGroup = (date: Date, type: string) => {
     handleSubmit,
     isLoading,
     isError,
+    isSuccess,
+    data,
   };
 };

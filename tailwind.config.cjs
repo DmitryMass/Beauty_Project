@@ -43,6 +43,7 @@ module.exports = {
         whiteOpacity: '#ffffffb8',
         coal: '#181818',
         goldOpacity: 'rgba(240, 221, 163, 0.5)',
+        green: '#1BC200',
       },
     },
   },

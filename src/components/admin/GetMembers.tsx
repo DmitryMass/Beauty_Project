@@ -10,11 +10,20 @@ interface IGroupListProps {
 }
 
 const GetMembers: FC = () => {
-  const { data = null, isLoading, isError } = useGetMembersQuery('');
+  const { data = null, isLoading, error } = useGetMembersQuery('');
   const [active, setActive] = useState<string>('');
+
+  if (error) {
+    return (
+      <div className='text-white'>
+        Cannot get members and groups. Server is not active.
+      </div>
+    );
+  }
+
   return (
     <div className='mt-[40px] grid gap-[5px] grid-cols-1'>
-      {isLoading ? <div>Loading...</div> : null}
+      {isLoading ? <div className='text-white'>Loading...</div> : null}
       {data
         ? data.map((member: any) => (
             <GroupList

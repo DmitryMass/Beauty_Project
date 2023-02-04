@@ -7,22 +7,20 @@ import { useCreateGroup } from '@/components/customHooks/useCreateGroup';
 import DropDown from '@/components/DropDown/DropDown';
 import 'react-datepicker/dist/react-datepicker.css';
 import ButtonSubmit from '@/components/ButtonSubmit/ButtonSubmit';
-
-const options = [
-  'Basic eyebrow training',
-  'Brows skill up',
-  'Basic manicure training',
-  'Manicure skill up',
-];
+import SuccessResponse from '@/components/SuccessResponse/SuccessResponse';
 
 const CreateGroup: FC = () => {
   const [startDate, setStartDate] = useState<Date>(new Date());
   const [selected, setSelected] = useState<string>(options[0]);
   const [toggleDropDown, setToggleDropDown] = useState<boolean>(false);
-  const { handleSubmit, isLoading } = useCreateGroup(startDate, selected);
+  const { handleSubmit, isLoading, isSuccess, data } = useCreateGroup(
+    startDate,
+    selected
+  );
 
   return (
     <div className='p-[10px]'>
+      {isSuccess ? <SuccessResponse success type={data.type} /> : null}
       <Formik
         initialValues={{ countPlaces: '', price: '' }}
         onSubmit={handleSubmit}
@@ -110,4 +108,10 @@ const CreateGroup: FC = () => {
   );
 };
 
+const options = [
+  'Basic eyebrow training',
+  'Brows skill up',
+  'Basic manicure training',
+  'Manicure skill up',
+];
 export default CreateGroup;

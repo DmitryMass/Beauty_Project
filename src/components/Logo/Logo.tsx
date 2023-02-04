@@ -9,7 +9,7 @@ interface ILogoProps {
 
 const Logo: FC<ILogoProps> = ({ modificator, imgModificator }) => {
   return (
-    <div className={`${modificator}`}>
+    <div className={modificator ? modificator : ''}>
       <Link to={'/'}>
         <img className={`${imgModificator}`} src={logo} alt='mainLogo' />
       </Link>

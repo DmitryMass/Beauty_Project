@@ -23,10 +23,16 @@ export const adminApi = createApi({
         url: '/members',
       }),
     }),
-
     getGroup: build.query({
       query: ({ id }) => ({
         url: `/group/${id}`,
+      }),
+    }),
+    createEmployee: build.mutation({
+      query: (body) => ({
+        url: '/employee',
+        method: 'POST',
+        body,
       }),
     }),
   }),
@@ -37,4 +43,5 @@ export const {
   useGetGroupsQuery,
   useGetMembersQuery,
   useGetGroupQuery,
+  useCreateEmployeeMutation,
 } = adminApi;

@@ -1,4 +1,4 @@
-import { studySliceReducer } from './slices/studySlice';
+import { employeesSliceReducer } from './slices/employeeSlice';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 import {
@@ -23,7 +23,7 @@ const persistConfig = {
 };
 
 const reducers = combineReducers({
-  studySlice: persistReducer(persistConfig, studySliceReducer),
+  employees: persistReducer(persistConfig, employeesSliceReducer),
   [adminApi.reducerPath]: adminApi.reducer,
   [studyApi.reducerPath]: studyApi.reducer,
 });

@@ -35,6 +35,11 @@ export const adminApi = createApi({
         body,
       }),
     }),
+    getEmployees: build.query({
+      query: (body) => ({
+        url: '/employee',
+      }),
+    }),
   }),
 });
 
@@ -44,4 +49,5 @@ export const {
   useGetMembersQuery,
   useGetGroupQuery,
   useCreateEmployeeMutation,
+  useGetEmployeesQuery,
 } = adminApi;

@@ -1,10 +1,12 @@
 import { FC } from 'react';
-
 import Dropzone from 'react-dropzone';
 import { Formik, Field } from 'formik';
 import { createGroup } from '@/styles/forms';
 import ButtonSubmit from '@/components/ButtonSubmit/ButtonSubmit';
-import { useCreateEmployeeMutation } from '@/store/api/adminApi';
+import {
+  useCreateEmployeeMutation,
+  useGetEmployeesQuery,
+} from '@/store/api/adminApi';
 import { createEmployeeValidation } from '@/utils/validation/createGroupValidation';
 
 interface IInitialState {
@@ -18,18 +20,18 @@ interface IInitialState {
 
 const CreateEmployee: FC = () => {
   const [createEmployee, { isLoading }] = useCreateEmployeeMutation();
+  const { refetch } = useGetEmployeesQuery('');
 
   const handleSubmit = async (values: IInitialState, { resetForm }: any) => {
     const body = new FormData();
     Object.entries(values).forEach((item) => {
       body.append(item[0], item[1].toString());
     });
-
     body.append('file', values.img);
     resetForm();
     try {
-      const response = await createEmployee(body);
-      console.log(response);
+      await createEmployee(body);
+      refetch();
     } catch (err) {
       console.log(`${err} create employee error.`);
     }
@@ -61,7 +63,7 @@ const CreateEmployee: FC = () => {
             <div className={createGroup.inputsWrapper}>
               <p>Фото сотрудника</p>
               <div
-                className={`${createGroup.input} relative w-full py-[10px] cursor-cell text-center`}
+                className={`${createGroup.input} relative w-full py-[10px] cursor-pointer text-center`}
               >
                 <Dropzone
                   multiple={false}
@@ -168,13 +170,12 @@ const CreateEmployee: FC = () => {
                   onBlur={handleBlur}
                   value={values.phoneNumber}
                   name='phoneNumber'
-                  placeholder='Employee phone number'
+                  placeholder='+3809987654321'
                 />
               </label>
             </div>
             <ButtonSubmit
-              //   children={isLoading ? 'Loading...' : 'Create Group'}
-              children={'Add employee'}
+              children={isLoading ? 'Loading...' : 'Add an employee'}
               modificator={createGroup.btnSubmit}
             />
           </form>

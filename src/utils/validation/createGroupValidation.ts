@@ -65,7 +65,6 @@ export const createEmployeeValidation = yup.object().shape({
     .label('Position')
     .min(2, 'Мінімум 2 символи')
     .max(25, 'Максимум 50 символів')
-    .matches(/^[а-яА-ЯіІєЄїЇ'a-zA-Z/s]*$/gi, 'Only ENG && UA letters')
     .required(),
   phoneNumber: yup
     .string()

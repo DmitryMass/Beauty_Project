@@ -8,6 +8,7 @@ import DisplayGroupData from '@/components/admin/DIsplayGroupData';
 import { admin } from '@/styles/admin';
 import './admin.scss';
 import CreateEmployee from '@/components/admin/CreateEmployee/CreateEmployee';
+import DisplayEmployees from '@/components/admin/DisplayEmployees';
 
 const Admin: FC = () => {
   return (
@@ -29,6 +30,7 @@ const Admin: FC = () => {
         </TabPanel>
         <TabPanel className={admin.tabPanel}>
           <CreateEmployee />
+          <DisplayEmployees />
         </TabPanel>
         <TabPanel>
           <h2>Create Schedule</h2>

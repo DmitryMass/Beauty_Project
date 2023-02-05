@@ -1,14 +1,16 @@
 import { FC, memo, useState } from 'react';
 import { Formik, Field } from 'formik';
-import { ITrainingRegister } from '@/types/user';
-import { IGroup } from '@/types/admin';
 import { useRegisterClientMutation } from '@/store/api/studyApi';
-import { study } from '@/styles/study';
-import ButtonSubmit from '../ButtonSubmit/ButtonSubmit';
+//
+import Loader from '@/components/Loader/Loader';
+import ErrorHandler from '@/components/ErrorHandler/ErrorHandler';
+import SuccessResponse from '@/components/SuccessResponse/SuccessResponse';
+import ButtonSubmit from '@/components/ButtonSubmit/ButtonSubmit';
+//
+import { IGroup } from '@/types/admin';
+import { ITrainingRegister } from '@/types/user';
 import { trainingRegistrationValidation } from '@/utils/validation/createGroupValidation';
-import Loader from '../Loader/Loader';
-import ErrorHandler from '../ErrorHandler/ErrorHandler';
-import SuccessResponse from '../SuccessResponse/SuccessResponse';
+import { study } from '@/styles/study';
 
 interface IRegisterToStudyProps {
   data: IGroup | null;
@@ -56,7 +58,7 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({ data, refetch }) => {
         <ErrorHandler data={responseData} setResponseData={setResponseData} />
       ) : null}
       {isSuccess ? (
-        <SuccessResponse register success type={registerResponse.type} />
+        <SuccessResponse register success type={registerResponse?.type} />
       ) : null}
       <Formik
         initialValues={{ email: '', name: '', phoneNumber: '' }}

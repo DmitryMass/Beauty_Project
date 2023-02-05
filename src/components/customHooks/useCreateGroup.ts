@@ -1,3 +1,4 @@
+import { FormikHelpers } from 'formik';
 import { transformDate } from '@/utils/func/transformDate';
 import {
   useCreateGroupReqMutation,
@@ -12,9 +13,9 @@ export const useCreateGroup = (date: Date, type: string) => {
 
   const handleSubmit = async (
     values: ICreateGroupInitialValue,
-    { resetForm }: any
+    actions: FormikHelpers<ICreateGroupInitialValue>
   ) => {
-    resetForm();
+    actions.resetForm();
 
     const trainingDate = transformDate(date);
     const body = new FormData();

@@ -1,13 +1,15 @@
 import { FC, useState } from 'react';
-import { Formik, Field } from 'formik';
-import { createGroupValidation } from '@/utils/validation/createGroupValidation';
-import { createGroup } from '@/styles/forms';
 import DatePicker from 'react-datepicker';
+import { Formik, Field } from 'formik';
+//
 import { useCreateGroup } from '@/components/customHooks/useCreateGroup';
 import DropDown from '@/components/DropDown/DropDown';
-import 'react-datepicker/dist/react-datepicker.css';
 import ButtonSubmit from '@/components/ButtonSubmit/ButtonSubmit';
 import SuccessResponse from '@/components/SuccessResponse/SuccessResponse';
+//
+import { createGroup } from '@/styles/forms';
+import { createGroupValidation } from '@/utils/validation/createGroupValidation';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const CreateGroup: FC = () => {
   const [startDate, setStartDate] = useState<Date>(new Date());
@@ -20,7 +22,7 @@ const CreateGroup: FC = () => {
 
   return (
     <div className='p-[10px]'>
-      {isSuccess ? <SuccessResponse success type={data.type} /> : null}
+      {isSuccess ? <SuccessResponse success type={data?.type} /> : null}
       <Formik
         initialValues={{ countPlaces: '', price: '' }}
         onSubmit={handleSubmit}

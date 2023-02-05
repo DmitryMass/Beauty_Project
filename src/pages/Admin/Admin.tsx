@@ -1,14 +1,16 @@
 import { FC } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
+//
 import CreateGroup from '@/components/admin/CreateGroup/CreateGroup';
 import GetMembers from '@/components/admin/GetMembers';
 import Logo from '@/components/Logo/Logo';
 import DisplayGroupData from '@/components/admin/DIsplayGroupData';
-import { admin } from '@/styles/admin';
-import './admin.scss';
 import CreateEmployee from '@/components/admin/CreateEmployee/CreateEmployee';
 import DisplayEmployees from '@/components/admin/DisplayEmployees';
+//
+import 'react-tabs/style/react-tabs.css';
+import { admin } from '@/styles/admin';
+import './admin.scss';
 
 const Admin: FC = () => {
   return (

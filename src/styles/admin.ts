@@ -3,8 +3,7 @@ export const admin = {
   tabs: 'flex flex-col justify-center items-center max-w-[1000px]  w-full mx-auto',
   tabList: 'w-full mb-[40px] text-center border-b-[1px] border-gold',
   tabPanel: 'max-w-[800px] w-full mx-auto',
-  displayGroupWrapper:
-    'relative grid grid-cols-1 md:grid-cols-2 gap-[5px] mt-[30px]',
+  displayGroupWrapper: 'relative grid grid-cols-1 md:grid-cols-2 gap-[5px] ',
   displayGroupContent:
     'p-[5px] border-[2px] border-goldOpacity rounded-[4px] bg-coal',
   displayGroupType: 'inline-block first-letter:uppercase text-gold',

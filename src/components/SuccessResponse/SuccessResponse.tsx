@@ -1,11 +1,11 @@
-import { successModal } from '@/styles/success';
 import { FC, useState } from 'react';
-
+//
+import { successModal } from '@/styles/success';
 import './successResponse.scss';
 
 interface ISuccessResponseProps {
   success: boolean;
-  type: string;
+  type?: string;
   register?: boolean;
 }
 

@@ -3,6 +3,7 @@ export interface ICreateGroupInitialValue {
   countPlaces: string;
   price: string;
   whenStart?: string;
+  type?: string;
 }
 
 export interface IGroup {
@@ -11,5 +12,20 @@ export interface IGroup {
   type: string;
   price: string;
   whenStart?: string;
-  members?: any[];
+}
+
+export interface IMembers {
+  email: string;
+  name: string;
+  phoneNumber: string;
+  type: string;
+  whenStart: string;
+}
+
+export interface IGroupmembers {
+  groupId: string;
+  type: string;
+  whenStart: string;
+  _id?: string;
+  members: IMembers[];
 }

@@ -1,18 +1,20 @@
+import { FC } from 'react';
 import Navigation from '@/components/home/Navigation';
 import Logo from '@/components/Logo/Logo';
-import { FC } from 'react';
-import imgOnHome from '@/assets/images/girlOnHome.png';
+import LinkButton from '@/components/LinkButton/LinkButton';
+import BlockInfo from '@/components/home/BlockInfo';
+//
+// import imgOnHome from '@/assets/images/girlOnHome.png';
+import imgOnHome from '@/assets/images/girlHomeBgc.png';
 import instIcon from '@/assets/icons/instIcon.svg';
 import fbIcon from '@/assets/icons/fbIcon.svg';
 import tgIcon from '@/assets/icons/tgIcon.svg';
-import LinkButton from '@/components/LinkButton/LinkButton';
-import BlockInfo from '@/components/home/BlockInfo';
-
-import './home.scss';
+//
 import { home } from '@/styles/home';
+import './home.scss';
 
 const Home: FC = () => {
-  const iconsArr: Array<string> = [instIcon, fbIcon, tgIcon];
+  const iconsArr: string[] = [instIcon, fbIcon, tgIcon];
   return (
     <div className={home.container}>
       <div className={home.navWrapper}>

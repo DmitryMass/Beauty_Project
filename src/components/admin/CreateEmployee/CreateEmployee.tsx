@@ -1,13 +1,16 @@
 import { FC } from 'react';
 import Dropzone from 'react-dropzone';
-import { Formik, Field } from 'formik';
-import { createGroup } from '@/styles/forms';
-import ButtonSubmit from '@/components/ButtonSubmit/ButtonSubmit';
+import { Formik, Field, FormikHelpers } from 'formik';
 import {
   useCreateEmployeeMutation,
   useGetEmployeesQuery,
 } from '@/store/api/adminApi';
+//
+import ButtonSubmit from '@/components/ButtonSubmit/ButtonSubmit';
+import EmployeeSuccess from '@/components/admin/CreateEmployee/EmployeeSuccess';
+//
 import { createEmployeeValidation } from '@/utils/validation/createGroupValidation';
+import { createGroup } from '@/styles/forms';
 
 interface IInitialState {
   name: string;
@@ -19,16 +22,20 @@ interface IInitialState {
 }
 
 const CreateEmployee: FC = () => {
-  const [createEmployee, { isLoading }] = useCreateEmployeeMutation();
+  const [createEmployee, { isLoading, isSuccess, isError }] =
+    useCreateEmployeeMutation();
   const { refetch } = useGetEmployeesQuery('');
 
-  const handleSubmit = async (values: IInitialState, { resetForm }: any) => {
+  const handleSubmit = async (
+    values: IInitialState,
+    actions: FormikHelpers<IInitialState>
+  ) => {
     const body = new FormData();
     Object.entries(values).forEach((item) => {
       body.append(item[0], item[1].toString());
     });
     body.append('file', values.img);
-    resetForm();
+    actions.resetForm();
     try {
       await createEmployee(body);
       refetch();
@@ -39,6 +46,12 @@ const CreateEmployee: FC = () => {
 
   return (
     <div className='text-white'>
+      {isSuccess ? <EmployeeSuccess success /> : null}
+      {isError ? (
+        <div className='text-white'>
+          Server error or Employee already create.
+        </div>
+      ) : null}
       <Formik
         initialValues={{
           name: '',

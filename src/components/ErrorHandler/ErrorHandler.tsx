@@ -1,10 +1,11 @@
 import { FC, memo } from 'react';
-import closeLogo from '@/assets/icons/closeIcon.svg';
+//
 import { errorHanlder } from '@/styles/errorHandler';
+import closeLogo from '@/assets/icons/closeIcon.svg';
 
 interface IErrorHandlerProps {
-  data: any;
-  setResponseData: any;
+  data: string;
+  setResponseData: (prev: string | null) => void;
 }
 
 const ErrorHandler: FC<IErrorHandlerProps> = ({ data, setResponseData }) => {

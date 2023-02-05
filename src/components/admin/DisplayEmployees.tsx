@@ -1,45 +1,42 @@
-import { useGetEmployeesQuery } from '@/store/api/adminApi';
-import useTypedSelector from '@/store/hooks/useTypedSelector';
 import { FC } from 'react';
+import { useGetEmployeesQuery } from '@/store/api/adminApi';
+//
+import { employees } from '@/styles/employee';
+import { IEmployee } from '@/types/employee';
 
 const DisplayEmployees: FC = () => {
   const { data = null, isLoading } = useGetEmployeesQuery('');
   return (
-    <div className='w-full flex flex-col justify-start items-start mt-[30px] gap-[20px]'>
+    <div className={employees.container}>
       {isLoading ? <div className='text-white'>Loading...</div> : null}
-      <h2 className='text-whiteOpacity text-md leading-md my-[20px]'>
-        Список сотрудников
-      </h2>
+      <h2 className={employees.title}>Список сотрудников</h2>
+      <div className='flex justify-start gap-[25px] w-full'>
+        <span className={employees.employeeSpan}>ФИО</span>
+        <span className={employees.employeeSpan}>Специальность</span>
+        <span className={employees.employeeSpan}>Номер телефона</span>
+      </div>
       {data &&
-        data.map((employee: any) => (
-          <div className='w-full' key={employee._id}>
-            <ul className='flex justify-start gap-[25px] w-full'>
-              <li>
-                <span className='block mb-[5px] text-whiteOpacity text-s'>
-                  ФИО
-                </span>
-                <span className='text-coal block  bg-white py-[10px] text-center font-medium  w-[200px]  text-ellipsis overflow-hidden whitespace-nowrap px-[5px]'>
-                  {employee.name} {employee.surname}
-                </span>
-              </li>
-              <li>
-                <span className='block mb-[5px] text-whiteOpacity text-s'>
-                  Специальность
-                </span>
-                <span className='text-coal block  bg-white py-[10px] text-center font-medium  w-[200px]  text-ellipsis overflow-hidden whitespace-nowrap px-[5px]'>
-                  {employee.position}
-                </span>
-              </li>
-              <li>
-                <span className='block mb-[5px] text-whiteOpacity text-s'>
-                  Номер телефона
-                </span>
-                <span className='text-coal block  bg-white py-[10px] text-center font-medium  w-[200px]  text-ellipsis overflow-hidden whitespace-nowrap px-[5px]'>
-                  {employee.phoneNumber}
-                </span>
-              </li>
-            </ul>
-          </div>
+        data.map((employee: IEmployee) => (
+          <ul
+            key={employee._id}
+            className='flex justify-start gap-[25px] w-full'
+          >
+            <li className='max-w-[200px] w-full'>
+              <span className={employees.employeeInfo}>
+                {employee.name} {employee.surname}
+              </span>
+            </li>
+            <li className='max-w-[200px] w-full'>
+              <span className={employees.employeeInfo}>
+                {employee.position}
+              </span>
+            </li>
+            <li className='max-w-[200px] w-full'>
+              <span className={employees.employeeInfo}>
+                {employee.phoneNumber}
+              </span>
+            </li>
+          </ul>
         ))}
     </div>
   );

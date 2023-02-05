@@ -1,9 +1,11 @@
 import { FC, useState } from 'react';
-import RegisterToStudy from '@/components/forms/RegisterToStudy';
 import { useGetGroupQuery } from '@/store/api/adminApi';
+//
+import RegisterToStudy from '@/components/forms/RegisterToStudy';
 import Logo from '@/components/Logo/Logo';
-import { study } from '@/styles/study';
 import DropDown from '@/components/DropDown/DropDown';
+//
+import { study } from '@/styles/study';
 import './study.scss';
 
 export const options = [
@@ -14,8 +16,8 @@ export const options = [
 ];
 
 const Study: FC = () => {
-  const [selected, setSelected] = useState<any>(options[0]);
-  const [toggleDropDown, setToggleDropDown] = useState(false);
+  const [selected, setSelected] = useState<string>(options[0]);
+  const [toggleDropDown, setToggleDropDown] = useState<boolean>(false);
 
   const { data = null, refetch } = useGetGroupQuery(
     { id: selected.toLowerCase() },

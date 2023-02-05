@@ -1,9 +1,8 @@
-import { study } from '@/styles/study';
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 interface IDropDownProps {
-  setSelected: any;
-  setToggleDropDown: any;
+  setSelected: (value: string) => void;
+  setToggleDropDown: (value: boolean) => void;
   modificator?: string;
   options: string[];
   styles: string;
@@ -31,4 +30,4 @@ const DropDown: FC<IDropDownProps> = ({
   );
 };
 
-export default DropDown;
+export default memo(DropDown);

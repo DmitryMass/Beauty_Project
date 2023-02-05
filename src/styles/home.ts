@@ -12,7 +12,8 @@ export const home = {
     'relative flex justify-end items-center mr-[40px] max-[1140px]:mr-[20px]',
   elipseBlur:
     'absolute top-[20%] right-0 max-w-[450px]  w-full max-h-[450px] h-full bg-goldBlur blur-[230px] z-[-1] max-[1140px]:max-h-[350px] max-[1140px]:blur-[170px]',
-  imgGirl: 'max-w-[500px] w-full max-[1140px]:max-w-[405px]',
+  imgGirl:
+    'max-w-[500px] relative bottom-[-15px] w-full max-[1140px]:max-w-[405px]',
   messengersWrapper:
     'absolute right-[-12px]  flex flex-col items-center gap-[15px]',
   messengersLine: 'h-[210px] max-[1140px]:h-[160px] w-[2px] bg-gold',

@@ -1,5 +1,5 @@
 export const study = {
-  container: 'study h-full relative max-w-[1340px] mx-auto',
+  container: 'h-full relative max-w-[1340px] mx-auto',
   wrapper: 'w-[50%] h-full ml-auto  bg-black px-[15px]',
   title: 'text-gold text-h2 leading-md mb-[5px] font-bold',
   subtitle: 'text-white text-sm leading-m mb-[15px]',

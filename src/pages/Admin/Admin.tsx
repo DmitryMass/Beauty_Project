@@ -14,30 +14,32 @@ import './admin.scss';
 
 const Admin: FC = () => {
   return (
-    <div className={admin.wrapper}>
-      <Logo
-        modificator='w-[85px] ml-auto mb-[20px]'
-        imgModificator='w-[80px] h-[90px]'
-      />
-      <Tabs className={admin.tabs}>
-        <TabList className={admin.tabList}>
-          <Tab>Набор в группу</Tab>
-          <Tab>Сотрудники</Tab>
-          <Tab>График работы</Tab>
-        </TabList>
-        <TabPanel className={admin.tabPanel}>
-          <CreateGroup />
-          <DisplayGroupData />
-          <GetMembers />
-        </TabPanel>
-        <TabPanel className={admin.tabPanel}>
-          <CreateEmployee />
-          <DisplayEmployees />
-        </TabPanel>
-        <TabPanel>
-          <h2>Create Schedule</h2>
-        </TabPanel>
-      </Tabs>
+    <div className='w-full h-full bg-coal'>
+      <div className={admin.wrapper}>
+        <Logo
+          modificator='w-[85px] ml-auto mb-[20px]'
+          imgModificator='w-[80px] h-[90px]'
+        />
+        <Tabs className={admin.tabs}>
+          <TabList className={admin.tabList}>
+            <Tab>Набор в группу</Tab>
+            <Tab>Сотрудники</Tab>
+            <Tab>График работы</Tab>
+          </TabList>
+          <TabPanel className={admin.tabPanel}>
+            <CreateGroup />
+            <DisplayGroupData />
+            <GetMembers />
+          </TabPanel>
+          <TabPanel className={admin.tabPanel}>
+            <CreateEmployee />
+            <DisplayEmployees />
+          </TabPanel>
+          <TabPanel>
+            <h2>Create Schedule</h2>
+          </TabPanel>
+        </Tabs>
+      </div>
     </div>
   );
 };

@@ -1,8 +1,11 @@
-import { home } from '@/styles/home';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
+import { ROUTE } from '@/utils/route/route';
+//
+import TranslateNav from '@/components/home/TranslateNav';
+//
+import { home } from '@/styles/home';
 import '../../pages/Home/home.scss';
-import TranslateNav from './TranslateNav';
 
 const Navigation: FC = () => {
   return (
@@ -11,7 +14,7 @@ const Navigation: FC = () => {
         <li className=''>
           <Link
             className={`${home.navLink} ${home.navLinkHoverEffect}`}
-            to={'/'}
+            to={ROUTE.HOME}
           >
             Главная
           </Link>
@@ -19,7 +22,7 @@ const Navigation: FC = () => {
         <li className='ml-[25px]'>
           <Link
             className={`${home.navLink} ${home.navLinkHoverEffect}`}
-            to={'/'}
+            to={ROUTE.SERVICES}
           >
             Услуги
           </Link>
@@ -27,7 +30,7 @@ const Navigation: FC = () => {
         <li className='ml-[25px]'>
           <Link
             className={`${home.navLink} ${home.navLinkHoverEffect}`}
-            to={'/'}
+            to={ROUTE.PRICE}
           >
             Прайс
           </Link>
@@ -35,7 +38,7 @@ const Navigation: FC = () => {
         <li className='ml-[25px]'>
           <Link
             className={`${home.navLink} ${home.navLinkHoverEffect}`}
-            to={'/'}
+            to={ROUTE.MASTERS}
           >
             Мастера
           </Link>
@@ -43,19 +46,12 @@ const Navigation: FC = () => {
         <li className='ml-[25px]'>
           <Link
             className={`${home.navLink} ${home.navLinkHoverEffect}`}
-            to={'/study'}
+            to={ROUTE.STUDY}
           >
             Обучение
           </Link>
         </li>
-        <li className='ml-[25px]'>
-          <Link
-            className={`${home.navLink} ${home.navLinkHoverEffect}`}
-            to={'/'}
-          >
-            Ещё
-          </Link>
-        </li>
+        <li className={`${home.additionalMenu} ml-[25px]`}>Ещё</li>
       </ul>
       <TranslateNav />
     </div>

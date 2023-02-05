@@ -10,13 +10,11 @@ import './app.scss';
 
 const App: FC = () => {
   return (
-    <div className='h-full'>
-      <Routes>
-        <Route path={ROUTE.HOME} element={<Home />} />
-        <Route path={ROUTE.STUDY} element={<Study />} />
-        <Route path={import.meta.env.VITE_ADMIN} element={<Admin />} />
-      </Routes>
-    </div>
+    <Routes>
+      <Route path={ROUTE.HOME} element={<Home />} />
+      <Route path={ROUTE.STUDY} element={<Study />} />
+      <Route path={import.meta.env.VITE_ADMIN} element={<Admin />} />
+    </Routes>
   );
 };
 

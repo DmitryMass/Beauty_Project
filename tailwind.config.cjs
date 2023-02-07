@@ -36,6 +36,7 @@ module.exports = {
         hoverGold: '#f0d47c',
         coal: '#181818',
         goldBlur: 'rgba(240, 221, 163, 0.5)',
+        green: '#1BC200',
       },
       borderColor: {},
       colors: {

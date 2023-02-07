@@ -48,10 +48,29 @@ export const adminApi = createApi({
         url: '/employee',
       }),
     }),
+    getOneEmployee: build.query<IEmployee, string>({
+      query: (id) => ({
+        url: `/employee/${id}`,
+      }),
+    }),
     deleteEmployee: build.mutation<{ msg: string }, string>({
       query: (id) => ({
         url: `/employee/${id}`,
         method: 'DELETE',
+      }),
+    }),
+    updateEmployeeSchedule: build.mutation<any, any>({
+      query: (body) => ({
+        url: `/employee/schedule/${body.id}`,
+        method: 'PUT',
+        body: body.data,
+      }),
+    }),
+    setEmployeeSchedule: build.mutation<any, any>({
+      query: (body) => ({
+        url: `/employee/schedule/${body.id}`,
+        method: 'POST',
+        body: body.data,
       }),
     }),
   }),
@@ -66,4 +85,7 @@ export const {
   useGetEmployeesQuery,
   useDeleteEmployeeMutation,
   useDeleteGroupMembersMutation,
+  useLazyGetOneEmployeeQuery,
+  useUpdateEmployeeScheduleMutation,
+  useSetEmployeeScheduleMutation,
 } = adminApi;

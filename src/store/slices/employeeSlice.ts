@@ -1,9 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-interface TimeData {
-  time: string;
-  status: boolean;
-}
+type TimeData = string;
 
 interface IInitialState {
   employees: [] | null;
@@ -34,6 +31,9 @@ export const employeesSlice = createSlice({
       state.employeeWorkTime = state.employeeWorkTime.filter(
         (item) => item !== payload
       );
+    },
+    clearEmployeeTime: (state) => {
+      state.employeeWorkTime = [];
     },
   },
 });

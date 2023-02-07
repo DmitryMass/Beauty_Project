@@ -11,7 +11,8 @@ import DisplayEmployees from '@/components/admin/DisplayEmployees';
 import 'react-tabs/style/react-tabs.css';
 import { admin } from '@/styles/admin';
 import './admin.scss';
-import CreateSchedule from '@/components/admin/CreateSchedule/CreateSchedule';
+import GetEmployee from '@/components/admin/GetEmployee';
+import DisplayClients from '@/components/admin/DisplayClients';
 
 const Admin: FC = () => {
   return (
@@ -26,6 +27,7 @@ const Admin: FC = () => {
             <Tab>Набор в группу</Tab>
             <Tab>Сотрудники</Tab>
             <Tab>График работы</Tab>
+            <Tab>Клиенты</Tab>
           </TabList>
           <TabPanel className={admin.tabPanel}>
             <CreateGroup />
@@ -37,7 +39,10 @@ const Admin: FC = () => {
             <DisplayEmployees />
           </TabPanel>
           <TabPanel className={admin.tabPanel}>
-            <CreateSchedule />
+            <GetEmployee />
+          </TabPanel>
+          <TabPanel className={admin.tabPanel}>
+            <DisplayClients />
           </TabPanel>
         </Tabs>
       </div>

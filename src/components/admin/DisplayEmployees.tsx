@@ -1,11 +1,26 @@
 import { FC } from 'react';
-import { useGetEmployeesQuery } from '@/store/api/adminApi';
+import {
+  useDeleteEmployeeMutation,
+  useGetEmployeesQuery,
+} from '@/store/api/adminApi';
 //
 import { employees } from '@/styles/employee';
 import { IEmployee } from '@/types/employee';
 
 const DisplayEmployees: FC = () => {
-  const { data = null, isLoading } = useGetEmployeesQuery('');
+  const { data = null, isLoading, refetch } = useGetEmployeesQuery('');
+  const [deleteEmployee, { isLoading: deleteLoading }] =
+    useDeleteEmployeeMutation();
+
+  const handleDelete = async (id: string) => {
+    try {
+      await deleteEmployee(id);
+      refetch();
+    } catch (err) {
+      console.log(`${err} delete error`);
+    }
+  };
+
   return (
     <div className={employees.container}>
       {isLoading ? <div className='text-white'>Loading...</div> : null}
@@ -35,6 +50,12 @@ const DisplayEmployees: FC = () => {
               <span className={employees.employeeInfo}>
                 {employee.phoneNumber}
               </span>
+            </li>
+            <li
+              onClick={() => handleDelete(`${employee._id}`)}
+              className='max-w-[50px] w-full cursor-pointer '
+            >
+              <span className={`${employees.employeeInfo} bg-red-500`}>X</span>
             </li>
           </ul>
         ))}

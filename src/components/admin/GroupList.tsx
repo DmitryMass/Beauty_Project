@@ -1,16 +1,26 @@
 import { memo, FC } from 'react';
 //
-import deleteLogo from '@/assets/icons/deleteLogo.svg';
+import { useDeleteGroupMembersMutation } from '@/store/api/adminApi';
+//
 import { IGroupmembers, IMembers } from '@/types/admin';
 import { admin } from '@/styles/admin';
+import deleteLogo from '@/assets/icons/deleteLogo.svg';
+import loaderLogo from '@/assets/icons/loaderLogo.svg';
 
 interface IGroupListProps {
   member: IGroupmembers;
   active: string | null;
   setActive: any;
+  refetch: any;
 }
 
-const GroupList: FC<IGroupListProps> = ({ member, active, setActive }) => {
+const GroupList: FC<IGroupListProps> = ({
+  member,
+  active,
+  setActive,
+  refetch,
+}) => {
+  const [deleteGroupMembers, { isLoading }] = useDeleteGroupMembersMutation();
   const handleClick = () => {
     if (active === member._id) {
       setActive(null);
@@ -18,16 +28,32 @@ const GroupList: FC<IGroupListProps> = ({ member, active, setActive }) => {
     }
     setActive(member._id);
   };
+
+  const handleDelete = async (id: string) => {
+    try {
+      await deleteGroupMembers(id);
+      refetch();
+    } catch (err) {
+      console.log(`${err} error deleting group.`);
+    }
+  };
   return (
-    <div>
+    <div className='relative'>
+      <button
+        onClick={() => handleDelete(`${member._id}`)}
+        className={admin.deleteBtn}
+      >
+        {isLoading ? (
+          <img className='max-w-full' src={loaderLogo} alt='' />
+        ) : (
+          <img className='max-w-full' src={deleteLogo} alt='' />
+        )}
+      </button>
       <div onClick={handleClick} className={admin.membersContainer}>
         <h3 className='text-white'>
           Start: <span className='text-gold'>{member.whenStart}</span>
         </h3>
         <p className={admin.displayGroupType}>{member.type}</p>
-        <button className={admin.deleteBtn}>
-          <img className='max-w-full' src={deleteLogo} alt='' />
-        </button>
       </div>
       <div
         className={

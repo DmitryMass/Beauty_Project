@@ -11,6 +11,7 @@ import DisplayEmployees from '@/components/admin/DisplayEmployees';
 import 'react-tabs/style/react-tabs.css';
 import { admin } from '@/styles/admin';
 import './admin.scss';
+import CreateSchedule from '@/components/admin/CreateSchedule/CreateSchedule';
 
 const Admin: FC = () => {
   return (
@@ -35,8 +36,8 @@ const Admin: FC = () => {
             <CreateEmployee />
             <DisplayEmployees />
           </TabPanel>
-          <TabPanel>
-            <h2>Create Schedule</h2>
+          <TabPanel className={admin.tabPanel}>
+            <CreateSchedule />
           </TabPanel>
         </Tabs>
       </div>

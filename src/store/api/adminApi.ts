@@ -25,6 +25,12 @@ export const adminApi = createApi({
         url: '/members',
       }),
     }),
+    deleteGroupMembers: build.mutation<{ msg: string }, string>({
+      query: (id) => ({
+        url: `/members/${id}`,
+        method: 'DELETE',
+      }),
+    }),
     getGroup: build.query<IGroup, { id: string }>({
       query: ({ id }) => ({
         url: `/group/${id}`,
@@ -42,6 +48,12 @@ export const adminApi = createApi({
         url: '/employee',
       }),
     }),
+    deleteEmployee: build.mutation<{ msg: string }, string>({
+      query: (id) => ({
+        url: `/employee/${id}`,
+        method: 'DELETE',
+      }),
+    }),
   }),
 });
 
@@ -52,4 +64,6 @@ export const {
   useGetGroupQuery,
   useCreateEmployeeMutation,
   useGetEmployeesQuery,
+  useDeleteEmployeeMutation,
+  useDeleteGroupMembersMutation,
 } = adminApi;

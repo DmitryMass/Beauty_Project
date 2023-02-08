@@ -16,7 +16,7 @@ const Navigation: FC = () => {
             className={`${home.navLink} ${home.navLinkHoverEffect}`}
             to={ROUTE.HOME}
           >
-            Главная
+            Головна
           </Link>
         </li>
         <li className='ml-[25px]'>
@@ -24,7 +24,7 @@ const Navigation: FC = () => {
             className={`${home.navLink} ${home.navLinkHoverEffect}`}
             to={ROUTE.SERVICES}
           >
-            Услуги
+            Послуги
           </Link>
         </li>
         <li className='ml-[25px]'>
@@ -32,7 +32,7 @@ const Navigation: FC = () => {
             className={`${home.navLink} ${home.navLinkHoverEffect}`}
             to={ROUTE.PRICE}
           >
-            Прайс
+            Ціна
           </Link>
         </li>
         <li className='ml-[25px]'>
@@ -40,7 +40,7 @@ const Navigation: FC = () => {
             className={`${home.navLink} ${home.navLinkHoverEffect}`}
             to={ROUTE.MASTERS}
           >
-            Мастера
+            Майстри
           </Link>
         </li>
         <li className='ml-[25px]'>
@@ -48,10 +48,10 @@ const Navigation: FC = () => {
             className={`${home.navLink} ${home.navLinkHoverEffect}`}
             to={ROUTE.STUDY}
           >
-            Обучение
+            Навчання
           </Link>
         </li>
-        <li className={`${home.additionalMenu} ml-[25px]`}>Ещё</li>
+        <li className={`${home.additionalMenu} ml-[25px]`}>Ще</li>
       </ul>
       <TranslateNav />
     </div>

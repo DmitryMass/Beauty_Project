@@ -24,10 +24,10 @@ const Admin: FC = () => {
         />
         <Tabs className={admin.tabs}>
           <TabList className={admin.tabList}>
-            <Tab>Набор в группу</Tab>
-            <Tab>Сотрудники</Tab>
-            <Tab>График работы</Tab>
-            <Tab>Клиенты</Tab>
+            <Tab>Навчання</Tab>
+            <Tab>Співробітники</Tab>
+            <Tab>Графіки роботи</Tab>
+            <Tab>Клієнти</Tab>
           </TabList>
           <TabPanel className={admin.tabPanel}>
             <CreateGroup />

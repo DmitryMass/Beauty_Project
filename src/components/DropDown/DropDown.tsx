@@ -4,7 +4,7 @@ interface IDropDownProps {
   setSelected: (value: string) => void;
   setToggleDropDown: (value: boolean) => void;
   modificator?: string;
-  options: [] | [];
+  options: any[] | [];
   styles: string;
 }
 const DropDown: FC<IDropDownProps> = ({

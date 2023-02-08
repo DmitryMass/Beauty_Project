@@ -11,4 +11,8 @@ export const study = {
   input:
     'w-full px-[15px] py-[10px] rounded-[6px] bg-transparent text-gold placeholder:text-goldOpacity cursor-pointer border-[1px] border-gold mb-[10px] font-medium mt-[3px] focus-visible:outline-none focus:shadow-[inset_0_0px_2px_2px_rgba(0,0,0,0.6)] focus:shadow-gold',
   error: 'ml-[10px] text-red-400 text-[14px]',
+  dataWrapper:
+    'p-[10px] bg-white w-[140px] flex justify-center items-center rounded-[6px]',
+  dataTitle: 'text-white mb-[5px] text-classic leading-classic',
+  dataBoxInfo: 'text-coal text-classic leading-classic  font-medium',
 };

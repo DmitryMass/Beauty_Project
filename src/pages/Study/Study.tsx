@@ -7,13 +7,7 @@ import DropDown from '@/components/DropDown/DropDown';
 //
 import { study } from '@/styles/study';
 import './study.scss';
-
-export const options = [
-  'Basic eyebrow training',
-  'Brows skill up',
-  'Basic manicure training',
-  'Manicure skill up',
-];
+import { options } from '@/utils/data/courses';
 
 const Study: FC = () => {
   const [selected, setSelected] = useState<string>(options[0]);
@@ -39,13 +33,13 @@ const Study: FC = () => {
             modificator='w-[85px] ml-auto'
           />
           <div>
-            <h1 className={study.title}>Register for training</h1>
+            <h1 className={study.title}>Зареєструватись на курс</h1>
             <p className={study.subtitle}>
-              Please fill in all the required fields
+              Будь ласка, заповніть усі необхідні поля
             </p>
           </div>
           <div className='relative'>
-            <p className={study.label}>Course type</p>
+            <p className={study.label}>Тип курсу</p>
             <div
               onClick={() => setToggleDropDown((prev) => !prev)}
               className={`${study.select} flex justify-between mt-[5px]`}

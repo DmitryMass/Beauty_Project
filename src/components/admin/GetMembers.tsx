@@ -12,7 +12,7 @@ const GetMembers: FC = () => {
   if (error) {
     return (
       <div className='text-white'>
-        Cannot get members and groups. Server is not active.
+        Не вийшло отримати учасників та групи. Сервер не активний.
       </div>
     );
   }
@@ -23,7 +23,7 @@ const GetMembers: FC = () => {
         Групи клієнтів
       </h2>
       <div className=' grid gap-[5px] grid-cols-1'>
-        {isLoading ? <div className='text-white'>Loading...</div> : null}
+        {isLoading ? <div className='text-white'>Завантажую...</div> : null}
         {data
           ? data.map((members: IGroupmembers) => (
               <GroupList

@@ -1,7 +1,7 @@
 export const admin = {
   wrapper: 'max-w-[1240px] w-full mx-auto px-[15px] pb-[60px]',
   tabs: 'flex flex-col justify-center items-center max-w-[1000px]  w-full mx-auto',
-  tabList: 'w-full mb-[40px] text-center border-b-[1px] border-gold',
+  tabList: 'w-full mb-[20px] text-center border-b-[1px] border-gold',
   tabPanel: 'max-w-[800px] w-full mx-auto',
   displayGroupWrapper: 'relative grid grid-cols-1 md:grid-cols-2 gap-[5px] ',
   displayGroupContent:

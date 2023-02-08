@@ -21,14 +21,14 @@ const GetEmployee: FC = () => {
     <div className='relative w-full py-[10px] z-20'>
       <CreateSchedule id={employeeData?._id} refetchEmployee={getOneEmployee} />
       <div>
-        <p className='text-white mb-[10px]'>Данные сотрудника</p>
+        <p className='text-white mb-[10px]'>Дані співробітника</p>
         <select
           className='p-[5px] max-w-[300px] w-full focus-visible:outline-none mb-[30px]'
-          defaultValue={'Выберите сотрудника'}
+          defaultValue={'Виберіть співробітника'}
           onChange={handleGetEmployee}
         >
-          <option disabled value='Выберите сотрудника'>
-            Выберите сотрудника
+          <option disabled value='Виберіть співробітника'>
+            Виберіть співробітника
           </option>
           {data
             ? data.map((employee) => (
@@ -50,7 +50,7 @@ const GetEmployee: FC = () => {
             </div>
             <div>
               <h3 className='text-whiteOpacity mb-[5px] text-sm leading-sm'>
-                Employee Schedule:
+                Графік роботи:
               </h3>
               {employeeData.schedule.map((graphic: any) => (
                 <div key={graphic.day} className='flex gap-[20px] mb-[10px]'>

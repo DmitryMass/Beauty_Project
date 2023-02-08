@@ -18,13 +18,16 @@ const DisplayClients: FC = () => {
 
   return (
     <div>
+      <h2 className='mb-[15px] text-white text-sm leading-s'>
+        Оберіть майстра
+      </h2>
       <select
         className='p-[5px] max-w-[300px] w-full focus-visible:outline-none mb-[30px]'
-        defaultValue={'Выберите сотрудника'}
+        defaultValue={'Оберіть співробітника'}
         onChange={handleGetEmployee}
       >
-        <option disabled value='Выберите сотрудника'>
-          Выберите сотрудника
+        <option disabled value='Оберіть співробітника'>
+          Оберіть співробітника
         </option>
         {data
           ? data.map((employee) => (
@@ -35,9 +38,12 @@ const DisplayClients: FC = () => {
           : null}
       </select>
       {employeeData ? (
-        <div className='text-white'>
-          <h2>
-            {employeeData.name} {employeeData.surname}
+        <div>
+          <h2 className='text-whiteOpacity text-s'>
+            Мастер{' '}
+            <span className='text-sm ml-[15px]'>
+              {employeeData.name} {employeeData.surname}
+            </span>
           </h2>
           <div>
             {employeeData.workDays?.map((day) => {
@@ -46,35 +52,35 @@ const DisplayClients: FC = () => {
                   className='flex  gap-[20px] p-[5px] bg-goldOpacity mb-[15px]'
                   key={day.day}
                 >
-                  <p>{day.day}</p>
+                  <p className='text-whiteOpacity font-semibold'>{day.day}</p>
                   <div className='grow'>
                     {day.clients.map((client: IClient) => (
                       <div
                         className='flex flex-col gap-[3px] bg-darkGrey p-[10px] mb-[10px]'
                         key={`${client.day}${client.hour}`}
                       >
-                        <p className='block'>
+                        <p className='block text-s text-whiteOpacity'>
                           Ім'я клієнта:{' '}
-                          <span className='text-sm leading-sm text-green'>
+                          <span className='text-sm leading-sm text-green ml-[5px]'>
                             {client.name}
                           </span>
                         </p>
-                        <p className='block'>
+                        <p className='block text-s text-whiteOpacity'>
                           Мобільний:{' '}
-                          <span className='text-sm leading-sm text-green'>
+                          <span className='text-sm leading-sm text-green ml-[5px]'>
                             {client.phoneNumber}
                           </span>
                         </p>
 
-                        <p className='block'>
+                        <p className='block text-s text-whiteOpacity'>
                           Процедура:{' '}
-                          <span className='text-sm leading-sm text-green'>
+                          <span className='text-sm leading-sm text-green ml-[5px]'>
                             {client.procedure}
                           </span>
                         </p>
-                        <p className='block'>
+                        <p className='block text-s text-whiteOpacity'>
                           Час запису:{' '}
-                          <span className='text-sm leading-sm text-green'>
+                          <span className='text-sm leading-sm text-green ml-[5px]'>
                             {client.hour}
                           </span>
                         </p>

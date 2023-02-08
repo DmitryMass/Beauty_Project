@@ -14,7 +14,7 @@ const BlockInfo: FC = () => {
       <div className='flex justify-start items-center gap-[10px]'>
         <img src={geopositionIcon} alt='icon' />
         <p className='font-medium text-[13px] leading-[22px] text-gold'>
-          г. Днепр, пр. Гагарина, 198
+          м. Дніпро, пр. Гагаріна, 198
         </p>
       </div>
     </div>

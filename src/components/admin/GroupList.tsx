@@ -51,7 +51,7 @@ const GroupList: FC<IGroupListProps> = ({
       </button>
       <div onClick={handleClick} className={admin.membersContainer}>
         <h3 className='text-white'>
-          Start: <span className='text-gold'>{member.whenStart}</span>
+          Початок: <span className='text-gold'>{member.whenStart}</span>
         </h3>
         <p className={admin.displayGroupType}>{member.type}</p>
       </div>

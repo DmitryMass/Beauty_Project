@@ -24,15 +24,15 @@ const SuccessResponse: FC<ISuccessResponseProps> = ({
         >
           {register ? (
             <div className={successModal.container}>
-              <p className={successModal.subtitle}>Вы записались на курс</p>
+              <p className={successModal.subtitle}>Ви записалися на курс</p>
               <h2 className={successModal.title}>{type}</h2>
-              <p className={successModal.success}>Успехов в обучении!</p>
+              <p className={successModal.success}>Успіхів у навчанні!</p>
             </div>
           ) : (
             <div className={successModal.container}>
-              <p className={successModal.subtitle}>Набор в группу</p>
+              <p className={successModal.subtitle}>Набір до групи</p>
               <h2 className={successModal.title}>Курс {type}</h2>
-              <p className={successModal.success}>Открыт</p>
+              <p className={successModal.success}>Відкритий</p>
             </div>
           )}
         </div>

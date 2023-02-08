@@ -10,6 +10,7 @@ import SuccessResponse from '@/components/SuccessResponse/SuccessResponse';
 import { createGroup } from '@/styles/forms';
 import { createGroupValidation } from '@/utils/validation/createGroupValidation';
 import 'react-datepicker/dist/react-datepicker.css';
+import { options } from '@/utils/data/courses';
 
 const CreateGroup: FC = () => {
   const [startDate, setStartDate] = useState<Date>(new Date());
@@ -23,6 +24,9 @@ const CreateGroup: FC = () => {
   return (
     <div className='p-[10px]'>
       {isSuccess ? <SuccessResponse success type={data?.type} /> : null}
+      <h2 className='text-white text-md leading-sm my-[10px]'>
+        Створити групу
+      </h2>
       <Formik
         initialValues={{ countPlaces: '', price: '' }}
         onSubmit={handleSubmit}
@@ -40,7 +44,7 @@ const CreateGroup: FC = () => {
             <div className={createGroup.inputsWrapper}>
               <div className='relative w-full py-[10px]'>
                 <div onClick={() => setToggleDropDown((prev) => !prev)}>
-                  <span className='text-white'>Course name</span>
+                  <span className='text-white'>Назва курсу</span>
                   <div className={`${createGroup.input} w-full cursor-pointer`}>
                     {selected}
                   </div>
@@ -56,7 +60,7 @@ const CreateGroup: FC = () => {
                 ) : null}
               </div>
               <label className={createGroup.label} htmlFor='countPlaces'>
-                Number of places
+                Кількість місць
                 {touched.countPlaces && errors.countPlaces && (
                   <span className={createGroup.errorSpan}>
                     {errors.countPlaces}
@@ -70,11 +74,11 @@ const CreateGroup: FC = () => {
                   onBlur={handleBlur}
                   value={values.countPlaces}
                   name='countPlaces'
-                  placeholder='Number of places'
+                  placeholder='Кількість місць'
                 />
               </label>
               <label htmlFor='price' className={createGroup.label}>
-                Price
+                Ціна навчання
                 {touched.price && errors.price && (
                   <span className={createGroup.errorSpan}>{errors.price}</span>
                 )}
@@ -86,11 +90,11 @@ const CreateGroup: FC = () => {
                   onBlur={handleBlur}
                   value={values.price}
                   name='price'
-                  placeholder='Price UAH'
+                  placeholder='Ціна в ГРН'
                 />
               </label>
               <div className='py-[10px] mb-[20px]'>
-                <span className='text-white'>Date</span>
+                <span className='text-white'>Дата проведення</span>
                 <DatePicker
                   className={createGroup.input}
                   selected={startDate}
@@ -100,7 +104,7 @@ const CreateGroup: FC = () => {
               </div>
             </div>
             <ButtonSubmit
-              children={isLoading ? 'Loading...' : 'Create Group'}
+              children={isLoading ? 'Завантажую...' : 'Створити групу'}
               modificator={createGroup.btnSubmit}
             />
           </form>
@@ -110,10 +114,4 @@ const CreateGroup: FC = () => {
   );
 };
 
-const options = [
-  'Basic eyebrow training',
-  'Brows skill up',
-  'Basic manicure training',
-  'Manicure skill up',
-];
 export default CreateGroup;

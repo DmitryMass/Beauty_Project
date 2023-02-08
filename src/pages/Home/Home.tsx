@@ -24,16 +24,16 @@ const Home: FC = () => {
         <section className={home.contentWrapper}>
           <div className={home.textContainter}>
             <h1 className={home.title}>
-              Ищете мастера, понимающего желания клиента и ответственно
-              подходящего к работе?{' '}
+              Шукаєте майстра, який розуміє бажання клієнта та відповідально
+              підходить до роботи?{' '}
             </h1>
             <p className={home.subtitle}>
-              Приглашаем вас в наш салон красоты{' '}
+              Запрошуємо вас до нашої студії{' '}
               <span className={home.subtitleSpan}>Style</span>
             </p>
             <LinkButton
               modificator='max-w-[160px] w-full py-[10px]  mb-[100px] max-[1140px]:mb-[80px] font-semibold hover:bg-hoverGold hover:scale-[1.03] transition-all duration-200'
-              children='Записаться'
+              children='Записатись'
             />
             <BlockInfo />
           </div>

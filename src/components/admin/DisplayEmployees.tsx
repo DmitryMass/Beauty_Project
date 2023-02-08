@@ -24,11 +24,11 @@ const DisplayEmployees: FC = () => {
   return (
     <div className={employees.container}>
       {isLoading ? <div className='text-white'>Loading...</div> : null}
-      <h2 className={employees.title}>Список сотрудников</h2>
+      <h2 className={employees.title}>Перелік співробітників</h2>
       <div className='flex justify-start gap-[25px] w-full'>
-        <span className={employees.employeeSpan}>ФИО</span>
-        <span className={employees.employeeSpan}>Специальность</span>
-        <span className={employees.employeeSpan}>Номер телефона</span>
+        <span className={employees.employeeSpan}>ПІБ</span>
+        <span className={employees.employeeSpan}>Спеціальність</span>
+        <span className={employees.employeeSpan}>Номер телефону</span>
       </div>
       {data &&
         data.map((employee: IEmployee) => (

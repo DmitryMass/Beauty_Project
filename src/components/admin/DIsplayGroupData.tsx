@@ -20,17 +20,18 @@ const DisplayGroupData: FC = () => {
                 key={`${countPlaces}${type}`}
               >
                 <p className='text-white'>
-                  Тип курса: <br />
+                  Тип курсу: <br />
                   <span className={admin.displayGroupType}>{type}</span>
                 </p>
                 <p className='text-white'>
-                  Кол-во мест : <span className='text-gold'>{countPlaces}</span>
+                  Кількість місць :{' '}
+                  <span className='text-gold'>{countPlaces}</span>
                 </p>
                 <p className='text-white'>
-                  Цена: <span className='text-gold'>{price} грн</span>
+                  Ціна: <span className='text-gold'>{price} грн</span>
                 </p>
                 <p className='text-white'>
-                  Старт: <span className='text-gold'>{whenStart}</span>
+                  Початок: <span className='text-gold'>{whenStart}</span>
                 </p>
               </div>
             ))

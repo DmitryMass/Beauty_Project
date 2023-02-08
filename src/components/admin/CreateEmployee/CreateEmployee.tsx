@@ -1,55 +1,22 @@
 import { FC } from 'react';
 import Dropzone from 'react-dropzone';
-import { Formik, Field, FormikHelpers } from 'formik';
-import {
-  useCreateEmployeeMutation,
-  useGetEmployeesQuery,
-} from '@/store/api/adminApi';
+import { Formik, Field, FieldArray, FieldProps } from 'formik';
 //
 import ButtonSubmit from '@/components/ButtonSubmit/ButtonSubmit';
 import EmployeeSuccess from '@/components/admin/CreateEmployee/EmployeeSuccess';
+import { useCreateEmployee } from '@/components/customHooks/useCreateEmployee';
 //
 import { createEmployeeValidation } from '@/utils/validation/createGroupValidation';
 import { createGroup } from '@/styles/forms';
 
-interface IInitialState {
-  name: string;
-  surname: string;
-  position: string;
-  email: string;
-  img?: any;
-  phoneNumber: string;
-}
-
 const CreateEmployee: FC = () => {
-  const [createEmployee, { isLoading, isSuccess, isError }] =
-    useCreateEmployeeMutation();
-  const { refetch } = useGetEmployeesQuery('');
-
-  const handleSubmit = async (
-    values: IInitialState,
-    actions: FormikHelpers<IInitialState>
-  ) => {
-    const body = new FormData();
-    Object.entries(values).forEach((item) => {
-      body.append(item[0], item[1].toString());
-    });
-    body.append('file', values.img);
-    actions.resetForm();
-    try {
-      await createEmployee(body);
-      refetch();
-    } catch (err) {
-      console.log(`${err} create employee error.`);
-    }
-  };
-
+  const { handleSubmit, isError, isLoading, isSuccess } = useCreateEmployee();
   return (
     <div className='text-white'>
       {isSuccess ? <EmployeeSuccess success /> : null}
       {isError ? (
         <div className='text-white'>
-          Server error or Employee already create.
+          Помилка серверу або співробітник вже існує.
         </div>
       ) : null}
       <Formik
@@ -59,6 +26,7 @@ const CreateEmployee: FC = () => {
           position: '',
           email: '',
           phoneNumber: '',
+          options: [{ procedure: '', price: '' }],
         }}
         onSubmit={handleSubmit}
         validationSchema={createEmployeeValidation}
@@ -74,7 +42,7 @@ const CreateEmployee: FC = () => {
         }) => (
           <form onSubmit={handleSubmit}>
             <div className={createGroup.inputsWrapper}>
-              <p>Фото сотрудника</p>
+              <p>Фото співробітника</p>
               <div
                 className={`${createGroup.input} relative w-full py-[10px] cursor-pointer text-center`}
               >
@@ -89,11 +57,11 @@ const CreateEmployee: FC = () => {
                       <input {...getInputProps()} />
                       {!values.img ? (
                         <p className='text-white text-[12px]'>
-                          Прикрепить фото сотрудника
+                          Додати фото співробітника
                         </p>
                       ) : (
                         <span className='text-white text-[12px] text-ellipsis overflow-hidden whitespace-nowrap'>
-                          Фото сотрудника добавлено
+                          Фото співробітника додано
                         </span>
                       )}
                     </div>
@@ -101,7 +69,7 @@ const CreateEmployee: FC = () => {
                 </Dropzone>
               </div>
               <label className={createGroup.label} htmlFor='name'>
-                Name
+                Ім'я
                 {touched.name && errors.name && (
                   <span className={createGroup.errorSpan}>{errors.name}</span>
                 )}
@@ -113,11 +81,11 @@ const CreateEmployee: FC = () => {
                   onBlur={handleBlur}
                   value={values.name}
                   name='name'
-                  placeholder='Employee name'
+                  placeholder="Ім'я"
                 />
               </label>
               <label className={createGroup.label} htmlFor='surname'>
-                Surname
+                Фамілія
                 {touched.surname && errors.surname && (
                   <span className={createGroup.errorSpan}>
                     {errors.surname}
@@ -131,11 +99,11 @@ const CreateEmployee: FC = () => {
                   onBlur={handleBlur}
                   value={values.surname}
                   name='surname'
-                  placeholder='Employee surname'
+                  placeholder='Фамілія'
                 />
               </label>
               <label className={createGroup.label} htmlFor='email'>
-                Email
+                Пошта
                 {touched.email && errors.email && (
                   <span className={createGroup.errorSpan}>{errors.email}</span>
                 )}
@@ -147,11 +115,11 @@ const CreateEmployee: FC = () => {
                   onBlur={handleBlur}
                   value={values.email}
                   name='email'
-                  placeholder='Employee email'
+                  placeholder='Пошта'
                 />
               </label>
               <label className={createGroup.label} htmlFor='position'>
-                Position
+                Спеціальність
                 {touched.position && errors.position && (
                   <span className={createGroup.errorSpan}>
                     {errors.position}
@@ -165,11 +133,11 @@ const CreateEmployee: FC = () => {
                   onBlur={handleBlur}
                   value={values.position}
                   name='position'
-                  placeholder='Employee position'
+                  placeholder='Спеціальність'
                 />
               </label>
               <label className={createGroup.label} htmlFor='phoneNumber'>
-                Phone number
+                Номер телефону
                 {touched.phoneNumber && errors.phoneNumber && (
                   <span className={createGroup.errorSpan}>
                     {errors.phoneNumber}
@@ -183,12 +151,61 @@ const CreateEmployee: FC = () => {
                   onBlur={handleBlur}
                   value={values.phoneNumber}
                   name='phoneNumber'
-                  placeholder='+3809987654321'
+                  placeholder='09987654321'
                 />
               </label>
+              <FieldArray name='options'>
+                {(fieldArrayProps) => (
+                  <>
+                    <div>
+                      <div>
+                        <button
+                          className='text-white bg-goldOpacity p-[5px] my-[10px] rounded-[4px]'
+                          type='button'
+                          onClick={() =>
+                            fieldArrayProps.push({ procedure: '', price: '' })
+                          }
+                        >
+                          Додати процедуру
+                        </button>
+                      </div>
+                      {values.options.map((option: any, index: any) => (
+                        <div className='flex items-center' key={index}>
+                          <Field name={`options.${index}.procedure`}>
+                            {(fieldProps: FieldProps) => (
+                              <input
+                                className={createGroup.input}
+                                placeholder='Процедура'
+                                {...fieldProps.field}
+                              />
+                            )}
+                          </Field>
+                          <Field name={`options.${index}.price`}>
+                            {(fieldProps: FieldProps) => (
+                              <div className='flex items-start'>
+                                <input
+                                  className={createGroup.input}
+                                  placeholder='Ціна'
+                                  {...fieldProps.field}
+                                />
+                                <button
+                                  className='block bg-red-600 mt-[6px] ml-[3px] rounded-[4px] px-[6px]'
+                                  onClick={() => fieldArrayProps.remove(index)}
+                                >
+                                  X
+                                </button>
+                              </div>
+                            )}
+                          </Field>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </FieldArray>
             </div>
             <ButtonSubmit
-              children={isLoading ? 'Loading...' : 'Add an employee'}
+              children={isLoading ? 'Завантажую...' : 'Додати співробітника'}
               modificator={createGroup.btnSubmit}
             />
           </form>

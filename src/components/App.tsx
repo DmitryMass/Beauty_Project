@@ -9,6 +9,7 @@ import Study from '@/pages/Study/Study';
 import './app.scss';
 import Masters from '@/pages/Masters/Masters';
 import SignUpToMaster from '@/pages/SignUpToMaster/SignUpToMaster';
+import Vacancies from '@/pages/Vacancies/Vacancies';
 
 const App: FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: FC = () => {
       <Route path={ROUTE.STUDY} element={<Study />} />
       <Route path={ROUTE.MASTERS} element={<Masters />} />
       <Route path={ROUTE.MASTER} element={<SignUpToMaster />} />
+      <Route path={ROUTE.VACANCIES} element={<Vacancies />} />
       <Route path={import.meta.env.VITE_ADMIN} element={<Admin />} />
     </Routes>
   );

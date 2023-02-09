@@ -5,4 +5,5 @@ export const ROUTE = {
   SERVICES: '/services',
   MASTERS: '/masters',
   MASTER: '/masters/:id',
+  VACANCIES: '/vacancies',
 };

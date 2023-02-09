@@ -13,7 +13,7 @@ const Navigation: FC = () => {
       <ul className='flex justify-between items-center'>
         <li className=''>
           <Link
-            className={`${home.navLink} ${home.navLinkHoverEffect}`}
+            className={`${home.navLink} ${home.navLinkHoverEffect} inline-block`}
             to={ROUTE.HOME}
           >
             Головна
@@ -21,7 +21,7 @@ const Navigation: FC = () => {
         </li>
         <li className='ml-[25px]'>
           <Link
-            className={`${home.navLink} ${home.navLinkHoverEffect}`}
+            className={`${home.navLink} ${home.navLinkHoverEffect} inline-block`}
             to={ROUTE.SERVICES}
           >
             Послуги
@@ -29,7 +29,7 @@ const Navigation: FC = () => {
         </li>
         <li className='ml-[25px]'>
           <Link
-            className={`${home.navLink} ${home.navLinkHoverEffect}`}
+            className={`${home.navLink} ${home.navLinkHoverEffect} inline-block`}
             to={ROUTE.PRICE}
           >
             Ціна
@@ -37,7 +37,7 @@ const Navigation: FC = () => {
         </li>
         <li className='ml-[25px]'>
           <Link
-            className={`${home.navLink} ${home.navLinkHoverEffect}`}
+            className={`${home.navLink} ${home.navLinkHoverEffect} inline-block`}
             to={ROUTE.MASTERS}
           >
             Майстри
@@ -45,7 +45,7 @@ const Navigation: FC = () => {
         </li>
         <li className='ml-[25px]'>
           <Link
-            className={`${home.navLink} ${home.navLinkHoverEffect}`}
+            className={`${home.navLink} ${home.navLinkHoverEffect} inline-block`}
             to={ROUTE.STUDY}
           >
             Навчання

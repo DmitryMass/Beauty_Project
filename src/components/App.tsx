@@ -7,12 +7,16 @@ import Admin from '@/pages/Admin/Admin';
 import Study from '@/pages/Study/Study';
 //
 import './app.scss';
+import Masters from '@/pages/Masters/Masters';
+import SignUpToMaster from '@/pages/SignUpToMaster/SignUpToMaster';
 
 const App: FC = () => {
   return (
     <Routes>
       <Route path={ROUTE.HOME} element={<Home />} />
       <Route path={ROUTE.STUDY} element={<Study />} />
+      <Route path={ROUTE.MASTERS} element={<Masters />} />
+      <Route path={ROUTE.MASTER} element={<SignUpToMaster />} />
       <Route path={import.meta.env.VITE_ADMIN} element={<Admin />} />
     </Routes>
   );

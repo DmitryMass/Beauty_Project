@@ -1,3 +1,7 @@
+export interface IOptions {
+  procedure: string;
+  price: string;
+}
 export interface IEmployee {
   _id?: string;
   name: string;
@@ -8,4 +12,5 @@ export interface IEmployee {
   surname: string;
   schedule: any[];
   workDays?: any[];
+  options?: IOptions[];
 }

@@ -28,6 +28,7 @@ module.exports = {
         m: '22px',
         s: '20px',
       },
+
       backgroundColor: {
         darkGrey: '#222222',
         gold: '#F0DDA3',
@@ -37,6 +38,9 @@ module.exports = {
         coal: '#181818',
         goldBlur: 'rgba(240, 221, 163, 0.5)',
         green: '#1BC200',
+        masterNameBg: 'rgba(240, 221, 163, 0.21)',
+        masterCard: 'rgba(0, 0, 0, 0.37)',
+        inputBg: 'rgba(0, 0, 0, 0.37)',
       },
       borderColor: {},
       colors: {

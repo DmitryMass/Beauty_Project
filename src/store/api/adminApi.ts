@@ -88,4 +88,5 @@ export const {
   useLazyGetOneEmployeeQuery,
   useUpdateEmployeeScheduleMutation,
   useSetEmployeeScheduleMutation,
+  useGetOneEmployeeQuery,
 } = adminApi;

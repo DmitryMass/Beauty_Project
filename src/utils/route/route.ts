@@ -4,4 +4,5 @@ export const ROUTE = {
   PRICE: '/price',
   SERVICES: '/services',
   MASTERS: '/masters',
+  MASTER: '/masters/:id',
 };

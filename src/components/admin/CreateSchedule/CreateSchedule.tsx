@@ -24,6 +24,7 @@ const CreateSchedule: FC<ICreateSchedulteProps> = ({ id, refetchEmployee }) => {
     startDate,
     changeDate,
     employeeWorkTime,
+    deleteSchedule,
   } = useCreateSchedule(id!, refetchEmployee);
 
   return (
@@ -87,10 +88,15 @@ const CreateSchedule: FC<ICreateSchedulteProps> = ({ id, refetchEmployee }) => {
       </button>
       <button
         className={`${schedule.sendBtn}  bg-slate-500`}
-        disabled={employeeWorkTime.length === 0}
         onClick={updateEmployeeSchedule}
       >
         Оновити графік
+      </button>
+      <button
+        className={`${schedule.sendBtn}  bg-slate-500`}
+        onClick={deleteSchedule}
+      >
+        Видалити день з графіку
       </button>
     </div>
   );

@@ -1,11 +1,9 @@
 import Logo from '@/components/Logo/Logo';
-import { useGetOneEmployeeQuery } from '@/store/api/adminApi';
 import { FC } from 'react';
 import { useParams } from 'react-router-dom';
-import nailBgc from '@/assets/images/visitToTheMaster.png';
 
 import './signUpToMaster.scss';
-import SignToMasterForm from '@/components/signToMaster/SignToMasterForm';
+import SignToMasterForm from '@/components/masters/signToMaster/SignToMasterForm';
 
 const SignUpToMaster: FC = () => {
   const { id } = useParams();

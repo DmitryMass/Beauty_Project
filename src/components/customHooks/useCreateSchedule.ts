@@ -5,6 +5,7 @@ import useActions from '@/store/hooks/useActions';
 import useTypedSelector from '@/store/hooks/useTypedSelector';
 //
 import {
+  useDeleteEmployeeScheduleMutation,
   useSetEmployeeScheduleMutation,
   useUpdateEmployeeScheduleMutation,
 } from '@/store/api/adminApi';
@@ -19,6 +20,7 @@ export const useCreateSchedule = (id: string, refetchEmployee: any) => {
   );
   const [updateEmployee] = useUpdateEmployeeScheduleMutation();
   const [setEmployeeSchedule] = useSetEmployeeScheduleMutation();
+  const [deleteEmployeeSchedule] = useDeleteEmployeeScheduleMutation();
 
   const [startDate, setStartDate] = useState(new Date());
   const changeDate = useMemo(
@@ -83,6 +85,25 @@ export const useCreateSchedule = (id: string, refetchEmployee: any) => {
     }
   };
 
+  const deleteSchedule = async () => {
+    try {
+      if (id) {
+        const response: any = await deleteEmployeeSchedule({
+          id,
+          data: {
+            day: changeDate,
+          },
+        });
+        if (response.data) {
+          await refetchEmployee(id);
+          return;
+        }
+      }
+    } catch (err) {
+      console.log(`${err} error in updateSchedule`);
+    }
+  };
+
   return {
     createEmployeeSchedule,
     updateEmployeeSchedule,
@@ -92,5 +113,6 @@ export const useCreateSchedule = (id: string, refetchEmployee: any) => {
     startDate,
     changeDate,
     employeeWorkTime,
+    deleteSchedule,
   };
 };

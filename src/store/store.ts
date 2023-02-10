@@ -1,3 +1,4 @@
+import { visitMasterApi } from './api/visitMasterApi';
 import { employeesSliceReducer } from './slices/employeeSlice';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
@@ -27,6 +28,7 @@ const reducers = combineReducers({
   employees: persistReducer(persistConfig, employeesSliceReducer),
   [adminApi.reducerPath]: adminApi.reducer,
   [studyApi.reducerPath]: studyApi.reducer,
+  [visitMasterApi.reducerPath]: visitMasterApi.reducer,
 });
 
 const store = configureStore({
@@ -36,7 +38,11 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(adminApi.middleware, studyApi.middleware),
+    }).concat(
+      adminApi.middleware,
+      studyApi.middleware,
+      visitMasterApi.middleware
+    ),
 });
 
 setupListeners(store.dispatch);

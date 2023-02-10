@@ -73,6 +73,13 @@ export const adminApi = createApi({
         body: body.data,
       }),
     }),
+    deleteEmployeeSchedule: build.mutation({
+      query: (body) => ({
+        url: `/employee/schedule/${body.id}`,
+        method: 'DELETE',
+        body: body.data,
+      }),
+    }),
   }),
 });
 
@@ -89,4 +96,5 @@ export const {
   useUpdateEmployeeScheduleMutation,
   useSetEmployeeScheduleMutation,
   useGetOneEmployeeQuery,
+  useDeleteEmployeeScheduleMutation,
 } = adminApi;

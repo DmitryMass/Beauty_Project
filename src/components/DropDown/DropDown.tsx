@@ -4,8 +4,9 @@ interface IDropDownProps {
   setSelected: (value: string) => void;
   setToggleDropDown: (value: boolean) => void;
   modificator?: string;
-  options: any[] | [];
+  options?: any[] | [];
   styles: string;
+  visit?: boolean;
 }
 const DropDown: FC<IDropDownProps> = ({
   modificator,
@@ -13,6 +14,7 @@ const DropDown: FC<IDropDownProps> = ({
   setToggleDropDown,
   options,
   styles,
+  visit = false,
 }) => {
   const hanldeClick = (value: string) => {
     setSelected(value);
@@ -20,13 +22,36 @@ const DropDown: FC<IDropDownProps> = ({
   };
 
   return (
-    <div className={modificator}>
-      {options.map((value) => (
-        <div className={styles} key={value} onClick={() => hanldeClick(value)}>
-          {value}
+    <>
+      {visit ? (
+        <div className={modificator}>
+          {options &&
+            options.map((value) => (
+              <div
+                className={styles}
+                key={value.procedure}
+                onClick={() => hanldeClick(value.procedure)}
+              >
+                <span>{value.procedure}</span>
+                <span>{value.price} грн</span>
+              </div>
+            ))}
         </div>
-      ))}
-    </div>
+      ) : (
+        <div className={modificator}>
+          {options &&
+            options.map((value) => (
+              <div
+                className={styles}
+                key={value}
+                onClick={() => hanldeClick(value)}
+              >
+                {value}
+              </div>
+            ))}
+        </div>
+      )}
+    </>
   );
 };
 

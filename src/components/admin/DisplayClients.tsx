@@ -4,6 +4,7 @@ import {
 } from '@/store/api/adminApi';
 import { clients } from '@/styles/clients';
 import { IClient } from '@/types/clientTypes';
+import { IWorkDays } from '@/types/employee';
 import { FC } from 'react';
 
 const DisplayClients: FC = () => {
@@ -16,6 +17,8 @@ const DisplayClients: FC = () => {
       console.log(`${err} cannot get employee`);
     }
   };
+
+  console.log(employeeData);
 
   return (
     <div>
@@ -44,51 +47,54 @@ const DisplayClients: FC = () => {
               {employeeData.name} {employeeData.surname}
             </span>
           </h2>
-          <div>
-            {employeeData.workDays?.map((day) => {
-              return (
-                <div className={clients.workDayWrapper} key={day.day}>
-                  <p className='text-whiteOpacity font-semibold'>{day.day}</p>
-                  <div className='grow'>
-                    {day.clients.map((client: IClient) => (
-                      <div
-                        className={clients.clientsWrapper}
-                        key={`${client.day}${client.hour}`}
-                      >
-                        <p className={clients.workLabel}>
-                          Ім'я клієнта:{' '}
-                          <span className={clients.workInfo}>
-                            {client.name}
-                          </span>
-                        </p>
-                        <p className={clients.workLabel}>
-                          Мобільний:{' '}
-                          <span className={clients.workInfo}>
-                            {client.phoneNumber}
-                          </span>
-                        </p>
-
-                        <p className={clients.workLabel}>
-                          Процедура:{' '}
-                          <span className={clients.workInfo}>
-                            {client.procedure}
-                          </span>
-                        </p>
-                        <p className={clients.workLabel}>
-                          Час запису:{' '}
-                          <span className={clients.workInfo}>
-                            {client.hour}
-                          </span>
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
         </div>
       ) : null}
+      <div>
+        {employeeData?.workDays &&
+          employeeData.workDays.map((day: IWorkDays) => {
+            return (
+              <div className={clients.workDayWrapper} key={day.day}>
+                <p className='text-whiteOpacity font-semibold'>{day.day}</p>
+                <div className='grow'>
+                  {day.clients
+                    ? day.clients.map((client: IClient) => (
+                        <div
+                          className={clients.clientsWrapper}
+                          key={`${client.day}${client.hour}`}
+                        >
+                          <p className={clients.workLabel}>
+                            Ім'я клієнта:{' '}
+                            <span className={clients.workInfo}>
+                              {client.name}
+                            </span>
+                          </p>
+                          <p className={clients.workLabel}>
+                            Мобільний:{' '}
+                            <span className={clients.workInfo}>
+                              {client.phoneNumber}
+                            </span>
+                          </p>
+
+                          <p className={clients.workLabel}>
+                            Процедура:{' '}
+                            <span className={clients.workInfo}>
+                              {client.procedure}
+                            </span>
+                          </p>
+                          <p className={clients.workLabel}>
+                            Час запису:{' '}
+                            <span className={clients.workInfo}>
+                              {client.hour}
+                            </span>
+                          </p>
+                        </div>
+                      ))
+                    : null}
+                </div>
+              </div>
+            );
+          })}
+      </div>
     </div>
   );
 };

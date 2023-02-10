@@ -27,3 +27,13 @@ ul::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}

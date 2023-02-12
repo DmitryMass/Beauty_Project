@@ -18,8 +18,12 @@ const ContactsForm: FC = () => {
     values: IInitalValues,
     { resetForm }: FormikHelpers<IInitalValues>
   ) => {
-    console.log(values);
     resetForm();
+    try {
+      console.log(values);
+    } catch (err) {
+      console.log(`${err} помилка в звороньому зв'язку.`);
+    }
   };
 
   return (

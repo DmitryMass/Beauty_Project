@@ -3,7 +3,6 @@ import MessengersList from '@/components/MessengersList/MessengersList';
 import phoneIcon from '@/assets/icons/phoneIcon.svg';
 import geoPositionIcon from '@/assets/icons/geopositionIcon.svg';
 import timeIcon from '@/assets/icons/timeIcon.svg';
-import ButtonSubmit from '@/components/ButtonSubmit/ButtonSubmit';
 //
 import './contacts.scss';
 import { contacts } from '@/styles/contacts';

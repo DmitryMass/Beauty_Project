@@ -5,22 +5,29 @@ import ButtonSubmit from '../../ButtonSubmit/ButtonSubmit';
 import Loader from '../../Loader/Loader';
 import { useGetOneEmployeeQuery } from '@/store/api/adminApi';
 import DropDown from '../../DropDown/DropDown';
-import SelectTimeAndDate from '../selectTimeAndDate/SelectTimeAndDate';
 //
 import { study } from '@/styles/study';
-import { IWorkDays } from '@/types/employee';
 import GeneralErrorHandler from '@/components/ErrorHandler/GeneralErrorHandler';
+import { useFetchVisitMasterMutation } from '@/store/api/visitMasterApi';
+import SuccessHandler from '@/components/SuccessHandler/SuccessHandler';
+import { signToMaster } from '@/styles/signToMaster';
 
 interface IInitialValues {
   name: string;
   phoneNumber: string;
 }
-interface ISelectTimeAndDateProps {
-  workDays: IWorkDays[] | [];
-}
 
 const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
-  const { data = null, isLoading, isError } = useGetOneEmployeeQuery(`${id}`);
+  const {
+    data = null,
+    isLoading,
+    isError,
+    refetch,
+  } = useGetOneEmployeeQuery(`${id}`);
+  const [
+    fetchVisitMaster,
+    { isLoading: visitLoading, isError: visitError, error, isSuccess },
+  ]: any = useFetchVisitMasterMutation();
   const [selectedProcedure, setSelectedProcedure] = useState<string>('Послуга');
   const [toggleDropDown, setToggleDropDown] = useState<boolean>(false);
   const [selectDay, setSelectDay] = useState('');
@@ -28,20 +35,31 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
 
   const selectTime = useMemo(
     () => data?.workDays!.find(({ day }) => day === selectDay),
-    [selectDay]
+    [selectDay, data]
   );
 
   const handleSubmit = async (
     values: IInitialValues,
     { resetForm }: FormikHelpers<IInitialValues>
   ) => {
-    console.log({
-      ...values,
-      hour: selectedTime,
-      day: selectDay,
-      procedure: selectedProcedure,
-      id,
+    resetForm();
+    const body = new FormData();
+    Object.entries(values).forEach((item) => {
+      body.append(item[0], item[1].toString());
     });
+    body.append('hour', selectedTime);
+    body.append('day', selectDay);
+    body.append('procedure', selectedProcedure);
+    body.append('id', id);
+
+    try {
+      const response: any = await fetchVisitMaster(body);
+      if (response.data) {
+        refetch();
+      }
+    } catch (err) {
+      console.log(`${err} помикла в записі на процедуру`);
+    }
   };
 
   if (isLoading) {
@@ -55,6 +73,19 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
           isError={isError}
           data='Йдуть технічні роботи. Вибачте за незручності.'
         />
+      ) : null}
+      {visitError ? (
+        <GeneralErrorHandler
+          isError={visitError}
+          data={
+            error?.data
+              ? error.data.msg
+              : 'Йдуть технічні роботи. Вибачте за незручності.'
+          }
+        />
+      ) : null}
+      {isSuccess ? (
+        <SuccessHandler success={isSuccess} data={'Запис успішний!'} />
       ) : null}
       <Formik
         initialValues={{ name: '', phoneNumber: '' }}
@@ -104,9 +135,8 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
                 />
               </label>
             </div>
-
             <div className='relative'>
-              <p className={study.label}>Тип курсу</p>
+              <p className={study.label}>Послуга</p>
               <div
                 onClick={() => setToggleDropDown((prev) => !prev)}
                 className={`${study.input} flex justify-between mt-[5px]`}
@@ -139,13 +169,11 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
                   : `${data?.name} ${data?.surname}`}
               </h3>
             </section>
-            <div className='flex justify-start items-center gap-[40px]'>
+            <div className={signToMaster.selectsWrapper}>
               <div>
                 <p className={study.label}>Дата</p>
                 <select
-                  className={
-                    'px-[15px] py-[10px] rounded-[6px] bg-inputBg text-gold placeholder:text-goldOpacity cursor-pointer border-[1px] border-gold mb-[10px] font-medium mt-[3px] focus-visible:outline-none focus:shadow-[inset_0_0px_2px_2px_rgba(0,0,0,0.6)] focus:shadow-gold'
-                  }
+                  className={signToMaster.select}
                   defaultValue={'Оберіть дату'}
                   onChange={(e) => setSelectDay(e.target.value)}
                 >
@@ -163,9 +191,7 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
               <div>
                 <p className={study.label}>Час</p>
                 <select
-                  className={
-                    'px-[15px] py-[10px] rounded-[6px] bg-inputBg text-gold placeholder:text-goldOpacity cursor-pointer border-[1px] border-gold mb-[10px] font-medium mt-[3px] focus-visible:outline-none focus:shadow-[inset_0_0px_2px_2px_rgba(0,0,0,0.6)] focus:shadow-gold'
-                  }
+                  className={signToMaster.select}
                   defaultValue={'Вільний час'}
                   onChange={(e) => setSelectedTime(e.target.value)}
                 >
@@ -179,11 +205,10 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
                 </select>
               </div>
             </div>
-
             <ButtonSubmit
+              isDisabled={data ? false : true}
               modificator='max-w-[200px] w-full py-[10px] font-semibold rounded-[6px] hover:bg-hoverGold transition-all duration-100'
-              //   children={isLoading ? <Loader /> : 'Зареєструватися'}
-              children={'Зареєструватися'}
+              children={visitLoading ? <Loader /> : 'Зареєструватися'}
             />
           </form>
         )}

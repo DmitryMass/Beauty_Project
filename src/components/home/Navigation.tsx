@@ -24,15 +24,7 @@ const Navigation: FC = () => {
             className={`${home.navLink} ${home.navLinkHoverEffect} inline-block`}
             to={ROUTE.SERVICES}
           >
-            Послуги
-          </Link>
-        </li>
-        <li className='ml-[25px]'>
-          <Link
-            className={`${home.navLink} ${home.navLinkHoverEffect} inline-block`}
-            to={ROUTE.PRICE}
-          >
-            Ціна
+            Послуги та ціни
           </Link>
         </li>
         <li className='ml-[25px]'>
@@ -51,7 +43,11 @@ const Navigation: FC = () => {
             Навчання
           </Link>
         </li>
-        <li className={`${home.additionalMenu} ml-[25px]`}>Ще</li>
+        <li
+          className={` ${home.navLink} ${home.navLinkHoverEffect} inline-block ml-[25px]`}
+        >
+          Ще
+        </li>
       </ul>
       <TranslateNav />
     </div>

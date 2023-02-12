@@ -7,12 +7,12 @@ import LinkButton from '@/components/LinkButton/LinkButton';
 
 
 const Vacancies: FC = () => {
-	interface IProduct {
+	interface IVacancy {
 		id: number
 		title: string
 		requirements: any[]
 	}
-	const vacancies: IProduct[] = [
+	const vacancies: IVacancy[] = [
 		{
 			id: 1,
 			title: 'МАСТЕР ПО НАРАЩИВАНИЮ РЕСНИЦ',

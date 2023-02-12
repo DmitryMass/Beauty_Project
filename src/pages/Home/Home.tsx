@@ -5,15 +5,13 @@ import LinkButton from '@/components/LinkButton/LinkButton';
 import BlockInfo from '@/components/home/BlockInfo';
 //
 import imgOnHome from '@/assets/images/girlHomeBgc.png';
-import instIcon from '@/assets/icons/instIcon.svg';
-import fbIcon from '@/assets/icons/fbIcon.svg';
-import tgIcon from '@/assets/icons/tgIcon.svg';
+
 //
 import { home } from '@/styles/home';
 import './home.scss';
+import MessengersList from '@/components/MessengersList/MessengersList';
 
 const Home: FC = () => {
-  const iconsArr: string[] = [instIcon, fbIcon, tgIcon];
   return (
     <div className='bg-coal'>
       <div className={home.container}>
@@ -43,18 +41,7 @@ const Home: FC = () => {
           </div>
           <div className={home.messengersWrapper}>
             <div className={home.messengersLine} />
-            <div>
-              {iconsArr.map((icon) => (
-                <a
-                  href='#'
-                  target={'_blank'}
-                  className='block w-[30px] h-[30px] my-[8px]'
-                  key={Math.random()}
-                >
-                  <img src={icon} alt='icon' />
-                </a>
-              ))}
-            </div>
+            <MessengersList modificator='flex flex-col' />
             <div className={home.messengersLine} />
           </div>
         </section>

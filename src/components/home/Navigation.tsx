@@ -43,6 +43,14 @@ const Navigation: FC = () => {
             Навчання
           </Link>
         </li>
+        <li className='ml-[25px]'>
+          <Link
+            className={`${home.navLink} ${home.navLinkHoverEffect} inline-block`}
+            to={ROUTE.CONTACTS}
+          >
+            Контакти
+          </Link>
+        </li>
         <li
           className={` ${home.navLink} ${home.navLinkHoverEffect} inline-block ml-[25px]`}
         >

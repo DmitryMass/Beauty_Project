@@ -7,13 +7,22 @@ import timeIcon from '@/assets/icons/timeIcon.svg';
 import './contacts.scss';
 import { contacts } from '@/styles/contacts';
 import ContactsForm from '@/components/forms/ContactsForm';
+import Logo from '@/components/Logo/Logo';
 
 const Contacts: FC = () => {
   return (
     <div className='max-w-[1320px] max-[992px] mx-auto container__сonctacts'>
       <div className='max-w-[50%] max-[992px]:max-w-[490px] max-[992px]:mx-auto w-full ml-auto px-[15px] pt-[15px] h-full'>
-        <h2 className={contacts.titleContacts}>Контакти</h2>
-        <p className={contacts.subtitleContacts}>Будь з нами на зв'язку!</p>
+        <div className='relative'>
+          <div>
+            <h2 className={contacts.titleContacts}>Контакти</h2>
+            <p className={contacts.subtitleContacts}>Будь з нами на зв'язку!</p>
+          </div>
+          <Logo
+            imgModificator='w-[80px] h-[85px]'
+            modificator=' w-[85px] absolute top-[-25px] right-0'
+          />
+        </div>
         <div>
           <div className={contacts.block}>
             <img className='mr-[10px]' src={phoneIcon} alt='' />

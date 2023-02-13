@@ -17,7 +17,7 @@ const DisplayEmployees: FC = () => {
       await deleteEmployee(id);
       refetch();
     } catch (err) {
-      console.log(`${err} delete error`);
+      console.log(`${err} помилка у видалинні співробітника`);
     }
   };
 

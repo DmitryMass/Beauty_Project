@@ -18,6 +18,7 @@ import './masters.scss';
 import Loader from '@/components/Loader/Loader';
 import { breakPoints } from '@/utils/swiper/breakPoints';
 import { masters } from '@/styles/masters';
+import Logo from '@/components/Logo/Logo';
 
 const Masters: FC = () => {
   const { data = null, isLoading, isError } = useGetEmployeesQuery('');
@@ -38,6 +39,10 @@ const Masters: FC = () => {
           <h1 className={masters.title}>Наші майстри</h1>
         </div>
         <div className={masters.blurBubble} />
+        <Logo
+          imgModificator='w-[80px] h-[85px]'
+          modificator=' w-[85px] absolute top-[0] right-[30px]'
+        />
         <div className={masters.swiperContainer}>
           <Swiper
             freeMode={true}

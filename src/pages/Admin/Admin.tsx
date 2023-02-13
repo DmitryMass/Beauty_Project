@@ -7,12 +7,12 @@ import Logo from '@/components/Logo/Logo';
 import DisplayGroupData from '@/components/admin/DIsplayGroupData';
 import CreateEmployee from '@/components/admin/CreateEmployee/CreateEmployee';
 import DisplayEmployees from '@/components/admin/DisplayEmployees';
+import GetEmployee from '@/components/admin/GetEmployee';
+import DisplayClients from '@/components/admin/DisplayClients';
 //
 import 'react-tabs/style/react-tabs.css';
 import { admin } from '@/styles/admin';
 import './admin.scss';
-import GetEmployee from '@/components/admin/GetEmployee';
-import DisplayClients from '@/components/admin/DisplayClients';
 
 const Admin: FC = () => {
   return (
@@ -28,6 +28,7 @@ const Admin: FC = () => {
             <Tab>Співробітники</Tab>
             <Tab>Графіки роботи</Tab>
             <Tab>Клієнти</Tab>
+            <Tab>Прайс ліст</Tab>
           </TabList>
           <TabPanel className={admin.tabPanel}>
             <CreateGroup />
@@ -43,6 +44,9 @@ const Admin: FC = () => {
           </TabPanel>
           <TabPanel className={admin.tabPanel}>
             <DisplayClients />
+          </TabPanel>
+          <TabPanel className={admin.tabPanel}>
+            {/* <div className='text-white'>Class prise .</div> */}
           </TabPanel>
         </Tabs>
       </div>

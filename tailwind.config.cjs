@@ -42,6 +42,7 @@ module.exports = {
         masterCard: 'rgba(0, 0, 0, 0.37)',
         inputBg: 'rgba(0, 0, 0, 0.37)',
         contactFormBg: ' rgba(240, 221, 163, 0.1)',
+        servicesAndPriceBg: 'rgba(0, 0, 0, 0.7)',
       },
       borderColor: {},
       colors: {

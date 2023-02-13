@@ -19,6 +19,7 @@ import Loader from '@/components/Loader/Loader';
 import { breakPoints } from '@/utils/swiper/breakPoints';
 import { masters } from '@/styles/masters';
 import Logo from '@/components/Logo/Logo';
+import GoldTitleBox from '@/components/GoldTitleBox/GoldTitleBox';
 
 const Masters: FC = () => {
   const { data = null, isLoading, isError } = useGetEmployeesQuery('');
@@ -35,9 +36,7 @@ const Masters: FC = () => {
       <img className={masters.decorationImgLeft} src={masterLeft} alt='' />
       <img className={masters.decorationImgRight} src={masterRigth} alt='' />
       <div className={masters.infoWrapper}>
-        <div className={masters.titleContainer}>
-          <h1 className={masters.title}>Наші майстри</h1>
-        </div>
+        <GoldTitleBox>Нащі майстри</GoldTitleBox>
         <div className={masters.blurBubble} />
         <Logo
           imgModificator='w-[80px] h-[85px]'

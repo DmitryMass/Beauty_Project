@@ -1,5 +1,6 @@
 import { IGroup, IGroupmembers } from '@/types/admin';
 import { IEmployee } from '@/types/employee';
+import { IServices } from '@/types/services';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const URL = 'http://localhost:5005/admin';
@@ -80,6 +81,18 @@ export const adminApi = createApi({
         body: body.data,
       }),
     }),
+    createServicesApi: build.mutation<IServices[], FormData>({
+      query: (body) => ({
+        url: '/services',
+        method: 'POST',
+        body,
+      }),
+    }),
+    getServicesApi: build.query<IServices[], any>({
+      query: () => ({
+        url: '/services',
+      }),
+    }),
   }),
 });
 
@@ -97,4 +110,6 @@ export const {
   useSetEmployeeScheduleMutation,
   useGetOneEmployeeQuery,
   useDeleteEmployeeScheduleMutation,
+  useCreateServicesApiMutation,
+  useGetServicesApiQuery,
 } = adminApi;

@@ -17,12 +17,6 @@ body {
   background: #181818;
 }
 
-ul {
-  overflow: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
 ul::-webkit-scrollbar {
   width: 0;
   height: 0;

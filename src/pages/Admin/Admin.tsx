@@ -13,6 +13,7 @@ import DisplayClients from '@/components/admin/DisplayClients';
 import 'react-tabs/style/react-tabs.css';
 import { admin } from '@/styles/admin';
 import './admin.scss';
+import CreateServices from '@/components/admin/CreateServices/CreateServices';
 
 const Admin: FC = () => {
   return (
@@ -46,7 +47,7 @@ const Admin: FC = () => {
             <DisplayClients />
           </TabPanel>
           <TabPanel className={admin.tabPanel}>
-            {/* <div className='text-white'>Class prise .</div> */}
+            <CreateServices />
           </TabPanel>
         </Tabs>
       </div>

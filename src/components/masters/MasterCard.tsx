@@ -28,7 +28,7 @@ const MasterCard: FC<IMasterCardProps> = ({
             alt=''
           />
           <img
-            className='absolute w-full h-full   rounded-[28px] bg-masterBg'
+            className='absolute w-full h-full object-cover   rounded-[28px] bg-masterBg'
             src={`http://localhost:5005/assets/${imgPath}`}
             alt=''
           />

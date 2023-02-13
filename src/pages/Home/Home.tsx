@@ -10,6 +10,7 @@ import imgOnHome from '@/assets/images/girlHomeBgc.png';
 import { home } from '@/styles/home';
 import './home.scss';
 import MessengersList from '@/components/MessengersList/MessengersList';
+import { ROUTE } from '@/utils/route/route';
 
 const Home: FC = () => {
   return (
@@ -32,6 +33,7 @@ const Home: FC = () => {
             <LinkButton
               modificator='max-w-[160px] w-full py-[10px]  mb-[100px] max-[1140px]:mb-[80px] font-semibold hover:bg-hoverGold hover:scale-[1.03] transition-all duration-200'
               children='Записатись'
+              route={ROUTE.MASTERS}
             />
             <BlockInfo />
           </div>

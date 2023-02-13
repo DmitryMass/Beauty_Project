@@ -4,13 +4,18 @@ import { Link } from 'react-router-dom';
 interface IButtonLinkButtonProps {
   children: string;
   modificator?: string;
+  route: string;
 }
 
-const LinkButton: FC<IButtonLinkButtonProps> = ({ children, modificator }) => {
+const LinkButton: FC<IButtonLinkButtonProps> = ({
+  children,
+  modificator,
+  route,
+}) => {
   return (
     <Link
       className={`font-semibold text-classic text-darkGrey bg-gold flex items-center justify-center ${modificator}`}
-      to={'#'}
+      to={route}
     >
       {children}
     </Link>

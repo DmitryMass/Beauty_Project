@@ -27,7 +27,7 @@ const ContactsForm: FC = () => {
   };
 
   return (
-    <div className='max-w-[590px] w-full bg-contactFormBg px-[20px] py-[10px] rounded-tr-[50px] rounded-bl-[50px] border-[1px] border-gold'>
+    <div className='max-w-[590px] w-full bg-servicesAndPriceBg px-[20px] py-[10px] rounded-tr-[50px] rounded-bl-[50px] border-[1px] border-gold'>
       <Formik
         initialValues={{ name: '', email: '', text: '' }}
         onSubmit={handleSubmit}

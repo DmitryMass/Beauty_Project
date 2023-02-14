@@ -92,3 +92,20 @@ export const contactsValidation = yup.object().shape({
     .required(),
   text: yup.string(),
 });
+
+export const visitToMasterValidation = yup.object().shape({
+  phoneNumber: yup
+    .string()
+    .label('Number')
+    .min(6, 'Min 6 symbols')
+    .max(14, 'Max 14 symbols')
+    .matches(/^[0-9+/s]*$/gi, 'Numbers from 0 to 9')
+    .required(),
+  name: yup
+    .string()
+    .label('Name')
+    .min(2, 'Мінімум 2 символи')
+    .max(25, 'Максимум 15 символів')
+    .matches(/^[а-яА-ЯіІєЄїЇ'a-zA-Z/s]*$/gi, 'Only ENG && UA letters')
+    .required(),
+});

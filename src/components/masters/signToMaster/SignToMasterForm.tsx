@@ -11,6 +11,7 @@ import GeneralErrorHandler from '@/components/ErrorHandler/GeneralErrorHandler';
 import { useFetchVisitMasterMutation } from '@/store/api/visitMasterApi';
 import SuccessHandler from '@/components/SuccessHandler/SuccessHandler';
 import { signToMaster } from '@/styles/signToMaster';
+import { visitToMasterValidation } from '@/utils/validation/createGroupValidation';
 
 interface IInitialValues {
   name: string;
@@ -90,7 +91,7 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
       <Formik
         initialValues={{ name: '', phoneNumber: '' }}
         onSubmit={handleSubmit}
-        validationSchema={''}
+        validationSchema={visitToMasterValidation}
       >
         {({
           handleSubmit,

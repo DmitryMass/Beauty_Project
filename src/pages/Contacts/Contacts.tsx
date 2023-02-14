@@ -8,11 +8,12 @@ import './contacts.scss';
 import { contacts } from '@/styles/contacts';
 import ContactsForm from '@/components/forms/ContactsForm';
 import Logo from '@/components/Logo/Logo';
+import BurgerMenu from '@/components/home/BurgerMenu';
 
 const Contacts: FC = () => {
   return (
     <div className='max-w-[1320px] max-[992px] mx-auto container__сonctacts'>
-      <div className='max-w-[50%] max-[992px]:max-w-[490px] max-[992px]:mx-auto w-full ml-auto px-[15px] pt-[15px] h-full'>
+      <div className='max-w-[50%] max-[992px]:max-w-[620px] max-[992px]:mx-auto w-full ml-auto px-[15px] pt-[15px] h-full'>
         <div className='relative'>
           <div>
             <h2 className={contacts.titleContacts}>Контакти</h2>
@@ -20,8 +21,9 @@ const Contacts: FC = () => {
           </div>
           <Logo
             imgModificator='w-[80px] h-[85px]'
-            modificator=' w-[85px] absolute top-[-25px] right-0'
+            modificator=' w-[85px] absolute top-[-25px] right-0 max-[992px]:hidden'
           />
+          <BurgerMenu modificator=' absolute top-0 right-[0px] justify-end' />
         </div>
         <div>
           <div className={contacts.block}>

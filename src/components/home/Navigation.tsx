@@ -9,7 +9,7 @@ import '../../pages/Home/home.scss';
 
 const Navigation: FC = () => {
   return (
-    <div className='flex justify-end items-center gap-[25px]'>
+    <div className='flex justify-end items-center gap-[25px] max-[992px]:hidden'>
       <ul className='flex justify-between items-center'>
         <li className=''>
           <Link

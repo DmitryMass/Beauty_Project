@@ -20,6 +20,7 @@ import { breakPoints } from '@/utils/swiper/breakPoints';
 import { masters } from '@/styles/masters';
 import Logo from '@/components/Logo/Logo';
 import GoldTitleBox from '@/components/GoldTitleBox/GoldTitleBox';
+import BurgerMenu from '@/components/home/BurgerMenu';
 
 const Masters: FC = () => {
   const { data = null, isLoading, isError } = useGetEmployeesQuery('');
@@ -38,9 +39,10 @@ const Masters: FC = () => {
       <div className={masters.infoWrapper}>
         <GoldTitleBox>Нащі майстри</GoldTitleBox>
         <div className={masters.blurBubble} />
+        <BurgerMenu modificator='w-[85px] h-[85px] absolute top-[15px] right-[30px] justify-end' />
         <Logo
           imgModificator='w-[80px] h-[85px]'
-          modificator=' w-[85px] absolute top-[0] right-[30px]'
+          modificator=' w-[85px] absolute top-[0] right-[30px] max-[992px]:hidden'
         />
         <div className={masters.swiperContainer}>
           <Swiper

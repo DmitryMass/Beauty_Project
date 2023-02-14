@@ -14,9 +14,10 @@ export const home = {
     'absolute z-[10] top-[25%] right-[20%] max-w-[350px]  w-full max-h-[350px] h-full bg-goldBlur blur-[200px] ',
   imgGirl: 'max-w-full min-h-full  relative z-[20]  w-full',
   messengersWrapper:
-    'absolute z-[200] right-[-12px]  flex flex-col items-center gap-[15px]',
+    'absolute z-[50] right-[-12px]  flex flex-col items-center gap-[15px]',
   messengersLine: 'h-[210px] max-[1140px]:h-[160px] w-[2px] bg-gold',
-  navLink: 'text-gold text-classic leading-classic  font-medium pb-[5px]',
+  navLink:
+    'text-gold text-classic leading-classic  font-medium pb-[5px] max-[992px]:py-[5px] px-[10px] max-[992px]:bg-burgerLink max-[992px]:w-full',
   additionalMenu:
     'text-gold cursor-pointer text-classic leading-classic  font-medium ',
   navLinkHoverEffect:

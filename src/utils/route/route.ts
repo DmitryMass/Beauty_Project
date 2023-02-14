@@ -5,4 +5,6 @@ export const ROUTE = {
   MASTERS: '/masters',
   MASTER: '/masters/:id',
   CONTACTS: '/contacts',
+  FEEDBACK: '/feedbacks',
+  VACANCIES: '/vacancies',
 };

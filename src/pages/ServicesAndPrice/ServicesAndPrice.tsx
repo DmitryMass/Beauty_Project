@@ -13,6 +13,7 @@ import servicesRightBranch from '@/assets/images/servicesRightBranch.png';
 import servicesLeftBranch from '@/assets/images/servicesLeftBranch.png';
 import { servicesStyle } from '@/styles/services';
 import './services.scss';
+import BurgerMenu from '@/components/home/BurgerMenu';
 
 const ServicesAndPrice: FC = () => {
   const { data = null, isLoading, isError } = useGetServicesApiQuery('');
@@ -43,11 +44,11 @@ const ServicesAndPrice: FC = () => {
         alt='branch'
       />
       <div className='max-w-[1140px] relative w-full h-full mx-auto px-[15px] pt-[130px]'>
+        <BurgerMenu modificator='w-[85px] h-[85px] absolute top-[15px] right-[30px] justify-end' />
         <Logo
           imgModificator='w-[80px] h-[85px]'
-          modificator=' w-[85px] absolute top-[5px] right-0'
+          modificator=' w-[85px] absolute top-[0] right-[30px] max-[992px]:hidden'
         />
-
         <GoldTitleBox>Послуги та ціни</GoldTitleBox>
         {isLoading ? (
           <div className='max-w-[200px] w-full h-full flex justify-center items-center mx-auto'>

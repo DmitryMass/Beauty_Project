@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import './signUpToMaster.scss';
 import SignToMasterForm from '@/components/masters/signToMaster/SignToMasterForm';
 import { signToMaster } from '@/styles/signToMaster';
+import BurgerMenu from '@/components/home/BurgerMenu';
 
 const SignUpToMaster: FC = () => {
   const { id } = useParams();
@@ -17,8 +18,9 @@ const SignUpToMaster: FC = () => {
         <div>
           <Logo
             imgModificator='w-[80px] h-[85px]'
-            modificator='w-[85px] ml-auto'
+            modificator='w-[85px] ml-auto  max-[992px]:hidden'
           />
+          <BurgerMenu modificator='w-[85px] h-[85px] ml-auto justify-end' />
         </div>
         <div>
           <h2 className={signToMaster.title}>Запис на візит до майстра</h2>

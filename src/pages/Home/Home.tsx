@@ -11,6 +11,7 @@ import { home } from '@/styles/home';
 import './home.scss';
 import MessengersList from '@/components/MessengersList/MessengersList';
 import { ROUTE } from '@/utils/route/route';
+import BurgerMenu from '@/components/home/BurgerMenu';
 
 const Home: FC = () => {
   return (
@@ -19,6 +20,7 @@ const Home: FC = () => {
         <div className={home.navWrapper}>
           <Logo imgModificator='w-[80px] h-[74px]' />
           <Navigation />
+          <BurgerMenu />
         </div>
         <section className={home.contentWrapper}>
           <div className={home.textContainter}>

@@ -8,6 +8,7 @@ import DropDown from '@/components/DropDown/DropDown';
 import { study } from '@/styles/study';
 import './study.scss';
 import { options } from '@/utils/data/courses';
+import BurgerMenu from '@/components/home/BurgerMenu';
 
 const Study: FC = () => {
   const [selected, setSelected] = useState<string>(options[0]);
@@ -30,8 +31,9 @@ const Study: FC = () => {
         <div className={`${study.wrapper} relative z-20`}>
           <Logo
             imgModificator='w-[80px] h-[85px]'
-            modificator='w-[85px] ml-auto'
+            modificator='w-[85px] ml-auto max-[992px]:hidden'
           />
+          <BurgerMenu modificator='ml-auto justify-end w-[80px] h-[85px]' />
           <div>
             <h1 className={study.title}>Зареєструватись на курс</h1>
             <p className={study.subtitle}>

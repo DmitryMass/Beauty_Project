@@ -43,6 +43,7 @@ module.exports = {
         inputBg: 'rgba(0, 0, 0, 0.37)',
         contactFormBg: ' rgba(240, 221, 163, 0.1)',
         servicesAndPriceBg: 'rgba(0, 0, 0, 0.7)',
+        burgerLink: 'rgba(240, 221, 163, 0.09)',
       },
       borderColor: {},
       colors: {

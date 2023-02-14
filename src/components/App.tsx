@@ -11,6 +11,7 @@ import './app.scss';
 import Masters from '@/pages/Masters/Masters';
 import SignUpToMaster from '@/pages/SignUpToMaster/SignUpToMaster';
 import ServicesAndPrice from '@/pages/ServicesAndPrice/ServicesAndPrice';
+import EditEmployeeModal from './admin/CreateEmployee/EditEmployeeModal';
 
 const App: FC = () => {
   return (
@@ -22,6 +23,10 @@ const App: FC = () => {
       <Route path={ROUTE.CONTACTS} element={<Contacts />} />
       <Route path={ROUTE.SERVICES} element={<ServicesAndPrice />} />
       <Route path={import.meta.env.VITE_ADMIN} element={<Admin />} />
+      <Route
+        path={import.meta.env.VITE_SETTING_EMPLOYEE}
+        element={<EditEmployeeModal />}
+      />
     </Routes>
   );
 };

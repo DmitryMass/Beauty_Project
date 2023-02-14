@@ -1,14 +1,15 @@
 import { FC } from 'react';
 import MessengersList from '@/components/MessengersList/MessengersList';
+import ContactsForm from '@/components/forms/ContactsForm';
+import Logo from '@/components/Logo/Logo';
+import BurgerMenu from '@/components/home/BurgerMenu';
+//
 import phoneIcon from '@/assets/icons/phoneIcon.svg';
 import geoPositionIcon from '@/assets/icons/geopositionIcon.svg';
 import timeIcon from '@/assets/icons/timeIcon.svg';
 //
 import './contacts.scss';
 import { contacts } from '@/styles/contacts';
-import ContactsForm from '@/components/forms/ContactsForm';
-import Logo from '@/components/Logo/Logo';
-import BurgerMenu from '@/components/home/BurgerMenu';
 
 const Contacts: FC = () => {
   return (

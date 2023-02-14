@@ -14,7 +14,11 @@ const Study: FC = () => {
   const [selected, setSelected] = useState<string>(options[0]);
   const [toggleDropDown, setToggleDropDown] = useState<boolean>(false);
 
-  const { data = null, refetch } = useGetGroupQuery(
+  const {
+    data = null,
+    refetch,
+    isError,
+  } = useGetGroupQuery(
     { id: selected.toLowerCase() },
     {
       refetchOnMountOrArgChange: true,
@@ -65,7 +69,7 @@ const Study: FC = () => {
               />
             ) : null}
           </div>
-          <RegisterToStudy refetch={refetch} data={data} />
+          <RegisterToStudy refetch={refetch} data={data} isError={isError} />
         </div>
       </div>
     </div>

@@ -11,6 +11,7 @@ import { createGroup } from '@/styles/forms';
 
 const CreateEmployee: FC = () => {
   const { handleSubmit, isError, isLoading, isSuccess } = useCreateEmployee();
+
   return (
     <div className='text-white'>
       {isSuccess ? <EmployeeSuccess success /> : null}

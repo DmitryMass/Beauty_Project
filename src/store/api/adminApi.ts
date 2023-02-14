@@ -37,6 +37,12 @@ export const adminApi = createApi({
         url: `/group/${id}`,
       }),
     }),
+    deleteGroup: build.mutation<any, string>({
+      query: (id) => ({
+        url: `/group/${id}`,
+        method: 'DELETE',
+      }),
+    }),
     createEmployee: build.mutation<IEmployee[], FormData>({
       query: (body) => ({
         url: '/employee',
@@ -60,6 +66,14 @@ export const adminApi = createApi({
         method: 'DELETE',
       }),
     }),
+    editEmployee: build.mutation<any, any>({
+      query: (body) => ({
+        url: `/employee/${body.id}`,
+        method: 'PUT',
+        body: body.data,
+      }),
+    }),
+
     updateEmployeeSchedule: build.mutation<any, any>({
       query: (body) => ({
         url: `/employee/schedule/${body.id}`,
@@ -112,4 +126,6 @@ export const {
   useDeleteEmployeeScheduleMutation,
   useCreateServicesApiMutation,
   useGetServicesApiQuery,
+  useDeleteGroupMutation,
+  useEditEmployeeMutation,
 } = adminApi;

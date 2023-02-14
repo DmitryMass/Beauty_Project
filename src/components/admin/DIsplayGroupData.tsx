@@ -1,24 +1,73 @@
 import { FC } from 'react';
-import { useGetGroupsQuery } from '@/store/api/adminApi';
+import {
+  useDeleteGroupMutation,
+  useGetGroupsQuery,
+} from '@/store/api/adminApi';
 //
+import closeBtn from '@/assets/icons/closeButton.svg';
+import loaderLogo from '@/assets/icons/loaderLogo.svg';
+//
+
 import { IGroup } from '@/types/admin';
 import { admin } from '@/styles/admin';
+import GeneralErrorHandler from '../ErrorHandler/GeneralErrorHandler';
 
 const DisplayGroupData: FC = () => {
-  const { data = null, isLoading } = useGetGroupsQuery('');
+  const { data = null, isLoading, refetch, isError } = useGetGroupsQuery('');
+  const [deleteGroup, { isLoading: deleteGroupLoading, isError: deleteError }] =
+    useDeleteGroupMutation();
+
+  const handleDelete = async (id: string) => {
+    try {
+      const response: any = await deleteGroup(id);
+      if (response.data) {
+        refetch();
+        return;
+      }
+    } catch (err) {
+      console.log(`${err} помилка при видалинні групи`);
+    }
+  };
+
   return (
     <>
+      {isError || deleteError ? (
+        <GeneralErrorHandler
+          isError={isError || deleteError}
+          data={
+            'Вибачте йдуть технічні роботи. Спробуйте пізніше або перезавантажте сторінку.'
+          }
+        />
+      ) : null}
       <h2 className='text-whiteOpacity text-md leading-md my-[20px]'>
         Відкриті группи
       </h2>
       <div className={admin.displayGroupWrapper}>
         {isLoading ? <div>Loading...</div> : null}
         {data && data.length !== 0
-          ? data.map(({ countPlaces, price, type, whenStart }: IGroup) => (
+          ? data.map(({ countPlaces, price, type, whenStart, _id }: IGroup) => (
               <div
                 className={admin.displayGroupContent}
                 key={`${countPlaces}${type}`}
               >
+                <button
+                  onClick={() => handleDelete(`${_id}`)}
+                  className='absolute top-[5px] right-[5px]'
+                >
+                  {deleteGroupLoading ? (
+                    <img
+                      className='w-[22px] h-[22px]'
+                      src={loaderLogo}
+                      alt='closeBtn'
+                    />
+                  ) : (
+                    <img
+                      className='w-[22px] h-[22px]'
+                      src={closeBtn}
+                      alt='closeBtn'
+                    />
+                  )}
+                </button>
                 <p className='text-white'>
                   Тип курсу: <br />
                   <span className={admin.displayGroupType}>{type}</span>

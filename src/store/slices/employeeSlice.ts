@@ -3,12 +3,12 @@ import { createSlice } from '@reduxjs/toolkit';
 type TimeData = string;
 
 interface IInitialState {
-  employees: [] | null;
+  employee: string | null;
   employeeWorkTime: TimeData[] | [];
 }
 
 const initialState: IInitialState = {
-  employees: null,
+  employee: null,
   employeeWorkTime: [],
 };
 
@@ -17,7 +17,7 @@ export const employeesSlice = createSlice({
   initialState,
   reducers: {
     setEmployees: (state, { payload }) => {
-      state.employees = payload;
+      state.employee = payload;
     },
     setEmployeeTime: (state, { payload }) => {
       const item = state.employeeWorkTime.find((el) => el === payload);

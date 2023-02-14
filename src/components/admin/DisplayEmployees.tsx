@@ -4,10 +4,20 @@ import {
   useGetEmployeesQuery,
 } from '@/store/api/adminApi';
 //
+import closeBtn from '@/assets/icons/closeIcon.svg';
+import loaderLogo from '@/assets/icons/loaderLogo.svg';
+import editLogo from '@/assets/icons/editLogo.svg';
+//
 import { employees } from '@/styles/employee';
 import { IEmployee } from '@/types/employee';
+import { useDispatch } from 'react-redux';
+import useActions from '@/store/hooks/useActions';
+import { useNavigate } from 'react-router-dom';
 
 const DisplayEmployees: FC = () => {
+  const dispatch = useDispatch();
+  const { setEmployees } = useActions();
+  const navigate = useNavigate();
   const { data = null, isLoading, refetch } = useGetEmployeesQuery('');
   const [deleteEmployee, { isLoading: deleteLoading }] =
     useDeleteEmployeeMutation();
@@ -19,6 +29,11 @@ const DisplayEmployees: FC = () => {
     } catch (err) {
       console.log(`${err} помилка у видалинні співробітника`);
     }
+  };
+
+  const handleEditAndNavigate = (id: string) => {
+    dispatch(setEmployees(id));
+    navigate(`${import.meta.env.VITE_ADMIN}/${id}`);
   };
 
   return (
@@ -53,9 +68,31 @@ const DisplayEmployees: FC = () => {
             </li>
             <li
               onClick={() => handleDelete(`${employee._id}`)}
-              className='max-w-[50px] w-full cursor-pointer '
+              className='max-w-[50px] w-full cursor-pointer flex justify-center items-center bg-red-100'
             >
-              <span className={`${employees.employeeInfo} bg-red-500`}>X</span>
+              {deleteLoading ? (
+                <img
+                  className='w-[25px] h-[25px]'
+                  src={loaderLogo}
+                  alt='closeBtn'
+                />
+              ) : (
+                <img
+                  className='w-[25px] h-[25px]'
+                  src={closeBtn}
+                  alt='closeBtn'
+                />
+              )}
+            </li>
+            <li
+              onClick={() => handleEditAndNavigate(`${employee._id}`)}
+              className='max-w-[50px] w-full cursor-pointer flex justify-center items-center bg-orange-300'
+            >
+              <img
+                className='w-[25px] h-[25px]'
+                src={editLogo}
+                alt='closeBtn'
+              />
             </li>
           </ul>
         ))}

@@ -44,9 +44,9 @@ const GroupList: FC<IGroupListProps> = ({
         className={admin.deleteBtn}
       >
         {isLoading ? (
-          <img className='max-w-full' src={loaderLogo} alt='' />
+          <img className='max-w-full' src={loaderLogo} alt='loader' />
         ) : (
-          <img className='max-w-full' src={deleteLogo} alt='' />
+          <img className='max-w-full' src={deleteLogo} alt='deletebtn' />
         )}
       </button>
       <div onClick={handleClick} className={admin.membersContainer}>

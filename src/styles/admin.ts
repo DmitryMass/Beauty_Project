@@ -5,7 +5,7 @@ export const admin = {
   tabPanel: 'max-w-[800px] w-full mx-auto',
   displayGroupWrapper: 'relative grid grid-cols-1 md:grid-cols-2 gap-[5px] ',
   displayGroupContent:
-    'p-[5px] border-[2px] border-goldOpacity rounded-[4px] bg-coal',
+    'relative p-[5px] border-[2px] border-goldOpacity rounded-[4px] bg-coal',
   displayGroupType: 'inline-block first-letter:uppercase text-gold',
   membersContainer: 'relative p-[5px] bg-goldOpacity cursor-pointer',
   deleteBtn:

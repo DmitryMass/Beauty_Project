@@ -6,9 +6,10 @@ import { clients } from '@/styles/clients';
 import { IClient } from '@/types/clientTypes';
 import { IWorkDays } from '@/types/employee';
 import { FC } from 'react';
+import GeneralErrorHandler from '../ErrorHandler/GeneralErrorHandler';
 
 const DisplayClients: FC = () => {
-  const { data = null, isLoading } = useGetEmployeesQuery('');
+  const { data = null, isError } = useGetEmployeesQuery('');
   const [getOneEmployee, { data: employeeData }] = useLazyGetOneEmployeeQuery();
   const handleGetEmployee = async (e: any) => {
     try {
@@ -18,10 +19,16 @@ const DisplayClients: FC = () => {
     }
   };
 
-  console.log(employeeData);
-
   return (
     <div>
+      {isError ? (
+        <GeneralErrorHandler
+          isError={isError}
+          data={
+            'Вибачте йдуть технічні роботи. Перезавантажте сторінку або спробуйте пізніше.'
+          }
+        />
+      ) : null}
       <h2 className={clients.title}>Оберіть майстра</h2>
       <select
         className={clients.select}

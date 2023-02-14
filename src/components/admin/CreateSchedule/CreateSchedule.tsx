@@ -70,11 +70,12 @@ const CreateSchedule: FC<ICreateSchedulteProps> = ({ id, refetchEmployee }) => {
           </p>
           <p className='mb-[5px]'>Обраний час:</p>
           <ul className={schedule.timeListWrapper}>
-            {employeeWorkTime.map((time) => (
-              <li className={schedule.time} key={time}>
-                {time}
-              </li>
-            ))}
+            {employeeWorkTime &&
+              employeeWorkTime.map((time: string) => (
+                <li className={schedule.time} key={time}>
+                  {time}
+                </li>
+              ))}
           </ul>
         </div>
       </div>

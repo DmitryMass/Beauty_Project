@@ -9,11 +9,11 @@ import CreateEmployee from '@/components/admin/CreateEmployee/CreateEmployee';
 import DisplayEmployees from '@/components/admin/DisplayEmployees';
 import GetEmployee from '@/components/admin/GetEmployee';
 import DisplayClients from '@/components/admin/DisplayClients';
+import CreateServices from '@/components/admin/CreateServices/CreateServices';
 //
 import 'react-tabs/style/react-tabs.css';
 import { admin } from '@/styles/admin';
 import './admin.scss';
-import CreateServices from '@/components/admin/CreateServices/CreateServices';
 
 const Admin: FC = () => {
   return (

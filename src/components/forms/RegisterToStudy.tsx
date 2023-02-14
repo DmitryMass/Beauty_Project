@@ -15,9 +15,14 @@ import { study } from '@/styles/study';
 interface IRegisterToStudyProps {
   data: IGroup | null;
   refetch?: any;
+  isError?: boolean;
 }
 
-const RegisterToStudy: FC<IRegisterToStudyProps> = ({ data, refetch }) => {
+const RegisterToStudy: FC<IRegisterToStudyProps> = ({
+  data,
+  refetch,
+  isError,
+}) => {
   const [registerClient, { isLoading, isSuccess, data: registerResponse }] =
     useRegisterClientMutation();
   const [responseData, setResponseData] = useState<string | null>(null);
@@ -124,7 +129,13 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({ data, refetch }) => {
                 />
               </label>
             </div>
-            {data ? (
+            {isError ? (
+              <div className='mb-[25px] text-white'>
+                <span>Набору до даного курсу наразі немає.</span>
+                <br />
+                <span>Ви можете обрати інший варіант у типі курсу.</span>
+              </div>
+            ) : data ? (
               <div className='flex gap-[15px] items-center mb-[25px]'>
                 <div className='flex flex-col justify-start'>
                   <p className={study.dataTitle}>Ціна</p>

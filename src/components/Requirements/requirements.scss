@@ -1,0 +1,27 @@
+.card-container {
+	transform-style: preserve-3d;
+	transition: all 0.7s ease;
+}
+.card-front {
+	backface-visibility: hidden;
+	transform: rotateY(180deg);
+}
+.card-back{
+	backface-visibility: hidden;
+	transform: rotateY(180deg);
+}
+.card-back img {
+	display: inline-block;
+	align-items: center;
+}
+.card-container{
+	transform: rotateY(180deg);
+ }
+
+.card-face {
+	transform: rotateY(180deg);
+}
+.card-cont {
+	transform-style: preserve-3d;
+	transition: all 0.7s ease;
+}

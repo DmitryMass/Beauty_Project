@@ -11,6 +11,7 @@ module.exports = {
         xl: '36px',
         h1: '32px',
         h2: '24px',
+        h3: '22px',
         md: '20px',
         sm: '18px',
         classic: '16px',

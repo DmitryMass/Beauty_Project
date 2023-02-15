@@ -37,9 +37,11 @@ const Masters: FC = () => {
       <img className={masters.decorationImgLeft} src={masterLeft} alt='' />
       <img className={masters.decorationImgRight} src={masterRigth} alt='' />
       <div className={masters.infoWrapper}>
-        <GoldTitleBox>Нащі майстри</GoldTitleBox>
+        <GoldTitleBox>
+          Нащі <br className='hidden max-[400px]:block' /> майстри
+        </GoldTitleBox>
         <div className={masters.blurBubble} />
-        <BurgerMenu modificator='w-[85px] h-[85px] absolute top-[15px] right-[30px] justify-end' />
+        <BurgerMenu modificator='w-[85px] h-[85px] absolute top-[15px] right-[30px] justify-end max-[400px]:top-[30px]' />
         <Logo
           imgModificator='w-[80px] h-[85px]'
           modificator=' w-[85px] absolute top-[0] right-[30px] max-[992px]:hidden'

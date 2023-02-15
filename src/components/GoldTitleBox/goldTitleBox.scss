@@ -1,0 +1,6 @@
+.linearBg {
+  background: linear-gradient(270deg, #f0dda3 0%, #181818 100%);
+  @media screen and (max-width: 576px) {
+    background: linear-gradient(270deg, #f0dda3 0%, #83816f 100%);
+  }
+}

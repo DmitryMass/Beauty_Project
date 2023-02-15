@@ -43,13 +43,15 @@ const ServicesAndPrice: FC = () => {
         src={servicesLeftBranch}
         alt='branch'
       />
-      <div className='max-w-[1140px] relative w-full h-full mx-auto px-[15px] pt-[130px]'>
-        <BurgerMenu modificator='w-[85px] h-[85px] absolute top-[15px] right-[30px] justify-end' />
+      <div className='max-w-[1140px] relative w-full h-full mx-auto px-[15px] pt-[130px] max-[576px]:pt-[150px]'>
+        <BurgerMenu modificator='w-[85px] h-[85px] absolute top-[15px] right-[30px] justify-end max-[420px]:top-[30px]' />
         <Logo
           imgModificator='w-[80px] h-[85px]'
-          modificator=' w-[85px] absolute top-[0] right-[30px] max-[992px]:hidden'
+          modificator=' w-[85px] absolute top-[0] right-[30px] max-[992px]:hidden '
         />
-        <GoldTitleBox>Послуги та ціни</GoldTitleBox>
+        <GoldTitleBox>
+          Послуги <br className='hidden max-[420px]:block' /> та ціни
+        </GoldTitleBox>
         {isLoading ? (
           <div className='max-w-[200px] w-full h-full flex justify-center items-center mx-auto'>
             <Loader />
@@ -74,10 +76,10 @@ const ServicesAndPrice: FC = () => {
                   className='w-full text-gold py-[10px] px-[20px] border-b-[1px] border-gold flex justify-between items-center'
                 >
                   <div className='flex gap-[20px] items-center'>
-                    <span className='text-h2 leading-lg text-gold uppercase font-bold'>{`0${
+                    <span className='text-h2 leading-lg text-gold uppercase font-bold max-[576px]:text-md'>{`0${
                       idx + 1
                     }`}</span>
-                    <h3 className='text-h2 leading-md text-gold font-semibold'>
+                    <h3 className='text-h2 leading-md text-gold font-semibold max-[576px]:text-md'>
                       {procedure.procedure}
                     </h3>
                   </div>
@@ -100,21 +102,21 @@ const ServicesAndPrice: FC = () => {
                       ? procedure.options.map((option: IServicesOptions) => (
                           <div
                             key={option.subtitle}
-                            className='flex justify-between items-center py-[10px] border-b-[2px] border-b-gold overflow-hidden'
+                            className='flex justify-between items-center py-[10px] border-b-[2px] border-b-gold overflow-hidden gap-[25px] max-[576px]:flex-col max-[576px]:items-start max-[576px]:gap-[10px]'
                           >
                             <div>
-                              <h2 className='text-gold font-semibold text-md leading-m uppercase mb-[5px]'>
+                              <h2 className='text-gold font-semibold text-md leading-m uppercase mb-[5px] max-[768px]:text-sm max-[576px]:text-classic'>
                                 {option.title}
                               </h2>
-                              <h3 className='text-classic leading-s text-white'>
+                              <h3 className='text-classic leading-s text-white max-[768px]:text-s'>
                                 {option.subtitle}
                               </h3>
                             </div>
-                            <p className='text-white text-s font-bold '>
+                            <p className='text-white text-s font-bold flex items-end gap-[5px] '>
                               <span className='text-gold font-semibold text-sm leading-sm'>
                                 {option.price}
                               </span>{' '}
-                              грн
+                              <span>грн</span>
                             </p>
                           </div>
                         ))

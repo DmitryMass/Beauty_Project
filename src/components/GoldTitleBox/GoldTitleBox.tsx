@@ -4,6 +4,8 @@ interface IGoldTitleBoxProps {
   children: React.ReactNode;
 }
 
+import './goldTitleBox.scss';
+
 const GoldTitleBox: FC<IGoldTitleBoxProps> = ({ children }) => {
   return (
     <div

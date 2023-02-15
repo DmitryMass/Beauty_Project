@@ -18,11 +18,11 @@ const App: FC = () => {
   return (
     <Routes>
       <Route path={ROUTE.HOME} element={<Home />} />
-      <Route path={ROUTE.STUDY} element={<Study />} />
-      <Route path={ROUTE.MASTERS} element={<Masters />} />
-      <Route path={ROUTE.MASTER} element={<SignUpToMaster />} />
-      <Route path={ROUTE.CONTACTS} element={<Contacts />} />
       <Route path={ROUTE.SERVICES} element={<ServicesAndPrice />} />
+      <Route path={ROUTE.MASTERS} element={<Masters />} />
+      <Route path={ROUTE.STUDY} element={<Study />} />
+      <Route path={ROUTE.CONTACTS} element={<Contacts />} />
+      <Route path={ROUTE.MASTER} element={<SignUpToMaster />} />
       <Route path={import.meta.env.VITE_ADMIN} element={<Admin />} />
       <Route
         path={import.meta.env.VITE_SETTING_EMPLOYEE}

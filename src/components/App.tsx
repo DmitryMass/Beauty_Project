@@ -12,6 +12,7 @@ import Masters from '@/pages/Masters/Masters';
 import SignUpToMaster from '@/pages/SignUpToMaster/SignUpToMaster';
 import ServicesAndPrice from '@/pages/ServicesAndPrice/ServicesAndPrice';
 import EditEmployeeModal from './admin/CreateEmployee/EditEmployeeModal';
+import EditService from './admin/CreateServices/EditService';
 
 const App: FC = () => {
   return (
@@ -26,6 +27,10 @@ const App: FC = () => {
       <Route
         path={import.meta.env.VITE_SETTING_EMPLOYEE}
         element={<EditEmployeeModal />}
+      />
+      <Route
+        path={import.meta.env.VITE_SETTING_PRICE}
+        element={<EditService />}
       />
     </Routes>
   );

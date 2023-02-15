@@ -4,7 +4,10 @@ import { Field, FieldArray, FieldProps, Formik, FormikHelpers } from 'formik';
 import ButtonSubmit from '@/components/ButtonSubmit/ButtonSubmit';
 //
 import { createGroup } from '@/styles/forms';
-import { useCreateServicesApiMutation } from '@/store/api/adminApi';
+import {
+  useCreateServicesApiMutation,
+  useGetServicesApiQuery,
+} from '@/store/api/adminApi';
 import SuccessHandler from '@/components/SuccessHandler/SuccessHandler';
 
 interface IOptions {
@@ -21,6 +24,7 @@ interface IInitialState {
 const CreateServices: FC = () => {
   const [createServicesApi, { isLoading, isSuccess, isError }] =
     useCreateServicesApiMutation();
+  const { refetch } = useGetServicesApiQuery('');
   const handleSubmit = async (
     values: IInitialState,
     { resetForm }: FormikHelpers<IInitialState>
@@ -34,7 +38,10 @@ const CreateServices: FC = () => {
     });
     body.append('options', JSON.stringify([...values.options]));
     try {
-      await createServicesApi(body);
+      const response: any = await createServicesApi(body);
+      if (response.data) {
+        refetch();
+      }
     } catch (err) {
       console.log(`${err} помилка в створенні сервісу.`);
     }
@@ -146,8 +153,7 @@ const CreateServices: FC = () => {
               </FieldArray>
             </div>
             <ButtonSubmit
-              //   children={isLoading ? 'Завантажую...' : 'Додати співробітника'}
-              children={'Додати процедуру'}
+              children={isLoading ? 'Завантажую...' : 'Додати процедуру'}
               modificator={createGroup.btnSubmit}
             />
           </form>

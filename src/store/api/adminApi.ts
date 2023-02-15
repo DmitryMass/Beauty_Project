@@ -107,6 +107,24 @@ export const adminApi = createApi({
         url: '/services',
       }),
     }),
+    getOneService: build.query<IServices, string>({
+      query: (id) => ({
+        url: `/services/${id}`,
+      }),
+    }),
+    editService: build.mutation<any, { id: string; data: FormData }>({
+      query: (body) => ({
+        url: `/services/${body.id}`,
+        method: 'PUT',
+        body: body.data,
+      }),
+    }),
+    deleteService: build.mutation<any, string>({
+      query: (id) => ({
+        url: `/services/${id}`,
+        method: 'DELETE',
+      }),
+    }),
   }),
 });
 
@@ -128,4 +146,7 @@ export const {
   useGetServicesApiQuery,
   useDeleteGroupMutation,
   useEditEmployeeMutation,
+  useGetOneServiceQuery,
+  useEditServiceMutation,
+  useDeleteServiceMutation,
 } = adminApi;

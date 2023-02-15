@@ -10,13 +10,10 @@ import editLogo from '@/assets/icons/editLogo.svg';
 //
 import { employees } from '@/styles/employee';
 import { IEmployee } from '@/types/employee';
-import { useDispatch } from 'react-redux';
-import useActions from '@/store/hooks/useActions';
+
 import { useNavigate } from 'react-router-dom';
 
 const DisplayEmployees: FC = () => {
-  const dispatch = useDispatch();
-  const { setEmployees } = useActions();
   const navigate = useNavigate();
   const { data = null, isLoading, refetch } = useGetEmployeesQuery('');
   const [deleteEmployee, { isLoading: deleteLoading }] =
@@ -29,11 +26,6 @@ const DisplayEmployees: FC = () => {
     } catch (err) {
       console.log(`${err} помилка у видалинні співробітника`);
     }
-  };
-
-  const handleEditAndNavigate = (id: string) => {
-    dispatch(setEmployees(id));
-    navigate(`${import.meta.env.VITE_ADMIN}/${id}`);
   };
 
   return (
@@ -85,7 +77,9 @@ const DisplayEmployees: FC = () => {
               )}
             </li>
             <li
-              onClick={() => handleEditAndNavigate(`${employee._id}`)}
+              onClick={() =>
+                navigate(`${import.meta.env.VITE_ADMIN}/${employee._id}`)
+              }
               className='max-w-[50px] w-full cursor-pointer flex justify-center items-center bg-orange-300'
             >
               <img

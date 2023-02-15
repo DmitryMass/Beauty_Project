@@ -5,14 +5,13 @@ import { createEmployeeValidation } from '@/utils/validation/createGroupValidati
 import { createGroup } from '@/styles/forms';
 import Dropzone from 'react-dropzone';
 import ButtonSubmit from '@/components/ButtonSubmit/ButtonSubmit';
-import useTypedSelector from '@/store/hooks/useTypedSelector';
 import {
   useEditEmployeeMutation,
   useGetOneEmployeeQuery,
 } from '@/store/api/adminApi';
 import Loader from '@/components/Loader/Loader';
 import GeneralErrorHandler from '@/components/ErrorHandler/GeneralErrorHandler';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 interface IInitialState {
   name: string;
@@ -25,12 +24,8 @@ interface IInitialState {
 }
 
 const EditEmployeeModal: FC = () => {
-  const { employee } = useTypedSelector((state) => state.employees);
-  const {
-    data = null,
-    isLoading,
-    isError,
-  } = useGetOneEmployeeQuery(`${employee}`);
+  const { id } = useParams();
+  const { data = null, isLoading, isError } = useGetOneEmployeeQuery(`${id}`);
   const [editEmployee, { isLoading: editLoading, isError: editError }] =
     useEditEmployeeMutation();
   const navigate = useNavigate();

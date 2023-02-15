@@ -14,6 +14,7 @@ import CreateServices from '@/components/admin/CreateServices/CreateServices';
 import 'react-tabs/style/react-tabs.css';
 import { admin } from '@/styles/admin';
 import './admin.scss';
+import DisplayServices from '@/components/admin/DisplayServices';
 
 const Admin: FC = () => {
   return (
@@ -48,6 +49,7 @@ const Admin: FC = () => {
           </TabPanel>
           <TabPanel className={admin.tabPanel}>
             <CreateServices />
+            <DisplayServices />
           </TabPanel>
         </Tabs>
       </div>

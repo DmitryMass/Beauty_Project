@@ -1,6 +1,8 @@
 import { FC, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { Formik, Field } from 'formik';
+import { createGroupValidation } from '@/utils/validation/createGroupValidation';
+import { options } from '@/utils/data/courses';
 //
 import { useCreateGroup } from '@/components/customHooks/useCreateGroup';
 import DropDown from '@/components/DropDown/DropDown';
@@ -8,9 +10,7 @@ import ButtonSubmit from '@/components/ButtonSubmit/ButtonSubmit';
 import SuccessResponse from '@/components/SuccessResponse/SuccessResponse';
 //
 import { createGroup } from '@/styles/forms';
-import { createGroupValidation } from '@/utils/validation/createGroupValidation';
 import 'react-datepicker/dist/react-datepicker.css';
-import { options } from '@/utils/data/courses';
 
 const CreateGroup: FC = () => {
   const [startDate, setStartDate] = useState<Date>(new Date());

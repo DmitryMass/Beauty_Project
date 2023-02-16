@@ -2,10 +2,11 @@ import { memo, FC } from 'react';
 //
 import { useDeleteGroupMembersMutation } from '@/store/api/adminApi';
 //
-import { IGroupmembers, IMembers } from '@/types/admin';
-import { admin } from '@/styles/admin';
 import deleteLogo from '@/assets/icons/deleteLogo.svg';
 import loaderLogo from '@/assets/icons/loaderLogo.svg';
+//
+import { IGroupmembers, IMembers } from '@/types/admin';
+import { admin } from '@/styles/admin';
 
 interface IGroupListProps {
   member: IGroupmembers;

@@ -1,12 +1,15 @@
 import { FC, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ROUTE } from '@/utils/route/route';
+//
+import TranslateNav from './TranslateNav';
+import MessengersList from '../MessengersList/MessengersList';
+//
 import burger from '@/assets/icons/burger.svg';
 import closeBtn from '@/assets/icons/closeButton.svg';
-import TranslateNav from './TranslateNav';
-import './home.scss';
-import { ROUTE } from '@/utils/route/route';
+
 import { home } from '@/styles/home';
-import { Link } from 'react-router-dom';
-import MessengersList from '../MessengersList/MessengersList';
+import './home.scss';
 
 interface IBurgerMenuProps {
   modificator?: string;

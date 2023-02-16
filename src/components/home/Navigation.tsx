@@ -11,7 +11,7 @@ const Navigation: FC = () => {
   return (
     <div className='flex justify-end items-center gap-[25px] max-[992px]:hidden'>
       <ul className='flex justify-between items-center'>
-        <li className=''>
+        <li className='px-[15px]'>
           <Link
             className={`${home.navLink} ${home.navLinkHoverEffect} inline-block`}
             to={ROUTE.HOME}
@@ -19,7 +19,7 @@ const Navigation: FC = () => {
             Головна
           </Link>
         </li>
-        <li className='ml-[25px]'>
+        <li className='  px-[15px]'>
           <Link
             className={`${home.navLink} ${home.navLinkHoverEffect} inline-block`}
             to={ROUTE.SERVICES}
@@ -27,7 +27,7 @@ const Navigation: FC = () => {
             Послуги та ціни
           </Link>
         </li>
-        <li className='ml-[25px]'>
+        <li className=' px-[15px]'>
           <Link
             className={`${home.navLink} ${home.navLinkHoverEffect} inline-block`}
             to={ROUTE.MASTERS}
@@ -35,7 +35,7 @@ const Navigation: FC = () => {
             Майстри
           </Link>
         </li>
-        <li className='ml-[25px]'>
+        <li className='px-[15px]'>
           <Link
             className={`${home.navLink} ${home.navLinkHoverEffect} inline-block`}
             to={ROUTE.STUDY}
@@ -43,7 +43,7 @@ const Navigation: FC = () => {
             Навчання
           </Link>
         </li>
-        <li className='ml-[25px]'>
+        <li className=' px-[15px]'>
           <Link
             className={`${home.navLink} ${home.navLinkHoverEffect} inline-block`}
             to={ROUTE.CONTACTS}
@@ -52,7 +52,7 @@ const Navigation: FC = () => {
           </Link>
         </li>
         <li
-          className={` ${home.navLink} ${home.navLinkHoverEffect} inline-block ml-[25px]`}
+          className={` ${home.navLink} ${home.navLinkHoverEffect} inline-block px-[15px]`}
         >
           Ще
         </li>

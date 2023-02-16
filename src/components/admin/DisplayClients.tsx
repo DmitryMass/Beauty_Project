@@ -1,12 +1,14 @@
+import { FC } from 'react';
 import {
   useGetEmployeesQuery,
   useLazyGetOneEmployeeQuery,
 } from '@/store/api/adminApi';
+//
+import GeneralErrorHandler from '../ErrorHandler/GeneralErrorHandler';
+//
 import { clients } from '@/styles/clients';
 import { IClient } from '@/types/clientTypes';
 import { IWorkDays } from '@/types/employee';
-import { FC } from 'react';
-import GeneralErrorHandler from '../ErrorHandler/GeneralErrorHandler';
 
 const DisplayClients: FC = () => {
   const { data = null, isError } = useGetEmployeesQuery('');

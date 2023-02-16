@@ -5,15 +5,16 @@ import GoldTitleBox from '@/components/GoldTitleBox/GoldTitleBox';
 import Logo from '@/components/Logo/Logo';
 import Loader from '@/components/Loader/Loader';
 import GeneralErrorHandler from '@/components/ErrorHandler/GeneralErrorHandler';
+import BurgerMenu from '@/components/home/BurgerMenu';
 //
-import { IServices, IServicesOptions } from '@/types/services';
 import circleMinus from '@/assets/images/circleMinus.png';
 import circlePlus from '@/assets/images/circlePlus.png';
 import servicesRightBranch from '@/assets/images/servicesRightBranch.png';
 import servicesLeftBranch from '@/assets/images/servicesLeftBranch.png';
+//
+import { IServices, IServicesOptions } from '@/types/services';
 import { servicesStyle } from '@/styles/services';
 import './services.scss';
-import BurgerMenu from '@/components/home/BurgerMenu';
 
 const ServicesAndPrice: FC = () => {
   const { data = null, isLoading, isError } = useGetServicesApiQuery('');

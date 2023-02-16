@@ -1,17 +1,19 @@
 import { FC } from 'react';
-import { IOptions } from '@/types/employee';
+import { useNavigate, useParams } from 'react-router-dom';
+import Dropzone from 'react-dropzone';
 import { Field, FieldArray, FieldProps, Formik, FormikHelpers } from 'formik';
 import { createEmployeeValidation } from '@/utils/validation/createGroupValidation';
-import { createGroup } from '@/styles/forms';
-import Dropzone from 'react-dropzone';
-import ButtonSubmit from '@/components/ButtonSubmit/ButtonSubmit';
 import {
   useEditEmployeeMutation,
   useGetOneEmployeeQuery,
 } from '@/store/api/adminApi';
+//
+import ButtonSubmit from '@/components/ButtonSubmit/ButtonSubmit';
 import Loader from '@/components/Loader/Loader';
 import GeneralErrorHandler from '@/components/ErrorHandler/GeneralErrorHandler';
-import { useNavigate, useParams } from 'react-router-dom';
+//
+import { IOptions } from '@/types/employee';
+import { createGroup } from '@/styles/forms';
 
 interface IInitialState {
   name: string;

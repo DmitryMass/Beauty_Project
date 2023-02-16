@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import Dropzone from 'react-dropzone';
 import { Formik, Field, FieldArray, FieldProps } from 'formik';
+import { createEmployeeValidation } from '@/utils/validation/createGroupValidation';
 //
 import ButtonSubmit from '@/components/ButtonSubmit/ButtonSubmit';
 import EmployeeSuccess from '@/components/admin/CreateEmployee/EmployeeSuccess';
 import { useCreateEmployee } from '@/components/customHooks/useCreateEmployee';
 //
-import { createEmployeeValidation } from '@/utils/validation/createGroupValidation';
 import { createGroup } from '@/styles/forms';
 
 const CreateEmployee: FC = () => {

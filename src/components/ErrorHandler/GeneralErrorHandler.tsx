@@ -1,8 +1,8 @@
 import { FC, memo, useState } from 'react';
-//
-import { errorHanlder } from '@/styles/errorHandler';
-import closeLogo from '@/assets/icons/closeIcon.svg';
 import { useNavigate } from 'react-router-dom';
+//
+import closeLogo from '@/assets/icons/closeIcon.svg';
+import { errorHanlder } from '@/styles/errorHandler';
 
 interface IGeneralErrorHandlerProps {
   data: string;

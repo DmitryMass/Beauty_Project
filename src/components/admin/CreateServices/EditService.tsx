@@ -1,18 +1,17 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
+import { Field, FieldArray, FieldProps, Formik, FormikHelpers } from 'formik';
+import { useNavigate } from 'react-router-dom';
 import {
   useEditServiceMutation,
   useGetOneServiceQuery,
-  useGetServicesApiQuery,
 } from '@/store/api/adminApi';
 import useTypedSelector from '@/store/hooks/useTypedSelector';
-import { Field, FieldArray, FieldProps, Formik, FormikHelpers } from 'formik';
-import { useNavigate } from 'react-router-dom';
-import { createGroup } from '@/styles/forms';
+//
 import ButtonSubmit from '@/components/ButtonSubmit/ButtonSubmit';
 import GeneralErrorHandler from '@/components/ErrorHandler/GeneralErrorHandler';
 import Loader from '@/components/Loader/Loader';
-import { useDispatch } from 'react-redux';
-import useActions from '@/store/hooks/useActions';
+//
+import { createGroup } from '@/styles/forms';
 
 interface IOptions {
   title: string;
@@ -35,8 +34,6 @@ const EditService: FC = () => {
   } = useGetOneServiceQuery(`${id}`);
   const [editService, { isLoading: editLoading }] = useEditServiceMutation();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { setServices } = useActions();
 
   const handleEdit = async (
     values: IInitialState,

@@ -4,13 +4,13 @@ import {
   useGetGroupsQuery,
 } from '@/store/api/adminApi';
 //
+import GeneralErrorHandler from '../ErrorHandler/GeneralErrorHandler';
+//
 import closeBtn from '@/assets/icons/closeButton.svg';
 import loaderLogo from '@/assets/icons/loaderLogo.svg';
 //
-
 import { IGroup } from '@/types/admin';
 import { admin } from '@/styles/admin';
-import GeneralErrorHandler from '../ErrorHandler/GeneralErrorHandler';
 
 const DisplayGroupData: FC = () => {
   const { data = null, isLoading, refetch, isError } = useGetGroupsQuery('');

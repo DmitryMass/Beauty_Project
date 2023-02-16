@@ -1,17 +1,17 @@
 import { FC } from 'react';
+import { ROUTE } from '@/utils/route/route';
+//
 import Navigation from '@/components/home/Navigation';
 import Logo from '@/components/Logo/Logo';
 import LinkButton from '@/components/LinkButton/LinkButton';
 import BlockInfo from '@/components/home/BlockInfo';
+import MessengersList from '@/components/MessengersList/MessengersList';
+import BurgerMenu from '@/components/home/BurgerMenu';
 //
 import imgOnHome from '@/assets/images/girlHomeBgc.png';
-
 //
 import { home } from '@/styles/home';
 import './home.scss';
-import MessengersList from '@/components/MessengersList/MessengersList';
-import { ROUTE } from '@/utils/route/route';
-import BurgerMenu from '@/components/home/BurgerMenu';
 
 const Home: FC = () => {
   return (

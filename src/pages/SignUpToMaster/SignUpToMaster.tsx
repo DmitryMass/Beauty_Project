@@ -1,11 +1,12 @@
-import Logo from '@/components/Logo/Logo';
 import { FC } from 'react';
 import { useParams } from 'react-router-dom';
-
-import './signUpToMaster.scss';
-import SignToMasterForm from '@/components/masters/signToMaster/SignToMasterForm';
-import { signToMaster } from '@/styles/signToMaster';
+//
+import Logo from '@/components/Logo/Logo';
 import BurgerMenu from '@/components/home/BurgerMenu';
+import SignToMasterForm from '@/components/masters/signToMaster/SignToMasterForm';
+//
+import './signUpToMaster.scss';
+import { signToMaster } from '@/styles/signToMaster';
 
 const SignUpToMaster: FC = () => {
   const { id } = useParams();

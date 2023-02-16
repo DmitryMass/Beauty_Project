@@ -6,13 +6,13 @@ import Home from '@/pages/Home/Home';
 import Admin from '@/pages/Admin/Admin';
 import Study from '@/pages/Study/Study';
 import Contacts from '@/pages/Contacts/Contacts';
-//
-import './app.scss';
 import Masters from '@/pages/Masters/Masters';
 import SignUpToMaster from '@/pages/SignUpToMaster/SignUpToMaster';
 import ServicesAndPrice from '@/pages/ServicesAndPrice/ServicesAndPrice';
 import EditEmployeeModal from './admin/CreateEmployee/EditEmployeeModal';
 import EditService from './admin/CreateServices/EditService';
+//
+import './app.scss';
 
 const App: FC = () => {
   return (

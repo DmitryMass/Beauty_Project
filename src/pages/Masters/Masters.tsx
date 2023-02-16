@@ -1,8 +1,13 @@
 import { FC } from 'react';
+import { breakPoints } from '@/utils/swiper/breakPoints';
 
 import MasterCard from '@/components/masters/MasterCard';
 import GeneralErrorHandler from '@/components/ErrorHandler/GeneralErrorHandler';
 import { useGetEmployeesQuery } from '@/store/api/adminApi';
+import Loader from '@/components/Loader/Loader';
+import Logo from '@/components/Logo/Logo';
+import GoldTitleBox from '@/components/GoldTitleBox/GoldTitleBox';
+import BurgerMenu from '@/components/home/BurgerMenu';
 //
 import masterLeft from '@/assets/images/masterLeftLogo.png';
 import masterRigth from '@/assets/images/masterRightLogo.png';
@@ -15,12 +20,7 @@ import 'swiper/css/pagination';
 //
 import { IEmployee } from '@/types/employee';
 import './masters.scss';
-import Loader from '@/components/Loader/Loader';
-import { breakPoints } from '@/utils/swiper/breakPoints';
 import { masters } from '@/styles/masters';
-import Logo from '@/components/Logo/Logo';
-import GoldTitleBox from '@/components/GoldTitleBox/GoldTitleBox';
-import BurgerMenu from '@/components/home/BurgerMenu';
 
 const Masters: FC = () => {
   const { data = null, isLoading, isError } = useGetEmployeesQuery('');

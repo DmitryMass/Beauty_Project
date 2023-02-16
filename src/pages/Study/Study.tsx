@@ -1,14 +1,14 @@
 import { FC, useState } from 'react';
+import { options } from '@/utils/data/courses';
 import { useGetGroupQuery } from '@/store/api/adminApi';
 //
 import RegisterToStudy from '@/components/forms/RegisterToStudy';
 import Logo from '@/components/Logo/Logo';
 import DropDown from '@/components/DropDown/DropDown';
+import BurgerMenu from '@/components/home/BurgerMenu';
 //
 import { study } from '@/styles/study';
 import './study.scss';
-import { options } from '@/utils/data/courses';
-import BurgerMenu from '@/components/home/BurgerMenu';
 
 const Study: FC = () => {
   const [selected, setSelected] = useState<string>(options[0]);

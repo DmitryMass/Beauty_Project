@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   useDeleteEmployeeMutation,
   useGetEmployeesQuery,
@@ -10,8 +11,6 @@ import editLogo from '@/assets/icons/editLogo.svg';
 //
 import { employees } from '@/styles/employee';
 import { IEmployee } from '@/types/employee';
-
-import { useNavigate } from 'react-router-dom';
 
 const DisplayEmployees: FC = () => {
   const navigate = useNavigate();

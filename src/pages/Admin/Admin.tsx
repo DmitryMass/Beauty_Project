@@ -10,11 +10,12 @@ import DisplayEmployees from '@/components/admin/DisplayEmployees';
 import GetEmployee from '@/components/admin/GetEmployee';
 import DisplayClients from '@/components/admin/DisplayClients';
 import CreateServices from '@/components/admin/CreateServices/CreateServices';
+import DisplayServices from '@/components/admin/DisplayServices';
 //
 import 'react-tabs/style/react-tabs.css';
 import { admin } from '@/styles/admin';
 import './admin.scss';
-import DisplayServices from '@/components/admin/DisplayServices';
+import CreateJobVacancy from '@/components/admin/CreateJobVacancy/CreateJobVacancy';
 
 const Admin: FC = () => {
   return (
@@ -31,6 +32,7 @@ const Admin: FC = () => {
             <Tab>Графіки роботи</Tab>
             <Tab>Клієнти</Tab>
             <Tab>Прайс ліст</Tab>
+            <Tab>Вакансії</Tab>
           </TabList>
           <TabPanel className={admin.tabPanel}>
             <CreateGroup />
@@ -50,6 +52,9 @@ const Admin: FC = () => {
           <TabPanel className={admin.tabPanel}>
             <CreateServices />
             <DisplayServices />
+          </TabPanel>
+          <TabPanel className={admin.tabPanel}>
+            <CreateJobVacancy />
           </TabPanel>
         </Tabs>
       </div>

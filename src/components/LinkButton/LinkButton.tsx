@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 interface IButtonLinkButtonProps {
   children: string;
   modificator?: string;
-  route: string;
+  route?: string;
 }
 
 const LinkButton: FC<IButtonLinkButtonProps> = ({
@@ -15,7 +15,7 @@ const LinkButton: FC<IButtonLinkButtonProps> = ({
   return (
     <Link
       className={`font-semibold text-classic text-darkGrey bg-gold flex items-center justify-center ${modificator}`}
-      to={route}
+      to={route ? route : '#'}
     >
       {children}
     </Link>

@@ -33,6 +33,7 @@ module.exports = {
       backgroundColor: {
         darkGrey: '#222222',
         gold: '#F0DDA3',
+        goldWhite: '#FFF5D6',
         white: '#FFFFFF',
         black: '#000000',
         hoverGold: '#f0d47c',

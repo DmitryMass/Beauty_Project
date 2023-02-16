@@ -22,7 +22,7 @@ export const home = {
   messengersLine:
     'h-[210px] max-[1140px]:h-[160px] w-[2px] bg-gold max-[400px]:h-[100px]',
   navLink:
-    'text-gold text-classic leading-classic  font-medium pb-[5px] max-[992px]:py-[5px]  max-[992px]:bg-burgerLink max-[992px]:w-full',
+    'text-gold text-classic leading-classic  font-medium pb-[5px] max-[992px]:py-[5px]  max-[992px]:bg-burgerLink max-[992px]:w-full max-[992px]:px-[10px]',
   additionalMenu:
     'text-gold cursor-pointer text-classic leading-classic  font-medium ',
   navLinkHoverEffect:

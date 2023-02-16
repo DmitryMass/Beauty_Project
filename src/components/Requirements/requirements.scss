@@ -1,27 +1,26 @@
-.card-container {
-	transform-style: preserve-3d;
-	transition: all 0.7s ease;
-}
-.card-front {
-	backface-visibility: hidden;
-	transform: rotateY(180deg);
-}
-.card-back{
-	backface-visibility: hidden;
-	transform: rotateY(180deg);
-}
-.card-back img {
-	display: inline-block;
-	align-items: center;
-}
-.card-container{
-	transform: rotateY(180deg);
- }
+.card {
+  max-width: 320px;
+  width: 100%;
+  &:first-child > .card__group > .card__container {
+    & > .card__front,
+    .card__back {
+      border-bottom-left-radius: 50px;
+      & > .card__title {
+        width: 98%;
+        margin-left: auto;
+      }
+    }
+  }
 
-.card-face {
-	transform: rotateY(180deg);
-}
-.card-cont {
-	transform-style: preserve-3d;
-	transition: all 0.7s ease;
+  &:last-child > .card__group > .card__container {
+    & > .card__front,
+    .card__back {
+      border-top-right-radius: 50px;
+      & > .card__title {
+        width: 98%;
+        margin-right: 10px;
+        border-top-right-radius: 50px;
+      }
+    }
+  }
 }

@@ -14,7 +14,7 @@ const ButtonSubmit: FC<IButtonSubmitProps> = ({
   return (
     <button
       className={`bg-gold text-darkGrey text-classic leading-classic ${modificator}`}
-      type='submit'
+      type={'submit'}
       disabled={isDisabled}
     >
       {children}

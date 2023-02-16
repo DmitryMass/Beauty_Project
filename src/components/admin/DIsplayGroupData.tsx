@@ -13,17 +13,13 @@ import { IGroup } from '@/types/admin';
 import { admin } from '@/styles/admin';
 
 const DisplayGroupData: FC = () => {
-  const { data = null, isLoading, refetch, isError } = useGetGroupsQuery('');
+  const { data = null, isLoading, isError } = useGetGroupsQuery('');
   const [deleteGroup, { isLoading: deleteGroupLoading, isError: deleteError }] =
     useDeleteGroupMutation();
 
   const handleDelete = async (id: string) => {
     try {
-      const response: any = await deleteGroup(id);
-      if (response.data) {
-        refetch();
-        return;
-      }
+      await deleteGroup(id);
     } catch (err) {
       console.log(`${err} помилка при видалинні групи`);
     }

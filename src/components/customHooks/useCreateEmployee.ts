@@ -22,7 +22,6 @@ interface IInitialState {
 export const useCreateEmployee = () => {
   const [createEmployee, { isLoading, isSuccess, isError }] =
     useCreateEmployeeMutation();
-  const { refetch } = useGetEmployeesQuery('');
 
   const handleSubmit = async (
     values: IInitialState,
@@ -40,7 +39,6 @@ export const useCreateEmployee = () => {
 
     try {
       await createEmployee(body);
-      refetch();
     } catch (err) {
       console.log(`${err} create employee error.`);
     }

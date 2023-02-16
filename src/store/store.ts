@@ -15,7 +15,13 @@ import {
 } from 'redux-persist';
 
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { adminApi } from './api/adminApi';
+import {
+  adminApi,
+  adminGroupApi,
+  adminGroupMembersApi,
+  adminVacancyApi,
+} from './api/adminApi';
+
 import { studyApi } from './api/studyApi';
 
 const persistConfig = {
@@ -31,6 +37,9 @@ const reducers = combineReducers({
   [studyApi.reducerPath]: studyApi.reducer,
   [visitMasterApi.reducerPath]: visitMasterApi.reducer,
   [contactsApi.reducerPath]: contactsApi.reducer,
+  [adminVacancyApi.reducerPath]: adminVacancyApi.reducer,
+  [adminGroupApi.reducerPath]: adminGroupApi.reducer,
+  [adminGroupMembersApi.reducerPath]: adminGroupMembersApi.reducer,
 });
 
 const store = configureStore({
@@ -44,7 +53,10 @@ const store = configureStore({
       adminApi.middleware,
       studyApi.middleware,
       visitMasterApi.middleware,
-      contactsApi.middleware
+      contactsApi.middleware,
+      adminVacancyApi.middleware,
+      adminGroupApi.middleware,
+      adminGroupMembersApi.middleware
     ),
 });
 

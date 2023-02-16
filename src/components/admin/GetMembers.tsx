@@ -6,7 +6,7 @@ import GroupList from '@/components/admin/GroupList';
 import { IGroupmembers } from '@/types/admin';
 
 const GetMembers: FC = () => {
-  const { data = null, isLoading, error, refetch } = useGetMembersQuery('');
+  const { data = null, isLoading, error } = useGetMembersQuery('');
   const [active, setActive] = useState<string | null>('');
 
   if (error) {
@@ -27,7 +27,6 @@ const GetMembers: FC = () => {
         {data
           ? data.map((members: IGroupmembers) => (
               <GroupList
-                refetch={refetch}
                 member={members}
                 key={members._id}
                 active={active}

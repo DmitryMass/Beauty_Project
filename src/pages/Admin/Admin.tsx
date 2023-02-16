@@ -16,6 +16,7 @@ import 'react-tabs/style/react-tabs.css';
 import { admin } from '@/styles/admin';
 import './admin.scss';
 import CreateJobVacancy from '@/components/admin/CreateJobVacancy/CreateJobVacancy';
+import DisplayJobVacancy from '@/components/admin/DisplayJobVacancy';
 
 const Admin: FC = () => {
   return (
@@ -55,6 +56,7 @@ const Admin: FC = () => {
           </TabPanel>
           <TabPanel className={admin.tabPanel}>
             <CreateJobVacancy />
+            <DisplayJobVacancy />
           </TabPanel>
         </Tabs>
       </div>

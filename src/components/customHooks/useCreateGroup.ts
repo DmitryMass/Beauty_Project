@@ -2,7 +2,6 @@ import { FormikHelpers } from 'formik';
 import { transformDate } from '@/utils/func/transformDate';
 import {
   useCreateGroupReqMutation,
-  useGetGroupsQuery,
   useGetMembersQuery,
 } from '@/store/api/adminApi';
 import { ICreateGroupInitialValue } from '@/types/admin';
@@ -10,8 +9,7 @@ import { ICreateGroupInitialValue } from '@/types/admin';
 export const useCreateGroup = (date: Date, type: string) => {
   const [createGroupReq, { isError, isLoading, isSuccess, data }] =
     useCreateGroupReqMutation();
-  const { refetch } = useGetGroupsQuery('');
-  const { refetch: refetchMembers } = useGetMembersQuery('');
+  const { refetch } = useGetMembersQuery('');
 
   const handleSubmit = async (
     values: ICreateGroupInitialValue,
@@ -30,7 +28,6 @@ export const useCreateGroup = (date: Date, type: string) => {
     try {
       await createGroupReq(body);
       await refetch();
-      await refetchMembers();
     } catch (err) {
       console.error(err);
     }

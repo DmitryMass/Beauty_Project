@@ -7,7 +7,7 @@ import {
 import CreateSchedule from './CreateSchedule/CreateSchedule';
 
 const GetEmployee: FC = () => {
-  const { data = null, isLoading } = useGetEmployeesQuery('');
+  const { data = null, isLoading } = useGetEmployeesQuery();
   const [getOneEmployee, { data: employeeData }] = useLazyGetOneEmployeeQuery();
 
   const handleGetEmployee = async (e: any) => {

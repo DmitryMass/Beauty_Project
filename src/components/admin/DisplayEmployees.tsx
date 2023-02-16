@@ -14,14 +14,13 @@ import { IEmployee } from '@/types/employee';
 
 const DisplayEmployees: FC = () => {
   const navigate = useNavigate();
-  const { data = null, isLoading, refetch } = useGetEmployeesQuery('');
+  const { data = null, isLoading } = useGetEmployeesQuery('');
   const [deleteEmployee, { isLoading: deleteLoading }] =
     useDeleteEmployeeMutation();
 
   const handleDelete = async (id: string) => {
     try {
       await deleteEmployee(id);
-      refetch();
     } catch (err) {
       console.log(`${err} помилка у видалинні співробітника`);
     }

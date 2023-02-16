@@ -49,7 +49,7 @@ const EditEmployeeModal: FC = () => {
     body.append('options', JSON.stringify([...values.options!]));
     resetForm();
     try {
-      const response: any = await editEmployee({ id: _id, data: body });
+      const response: any = await editEmployee({ id: `${_id}`, data: body });
       if (response.data) {
         navigate(import.meta.env.VITE_ADMIN);
       }

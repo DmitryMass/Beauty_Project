@@ -11,6 +11,7 @@ import SuccessHandler from '@/components/SuccessHandler/SuccessHandler';
 import ButtonSubmit from '@/components/ButtonSubmit/ButtonSubmit';
 //
 import { createGroup } from '@/styles/forms';
+import GeneralErrorHandler from '@/components/ErrorHandler/GeneralErrorHandler';
 
 interface IOptions {
   title: string;
@@ -26,7 +27,7 @@ interface IInitialState {
 const CreateServices: FC = () => {
   const [createServicesApi, { isLoading, isSuccess, isError }] =
     useCreateServicesApiMutation();
-  const { refetch } = useGetServicesApiQuery('');
+
   const handleSubmit = async (
     values: IInitialState,
     { resetForm }: FormikHelpers<IInitialState>
@@ -40,10 +41,7 @@ const CreateServices: FC = () => {
     });
     body.append('options', JSON.stringify([...values.options]));
     try {
-      const response: any = await createServicesApi(body);
-      if (response.data) {
-        refetch();
-      }
+      await createServicesApi(body);
     } catch (err) {
       console.log(`${err} помилка в створенні сервісу.`);
     }
@@ -54,7 +52,12 @@ const CreateServices: FC = () => {
       {isSuccess ? (
         <SuccessHandler success={isSuccess} data={'Сервіс створено'} />
       ) : null}
-
+      {isError ? (
+        <GeneralErrorHandler
+          isError={isError}
+          data={'Помилка при створенні сервісу.'}
+        />
+      ) : null}
       <Formik
         initialValues={{
           procedure: '',

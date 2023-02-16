@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import useActions from '@/store/hooks/useActions';
@@ -18,12 +18,7 @@ const DisplayServices: FC = () => {
   const dispatch = useDispatch();
   const { setServices } = useActions();
   const navigate = useNavigate();
-  const {
-    data = null,
-    isLoading,
-    isError,
-    refetch,
-  } = useGetServicesApiQuery('');
+  const { data = null, isLoading, isError } = useGetServicesApiQuery('');
 
   const [deleteService, { isLoading: deleteLoading }] =
     useDeleteServiceMutation();
@@ -35,17 +30,11 @@ const DisplayServices: FC = () => {
 
   const handleDelete = async (id: string) => {
     try {
-      const response: any = await deleteService(id);
-      if (response.data) {
-        refetch();
-      }
+      await deleteService(id);
     } catch (err) {
       console.log(`${err} помилка в видаленні сервісу`);
     }
   };
-  useEffect(() => {
-    refetch();
-  }, []);
 
   return (
     <div className='text-white grid grid-cols-2 mt-[30px] gap-[10px] max-[576px]:grid-cols-1'>

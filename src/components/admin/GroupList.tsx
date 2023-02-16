@@ -12,15 +12,9 @@ interface IGroupListProps {
   member: IGroupmembers;
   active: string | null;
   setActive: any;
-  refetch: any;
 }
 
-const GroupList: FC<IGroupListProps> = ({
-  member,
-  active,
-  setActive,
-  refetch,
-}) => {
+const GroupList: FC<IGroupListProps> = ({ member, active, setActive }) => {
   const [deleteGroupMembers, { isLoading }] = useDeleteGroupMembersMutation();
   const handleClick = () => {
     if (active === member._id) {
@@ -33,7 +27,6 @@ const GroupList: FC<IGroupListProps> = ({
   const handleDelete = async (id: string) => {
     try {
       await deleteGroupMembers(id);
-      refetch();
     } catch (err) {
       console.log(`${err} error deleting group.`);
     }

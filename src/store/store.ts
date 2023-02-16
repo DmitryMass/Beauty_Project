@@ -1,3 +1,4 @@
+import { contactsApi } from './api/contactsApi';
 import { visitMasterApi } from './api/visitMasterApi';
 import { employeesSliceReducer } from './slices/employeeSlice';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
@@ -29,6 +30,7 @@ const reducers = combineReducers({
   [adminApi.reducerPath]: adminApi.reducer,
   [studyApi.reducerPath]: studyApi.reducer,
   [visitMasterApi.reducerPath]: visitMasterApi.reducer,
+  [contactsApi.reducerPath]: contactsApi.reducer,
 });
 
 const store = configureStore({
@@ -41,7 +43,8 @@ const store = configureStore({
     }).concat(
       adminApi.middleware,
       studyApi.middleware,
-      visitMasterApi.middleware
+      visitMasterApi.middleware,
+      contactsApi.middleware
     ),
 });
 

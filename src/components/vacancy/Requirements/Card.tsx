@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
-import LinkButton from '../LinkButton/LinkButton';
 import CardInfo from './CardInfo';
+import LinkButton from '@/components/LinkButton/LinkButton';
 
 import './requirements.scss';
 

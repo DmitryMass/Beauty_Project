@@ -5,6 +5,8 @@ import { FC } from 'react';
 import ButtonSubmit from '../ButtonSubmit/ButtonSubmit';
 import Loader from '../Loader/Loader';
 import GeneralErrorHandler from '../ErrorHandler/GeneralErrorHandler';
+import { useSendFeedbackMutation } from '@/store/api/contactsApi';
+import SuccessHandler from '../SuccessHandler/SuccessHandler';
 
 interface IInitalValues {
   name: string;
@@ -13,14 +15,21 @@ interface IInitalValues {
 }
 
 const ContactsForm: FC = () => {
-  // rtk-query request hook
+  const [sendFeedback, { isSuccess, isError, isLoading }] =
+    useSendFeedbackMutation();
+
   const handleSubmit = async (
     values: IInitalValues,
     { resetForm }: FormikHelpers<IInitalValues>
   ) => {
     resetForm();
+    const body = new FormData();
+    Object.entries(values).forEach((item) => {
+      body.append(item[0], item[1]);
+    });
     try {
-      console.log(values);
+      const response = await sendFeedback(body);
+      console.log(response);
     } catch (err) {
       console.log(`${err} помилка в звороньому зв'язку.`);
     }
@@ -28,6 +37,20 @@ const ContactsForm: FC = () => {
 
   return (
     <div className='max-w-[590px] w-full bg-servicesAndPriceBg px-[20px] py-[10px] rounded-tr-[50px] rounded-bl-[50px] border-[1px] border-gold'>
+      {isSuccess ? (
+        <SuccessHandler
+          success={isSuccess}
+          data={'Ми отримали ваше повідомлення. Дякую.'}
+        />
+      ) : null}
+      {isError ? (
+        <GeneralErrorHandler
+          isError={isError}
+          data={
+            'Вибачте йдуть технічні роботи. Перезавантажте сторінку або спробуйте пізніше.'
+          }
+        />
+      ) : null}
       <Formik
         initialValues={{ name: '', email: '', text: '' }}
         onSubmit={handleSubmit}
@@ -94,8 +117,7 @@ const ContactsForm: FC = () => {
               </label>
             </div>
             <ButtonSubmit
-              children={'Відправити'}
-              //    children={isLoading ? <Loader /> : 'Відправити'}
+              children={isLoading ? <Loader /> : 'Відправити'}
               modificator={
                 'flex items-center justify-center max-w-[160px] w-full py-[5px] font-semibold hover:bg-hoverGold  transition-all duration-200 mx-auto'
               }

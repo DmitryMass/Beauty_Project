@@ -1,7 +1,9 @@
 import { FC } from 'react';
-import './requirements.scss';
+//
 import dotLogo from '@/assets/images/dot.png';
 import checkMark from '@/assets/images/checkMark.png';
+//
+import './requirements.scss';
 
 interface IVacancy {
   id: string;

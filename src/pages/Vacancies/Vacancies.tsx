@@ -1,14 +1,14 @@
 import { FC } from 'react';
 //
-import Requirements from '@/components/Requirements/Requirements';
+import Requirements from '@/components/vacancy/Requirements/Requirements';
 import GoldTitleBox from '@/components/GoldTitleBox/GoldTitleBox';
+import BurgerMenu from '@/components/home/BurgerMenu';
+import Logo from '@/components/Logo/Logo';
 //
 import vacancyLeft from '@/assets/images/vacancyLeftBranch.png';
 import vacancyRight from '@/assets/images/vacancyRightBranch.png';
 //
 import './vacancies.scss';
-import BurgerMenu from '@/components/home/BurgerMenu';
-import Logo from '@/components/Logo/Logo';
 
 const Vacancies: FC = () => {
   return (

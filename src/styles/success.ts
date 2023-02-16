@@ -6,5 +6,5 @@ export const successModal = {
   title:
     'text-gold text-md leading-m font-semibold mb-[10px] inline-block first-letter:uppercase',
   subtitle: 'text-white text-classic text-s mb-[7px]',
-  success: 'text-green font-bold text-sm leading-m',
+  success: 'text-green font-bold text-sm leading-m text-center',
 };

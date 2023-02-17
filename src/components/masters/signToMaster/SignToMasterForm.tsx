@@ -1,5 +1,7 @@
 import { FC, useMemo, useState } from 'react';
 import { Field, Formik, FormikHelpers } from 'formik';
+import { useTranslation } from 'react-i18next';
+
 //
 import ButtonSubmit from '../../ButtonSubmit/ButtonSubmit';
 import Loader from '../../Loader/Loader';
@@ -19,6 +21,8 @@ interface IInitialValues {
 }
 
 const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
+  const { t } = useTranslation();
+
   const {
     data = null,
     isLoading,
@@ -29,7 +33,7 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
     fetchVisitMaster,
     { isLoading: visitLoading, isError: visitError, error, isSuccess },
   ]: any = useFetchVisitMasterMutation();
-  const [selectedProcedure, setSelectedProcedure] = useState<string>('Послуга');
+  const [selectedProcedure, setSelectedProcedure] = useState<any>('...');
   const [toggleDropDown, setToggleDropDown] = useState<boolean>(false);
   const [selectDay, setSelectDay] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
@@ -53,6 +57,7 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
     body.append('procedure', selectedProcedure);
     body.append('id', id);
 
+    console.log(selectedProcedure);
     try {
       const response: any = await fetchVisitMaster(body);
       if (response.data) {
@@ -70,23 +75,16 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
   return (
     <div>
       {isError ? (
-        <GeneralErrorHandler
-          isError={isError}
-          data='Йдуть технічні роботи. Вибачте за незручності.'
-        />
+        <GeneralErrorHandler isError={isError} data={t('запис технічка')} />
       ) : null}
       {visitError ? (
         <GeneralErrorHandler
           isError={visitError}
-          data={
-            error?.data
-              ? error.data.msg
-              : 'Йдуть технічні роботи. Вибачте за незручності.'
-          }
+          data={error?.data ? error.data.msg : `${t('запис технічка')}`}
         />
       ) : null}
       {isSuccess ? (
-        <SuccessHandler success={isSuccess} data={'Запис успішний!'} />
+        <SuccessHandler success={isSuccess} data={t('запис успішний')} />
       ) : null}
       <Formik
         initialValues={{ name: '', phoneNumber: '' }}
@@ -104,7 +102,7 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
           <form onSubmit={handleSubmit}>
             <div>
               <label className={study.label} htmlFor='name'>
-                Ім'я
+                {t('name')}
                 {touched.name && errors.name && (
                   <span className={study.error}>{errors.name}</span>
                 )}
@@ -116,11 +114,11 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
                   onBlur={handleBlur}
                   value={values.name}
                   name='name'
-                  placeholder="Ваше ім'я"
+                  placeholder={t('namePlaceholder')}
                 />
               </label>
               <label className={study.label} htmlFor='phoneNumber'>
-                Номер телефону
+                {t('number')}
                 {touched.phoneNumber && errors.phoneNumber && (
                   <span className={study.error}>{errors.phoneNumber}</span>
                 )}
@@ -137,12 +135,12 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
               </label>
             </div>
             <div className='relative'>
-              <p className={study.label}>Послуга</p>
+              <p className={study.label}>{t('service')}</p>
               <div
                 onClick={() => setToggleDropDown((prev) => !prev)}
                 className={`${study.input} flex justify-between mt-[5px]`}
               >
-                <p>{selectedProcedure}</p>
+                <p>{t(`${selectedProcedure}`)}</p>
                 <p
                   className={`${
                     toggleDropDown ? 'rotate-[0deg]' : 'rotate-[180deg]'
@@ -163,7 +161,7 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
               ) : null}
             </div>
             <section>
-              <span className={study.label}>Ваш майстер</span>
+              <span className={study.label}>{t('yourMaster')}</span>
               <h3 className={study.input}>
                 {isError
                   ? 'Помилка серверу...'
@@ -172,14 +170,14 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
             </section>
             <div className={signToMaster.selectsWrapper}>
               <div>
-                <p className={study.label}>Дата</p>
+                <p className={study.label}>{t('date')}</p>
                 <select
                   className={signToMaster.select}
                   defaultValue={'Оберіть дату'}
                   onChange={(e) => setSelectDay(e.target.value)}
                 >
                   <option disabled value={'Оберіть дату'}>
-                    Оберіть дату
+                    {t('chooseDate')}
                   </option>
                   {data?.workDays &&
                     data.workDays.map((data) => (
@@ -190,13 +188,13 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
                 </select>
               </div>
               <div>
-                <p className={study.label}>Час</p>
+                <p className={study.label}>{t('time')}</p>
                 <select
                   className={signToMaster.select}
                   defaultValue={'Вільний час'}
                   onChange={(e) => setSelectedTime(e.target.value)}
                 >
-                  <option value={'Вільний час'}>Вільний час</option>
+                  <option value={'Вільний час'}>{t('chooseTime')}</option>
                   {selectTime &&
                     selectTime.hours.map((time: string) => (
                       <option key={time} value={time}>
@@ -209,7 +207,7 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
             <ButtonSubmit
               isDisabled={data ? false : true}
               modificator='max-w-[200px] w-full py-[10px] font-semibold rounded-[6px] hover:bg-hoverGold transition-all duration-100'
-              children={visitLoading ? <Loader /> : 'Зареєструватися'}
+              children={visitLoading ? <Loader /> : `${t('signUp')}`}
             />
           </form>
         )}

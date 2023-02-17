@@ -1,6 +1,8 @@
 import { FC, memo, useState } from 'react';
 import { Formik, Field } from 'formik';
 import { useRegisterClientMutation } from '@/store/api/studyApi';
+import { useTranslation } from 'react-i18next';
+
 //
 import Loader from '@/components/Loader/Loader';
 import ErrorHandler from '@/components/ErrorHandler/ErrorHandler';
@@ -23,6 +25,8 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({
   refetch,
   isError,
 }) => {
+  const { t } = useTranslation();
+
   const [registerClient, { isLoading, isSuccess, data: registerResponse }] =
     useRegisterClientMutation();
   const [responseData, setResponseData] = useState<string | null>(null);
@@ -81,7 +85,7 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({
           <form onSubmit={handleSubmit}>
             <div className='mb-[10px]'>
               <label className={study.label} htmlFor='name'>
-                Ім'я
+                {t('name')}
                 {touched.name && errors.name && (
                   <span className={study.error}>{errors.name}</span>
                 )}
@@ -93,11 +97,11 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({
                   onBlur={handleBlur}
                   value={values.name}
                   name='name'
-                  placeholder="Ваше ім'я"
+                  placeholder={t('namePlaceholder')}
                 />
               </label>
               <label className={study.label} htmlFor='phoneNumber'>
-                Номер телефону
+                {t('number')}
                 {touched.phoneNumber && errors.phoneNumber && (
                   <span className={study.error}>{errors.phoneNumber}</span>
                 )}
@@ -113,7 +117,7 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({
                 />
               </label>
               <label className={study.label} htmlFor='email'>
-                Пошта
+                {t('email')}
                 {touched.email && errors.email && (
                   <span className={study.error}>{errors.email}</span>
                 )}
@@ -133,7 +137,7 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({
               <div className='mb-[25px] text-white'>
                 <span>Набору до даного курсу наразі немає.</span>
                 <br />
-                <span>Ви можете обрати інший варіант у типі курсу.</span>
+                <span>Або вы ще не обрали курс.</span>
               </div>
             ) : data ? (
               <div className='flex gap-[15px] items-center mb-[25px]'>

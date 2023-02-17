@@ -1,6 +1,7 @@
 import { FC, useState } from 'react';
 import info from '@/assets/icons/info.svg';
 import { IEmployee, IOptions } from '@/types/employee';
+import { useTranslation } from 'react-i18next';
 
 import { useNavigate } from 'react-router-dom';
 import close from '@/assets/icons/closeButton.svg';
@@ -15,6 +16,7 @@ const MasterCard: FC<IMasterCardProps> = ({
   employee: { position, imgPath, name, surname, options, _id },
 }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [flip, setFlip] = useState<boolean>(false);
   return (
@@ -42,10 +44,10 @@ const MasterCard: FC<IMasterCardProps> = ({
             <h3 className={masters.nameTitle}>
               {name} {surname}
             </h3>
-            <p className={masters.position}>{position}</p>
+            <p className={masters.position}>{t(`${position}`)}</p>
           </div>
           <div className='px-[10px]'>
-            <h3 className={masters.servicesTitle}>Послуги:</h3>
+            <h3 className={masters.servicesTitle}>{t('Послуги')}</h3>
             <ul className='h-[150px] overflow-auto pointer-events-auto'>
               {options?.map((services: IOptions) => (
                 <li
@@ -54,7 +56,7 @@ const MasterCard: FC<IMasterCardProps> = ({
                 >
                   <span className={masters.listStyle} />
                   <span className={masters.procedure}>
-                    {services.procedure}
+                    {t(`${services.procedure}`)}
                   </span>
                 </li>
               ))}
@@ -72,12 +74,12 @@ const MasterCard: FC<IMasterCardProps> = ({
         <h2 className={masters.underCardTitleName}>
           {name} {surname}
         </h2>
-        <p className={masters.underCardPosition}>{position}</p>
+        <p className={masters.underCardPosition}>{t(`${position}`)}</p>
         <button
           onClick={() => navigate(`/masters/${_id}`)}
           className={masters.btnSignUp}
         >
-          Записатись
+          {t('signUp')}
         </button>
       </div>
     </>

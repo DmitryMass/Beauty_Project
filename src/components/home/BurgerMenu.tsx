@@ -1,9 +1,10 @@
 import { FC, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTE } from '@/utils/route/route';
+import { useTranslation } from 'react-i18next';
 //
-import TranslateNav from './TranslateNav';
 import MessengersList from '../MessengersList/MessengersList';
+import LangBtn from '../LangBtn/LangBtn';
 //
 import burger from '@/assets/icons/burger.svg';
 import closeBtn from '@/assets/icons/closeButton.svg';
@@ -17,6 +18,8 @@ interface IBurgerMenuProps {
 
 const BurgerMenu: FC<IBurgerMenuProps> = ({ modificator }) => {
   const [burgerMenu, setBurgerMenu] = useState<boolean>(false);
+  const { t } = useTranslation();
+
   return (
     <div className={`hidden  max-[992px]:flex gap-[15px] ${modificator}`}>
       <button onClick={() => setBurgerMenu((prev) => !prev)}>
@@ -43,7 +46,7 @@ const BurgerMenu: FC<IBurgerMenuProps> = ({ modificator }) => {
                 className={`${home.navLink} ${home.navLinkHoverEffect} inline-block`}
                 to={ROUTE.HOME}
               >
-                Головна
+                {t('main')}
               </Link>
             </li>
             <li className='w-full px-[20px]'>
@@ -51,7 +54,7 @@ const BurgerMenu: FC<IBurgerMenuProps> = ({ modificator }) => {
                 className={`${home.navLink} ${home.navLinkHoverEffect} inline-block`}
                 to={ROUTE.SERVICES}
               >
-                Послуги та ціни
+                {t('services')}
               </Link>
             </li>
             <li className='w-full px-[20px]'>
@@ -59,7 +62,7 @@ const BurgerMenu: FC<IBurgerMenuProps> = ({ modificator }) => {
                 className={`${home.navLink} ${home.navLinkHoverEffect} inline-block`}
                 to={ROUTE.MASTERS}
               >
-                Майстри
+                {t('masters')}
               </Link>
             </li>
             <li className='w-full px-[20px]'>
@@ -67,7 +70,7 @@ const BurgerMenu: FC<IBurgerMenuProps> = ({ modificator }) => {
                 className={`${home.navLink} ${home.navLinkHoverEffect} inline-block`}
                 to={ROUTE.STUDY}
               >
-                Навчання
+                {t('study')}
               </Link>
             </li>
             <li className='w-full px-[20px]'>
@@ -75,7 +78,7 @@ const BurgerMenu: FC<IBurgerMenuProps> = ({ modificator }) => {
                 className={`${home.navLink} ${home.navLinkHoverEffect} inline-block`}
                 to={ROUTE.CONTACTS}
               >
-                Контакти
+                {t('contacts')}
               </Link>
             </li>
             <li className='w-full px-[20px]'>
@@ -83,7 +86,7 @@ const BurgerMenu: FC<IBurgerMenuProps> = ({ modificator }) => {
                 className={`${home.navLink} ${home.navLinkHoverEffect} inline-block`}
                 to={ROUTE.FEEDBACK}
               >
-                Відгуки
+                {t('reviews')}
               </Link>
             </li>
             <li className='w-full px-[20px]'>
@@ -91,11 +94,11 @@ const BurgerMenu: FC<IBurgerMenuProps> = ({ modificator }) => {
                 className={`${home.navLink} ${home.navLinkHoverEffect} inline-block`}
                 to={ROUTE.VACANCIES}
               >
-                Вакансії
+                {t('vacancies')}
               </Link>
             </li>
           </ul>
-          <TranslateNav />
+          <LangBtn />
         </div>
       </div>
     </div>

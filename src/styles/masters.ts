@@ -5,12 +5,15 @@ export const masters = {
     'min-h-[100vh] relative max-w-[1320px] w-full mx-auto px-[30px] relative flex justify-center items-center',
   blurBubble:
     'max-w-[235px] w-full max-h-[250px] h-full rounded-full bg-goldBlur blur-[200px] absolute top-0 right-0',
+  burgerModificator:
+    'w-[85px] h-[85px] absolute top-[15px] right-[30px] justify-end max-[400px]:top-[30px]',
+  logoModificator: 'w-[85px] absolute top-[0] right-[30px] max-[992px]:hidden',
   swiperContainer:
     'flex mt-[50px] max-w-[992px] w-full mx-auto justify-center  h-full py-[20px]',
   loaderWrapper:
     'max-w-[200px] w full mx-auto flex justify-center items-center',
   masterCardContainer:
-    'max-w-[235px] w-full mx-auto min-h-[300px] h-full bg-masterCard border-[2px] border-gold rounded-[30px] relative pointer-events-none overflow-hidden',
+    'max-w-[235px] w-full mx-auto min-h-[300px] h-full bg-masterCard border-[2px] border-gold rounded-[30px] relative  overflow-hidden',
   infoLogo:
     'w-[25px] h-[25px] cursor-pointer absolute top-[15px] right-[15px] z-10 hover:scale-[1.2] transition-all duration-75 pointer-events-auto',
   masterInfoWrapper:

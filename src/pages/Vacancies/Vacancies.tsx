@@ -9,34 +9,35 @@ import vacancyLeft from '@/assets/images/vacancyLeftBranch.png';
 import vacancyRight from '@/assets/images/vacancyRightBranch.png';
 //
 import './vacancies.scss';
+import { vacanciesStyle } from '@/styles/vacanciesStyle';
 
 const Vacancies: FC = () => {
   return (
-    <div className='relative h-full'>
+    <div className={vacanciesStyle.vacancyWrapper}>
       <img
-        className='absolute bottom-0 left-0 max-w-[250px] w-full'
+        className={vacanciesStyle.vacancyLeftBranch}
         src={vacancyLeft}
         alt=''
       />
       <img
-        className='absolute right-0 bottom-0 max-w-[250px] w-full'
+        className={vacanciesStyle.vacancyRightBranch}
         src={vacancyRight}
         alt=''
       />
       <GoldTitleBox>Вакансії</GoldTitleBox>
-      <BurgerMenu modificator='w-[85px] h-[85px] absolute top-[15px] right-[30px] justify-end ' />
+      <BurgerMenu modificator={vacanciesStyle.burgerModificator} />
       <Logo
         imgModificator='w-[80px] h-[85px]'
-        modificator=' w-[85px] absolute top-[0] right-[30px] max-[992px]:hidden'
+        modificator={vacanciesStyle.logoModificator}
       />
-      <div className='max-w-[1030px] w-full mx-auto px-[15px] pt-[100px]'>
+      <div className={vacanciesStyle.vacancyContainer}>
         <div className='w-full text-center mb-[10px]'>
-          <p className='text-white text-h2 leading-md'>
+          <p className={vacanciesStyle.vacancyTitle}>
             Приєднуйся до нашої дружної команди професіоналів
           </p>
         </div>
         <div className=' w-full bg-gold text-center mx-auto'>
-          <p className='leading-6 tracking-[.35em] text-sm font-semibold py-[5px]'>
+          <p className={vacanciesStyle.vacancySubtitle}>
             Адже разом ми зробимо цей світ кращим!
           </p>
         </div>

@@ -8,6 +8,7 @@ import Loader from '@/components/Loader/Loader';
 
 import { IVacancy } from '@/types/vacancies';
 import './requirements.scss';
+import { vacanciesStyle } from '@/styles/vacanciesStyle';
 
 const Card: FC = () => {
   const { data = null, isLoading, isError } = useGetAllVacanciesQuery('');
@@ -20,8 +21,6 @@ const Card: FC = () => {
     }
     setShowFront(id);
   };
-
-  console.log(data);
   return (
     <>
       {isError ? (
@@ -34,7 +33,7 @@ const Card: FC = () => {
       ) : null}
 
       {isLoading ? (
-        <div className='fixed max-w-[200px] mx-auto inset-0 flex justify-center items-center'>
+        <div className={vacanciesStyle.cardLoading}>
           <Loader />
         </div>
       ) : null}

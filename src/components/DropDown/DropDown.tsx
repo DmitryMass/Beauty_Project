@@ -1,4 +1,5 @@
 import { FC, memo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface IDropDownProps {
   setSelected: (value: string) => void;
@@ -16,6 +17,8 @@ const DropDown: FC<IDropDownProps> = ({
   styles,
   visit = false,
 }) => {
+  const { t } = useTranslation();
+
   const hanldeClick = (value: string) => {
     setSelected(value);
     setToggleDropDown(false);
@@ -32,8 +35,10 @@ const DropDown: FC<IDropDownProps> = ({
                 key={value.procedure}
                 onClick={() => hanldeClick(value.procedure)}
               >
-                <span>{value.procedure}</span>
-                <span>{value.price} грн</span>
+                <span>{t(`${value.procedure}`)}</span>
+                <span>
+                  {value.price} {t('money')}
+                </span>
               </div>
             ))}
         </div>
@@ -46,7 +51,7 @@ const DropDown: FC<IDropDownProps> = ({
                 key={value}
                 onClick={() => hanldeClick(value)}
               >
-                {value}
+                {t(`${value}`)}
               </div>
             ))}
         </div>

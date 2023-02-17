@@ -1,6 +1,8 @@
 import { FC, useState } from 'react';
 import { options } from '@/utils/data/courses';
 import { useGetGroupQuery } from '@/store/api/adminApi';
+import { useTranslation } from 'react-i18next';
+
 //
 import RegisterToStudy from '@/components/forms/RegisterToStudy';
 import Logo from '@/components/Logo/Logo';
@@ -11,7 +13,9 @@ import { study } from '@/styles/study';
 import './study.scss';
 
 const Study: FC = () => {
-  const [selected, setSelected] = useState<string>(options[0]);
+  const { t } = useTranslation();
+
+  const [selected, setSelected] = useState<string>('...');
   const [toggleDropDown, setToggleDropDown] = useState<boolean>(false);
 
   const {
@@ -39,18 +43,16 @@ const Study: FC = () => {
           />
           <BurgerMenu modificator='ml-auto justify-end w-[80px] h-[85px]' />
           <div>
-            <h1 className={study.title}>Зареєструватись на курс</h1>
-            <p className={study.subtitle}>
-              Будь ласка, заповніть усі необхідні поля
-            </p>
+            <h1 className={study.title}>{t('courseRegister')}</h1>
+            <p className={study.subtitle}>{t('requiredFields')}</p>
           </div>
           <div className='relative'>
-            <p className={study.label}>Тип курсу</p>
+            <p className={study.label}>{t('courseType')}</p>
             <div
               onClick={() => setToggleDropDown((prev) => !prev)}
               className={`${study.select} flex justify-between mt-[5px]`}
             >
-              <p>{selected}</p>
+              <p>{t(`${selected}`)}</p>
               <p
                 className={`${
                   toggleDropDown ? 'rotate-[0deg]' : 'rotate-[180deg]'

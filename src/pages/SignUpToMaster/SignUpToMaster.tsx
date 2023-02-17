@@ -1,14 +1,19 @@
 import { FC } from 'react';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
 //
 import Logo from '@/components/Logo/Logo';
 import BurgerMenu from '@/components/home/BurgerMenu';
 import SignToMasterForm from '@/components/masters/signToMaster/SignToMasterForm';
 //
+
 import './signUpToMaster.scss';
 import { signToMaster } from '@/styles/signToMaster';
 
 const SignUpToMaster: FC = () => {
+  const { t } = useTranslation();
+
   const { id } = useParams();
 
   return (
@@ -24,10 +29,8 @@ const SignUpToMaster: FC = () => {
           <BurgerMenu modificator='w-[85px] h-[85px] ml-auto justify-end' />
         </div>
         <div>
-          <h2 className={signToMaster.title}>Запис на візит до майстра</h2>
-          <p className={signToMaster.subtitle}>
-            Будь ласка, заповніть усі необхідні дані
-          </p>
+          <h2 className={signToMaster.title}>{t('titleMaster')}</h2>
+          <p className={signToMaster.subtitle}>{t('subtitleMaster')}</p>
         </div>
         <SignToMasterForm id={id!} />
       </div>

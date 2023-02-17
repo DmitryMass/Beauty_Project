@@ -1,5 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import { useGetServicesApiQuery } from '@/store/api/adminApi';
+import { useTranslation } from 'react-i18next';
+
 //
 import GoldTitleBox from '@/components/GoldTitleBox/GoldTitleBox';
 import Logo from '@/components/Logo/Logo';
@@ -17,6 +19,8 @@ import { servicesStyle } from '@/styles/services';
 import './services.scss';
 
 const ServicesAndPrice: FC = () => {
+  const { t } = useTranslation();
+
   const { data = null, isLoading, isError } = useGetServicesApiQuery('');
   const [active, setActive] = useState<string | null | undefined>('');
 
@@ -29,32 +33,32 @@ const ServicesAndPrice: FC = () => {
   };
 
   useEffect(() => {
-    data && setActive(data[0]._id);
+    if (data && data?.length > 0) {
+      setActive(data[0]._id);
+    }
   }, [data]);
 
   return (
-    <>
+    <div>
       <img
-        className='absolute top-0 right-0 max-w-[400px] '
+        className={servicesStyle.rightBranch}
         src={servicesRightBranch}
         alt='branch'
       />
       <img
-        className='absolute bottom-0 left-0 max-w-[200px] '
+        className={servicesStyle.leftBranch}
         src={servicesLeftBranch}
         alt='branch'
       />
-      <div className='max-w-[1140px] relative w-full h-full mx-auto px-[15px] pt-[130px] max-[576px]:pt-[150px]'>
-        <BurgerMenu modificator='w-[85px] h-[85px] absolute top-[15px] right-[30px] justify-end max-[420px]:top-[30px]' />
+      <div className={servicesStyle.serviceContainer}>
+        <BurgerMenu modificator={servicesStyle.burgerModificator} />
         <Logo
           imgModificator='w-[80px] h-[85px]'
-          modificator=' w-[85px] absolute top-[0] right-[30px] max-[992px]:hidden '
+          modificator={servicesStyle.logoModificator}
         />
-        <GoldTitleBox>
-          Послуги <br className='hidden max-[420px]:block' /> та ціни
-        </GoldTitleBox>
+        <GoldTitleBox>{t('services')}</GoldTitleBox>
         {isLoading ? (
-          <div className='max-w-[200px] w-full h-full flex justify-center items-center mx-auto'>
+          <div className={servicesStyle.loadingWrapper}>
             <Loader />
           </div>
         ) : null}
@@ -66,69 +70,71 @@ const ServicesAndPrice: FC = () => {
             }
           />
         ) : null}
-        {data
-          ? data.map((procedure: IServices, idx: number) => (
-              <div
-                key={procedure._id}
-                className='w-full bg-servicesAndPriceBg border-[1px] border-gold relative mb-[40px] '
-              >
+        <div>
+          {data
+            ? data.map((procedure: IServices, idx: number) => (
                 <div
-                  onClick={() => handleClick(procedure)}
-                  className='w-full text-gold py-[10px] px-[20px] border-b-[1px] border-gold flex justify-between items-center'
+                  key={procedure._id}
+                  className='w-full bg-servicesAndPriceBg border-[1px] border-gold relative mb-[20px] '
                 >
-                  <div className='flex gap-[20px] items-center'>
-                    <span className='text-h2 leading-lg text-gold uppercase font-bold max-[576px]:text-md'>{`0${
-                      idx + 1
-                    }`}</span>
-                    <h3 className='text-h2 leading-md text-gold font-semibold max-[576px]:text-md'>
-                      {procedure.procedure}
-                    </h3>
+                  <div
+                    onClick={() => handleClick(procedure)}
+                    className={servicesStyle.procedureContainer}
+                  >
+                    <div className='flex gap-[20px] items-center'>
+                      <span className={servicesStyle.procedureIdx}>{`0${
+                        idx + 1
+                      }`}</span>
+                      <h3 className={servicesStyle.procedureTitle}>
+                        {t(`${procedure.procedure}`)}
+                      </h3>
+                    </div>
+                    {active === procedure._id ? (
+                      <img src={circleMinus} alt='-' />
+                    ) : (
+                      <img src={circlePlus} alt='+' />
+                    )}
                   </div>
-                  {active === procedure._id ? (
-                    <img src={circleMinus} alt='-' />
-                  ) : (
-                    <img src={circlePlus} alt='+' />
-                  )}
-                </div>
-                <div
-                  className={`
+                  <div
+                    className={`
                   ${
                     active !== procedure._id
                       ? `${servicesStyle.nonActiveContent}`
                       : `${servicesStyle.activeContent}`
                   }  `}
-                >
-                  <div className='overflow-auto deleteScroll pb-[15px]'>
-                    {procedure.options
-                      ? procedure.options.map((option: IServicesOptions) => (
-                          <div
-                            key={option.subtitle}
-                            className='flex justify-between items-center py-[10px] border-b-[2px] border-b-gold overflow-hidden gap-[25px] max-[576px]:flex-col max-[576px]:items-start max-[576px]:gap-[10px]'
-                          >
-                            <div>
-                              <h2 className='text-gold font-semibold text-md leading-m uppercase mb-[5px] max-[768px]:text-sm max-[576px]:text-classic'>
-                                {option.title}
-                              </h2>
-                              <h3 className='text-classic leading-s text-white max-[768px]:text-s'>
-                                {option.subtitle}
-                              </h3>
+                  >
+                    <div className='overflow-auto deleteScroll pb-[15px]'>
+                      {procedure.options
+                        ? procedure.options.map((option: IServicesOptions) => (
+                            <div
+                              key={option.subtitle}
+                              className={servicesStyle.optionContainer}
+                            >
+                              <div>
+                                <h2 className={servicesStyle.optionTitle}>
+                                  {t(`${option.title}`)}
+                                </h2>
+                                <h3 className={servicesStyle.optionSubtitle}>
+                                  {t(`${option.subtitle}`)}
+                                </h3>
+                              </div>
+                              <p className={servicesStyle.optionPrice}>
+                                <span className={servicesStyle.optionPriceSpan}>
+                                  {option.price}
+                                </span>{' '}
+                                <span>{t('money')}</span>
+                              </p>
                             </div>
-                            <p className='text-white text-s font-bold flex items-end gap-[5px] '>
-                              <span className='text-gold font-semibold text-sm leading-sm'>
-                                {option.price}
-                              </span>{' '}
-                              <span>грн</span>
-                            </p>
-                          </div>
-                        ))
-                      : null}
+                          ))
+                        : null}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))
-          : null}
+              ))
+            : null}
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

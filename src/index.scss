@@ -21,6 +21,10 @@ ul::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
+div.masterDropDown::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
 
 select {
   -webkit-appearance: none;

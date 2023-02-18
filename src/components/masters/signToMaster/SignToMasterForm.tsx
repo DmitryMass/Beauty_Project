@@ -1,19 +1,20 @@
 import { FC, useMemo, useState } from 'react';
 import { Field, Formik, FormikHelpers } from 'formik';
 import { useTranslation } from 'react-i18next';
+import { useFetchVisitMasterMutation } from '@/store/api/visitMasterApi';
+import { visitToMasterValidation } from '@/utils/validation/createGroupValidation';
 
 //
 import ButtonSubmit from '../../ButtonSubmit/ButtonSubmit';
 import Loader from '../../Loader/Loader';
 import { useGetOneEmployeeQuery } from '@/store/api/adminApi';
 import DropDown from '../../DropDown/DropDown';
+import SuccessHandler from '@/components/SuccessHandler/SuccessHandler';
+import GeneralErrorHandler from '@/components/ErrorHandler/GeneralErrorHandler';
 //
 import { study } from '@/styles/study';
-import GeneralErrorHandler from '@/components/ErrorHandler/GeneralErrorHandler';
-import { useFetchVisitMasterMutation } from '@/store/api/visitMasterApi';
-import SuccessHandler from '@/components/SuccessHandler/SuccessHandler';
 import { signToMaster } from '@/styles/signToMaster';
-import { visitToMasterValidation } from '@/utils/validation/createGroupValidation';
+import '../mastersCard.scss';
 
 interface IInitialValues {
   name: string;
@@ -150,7 +151,7 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
                   options={data ? data.options : []}
                   visit
                   styles={`${study.option} flex justify-between items-center`}
-                  modificator='absolute top-[90px] left-0 w-full bg-darkGrey border-[1px] border-gold  px-[15px] py-[20px]'
+                  modificator='masterDropdown absolute top-[80px] left-0 w-full bg-darkGrey border-[1px] border-gold  px-[15px] py-[20px] overflow-auto h-[230px] rounded-[6px]'
                   setToggleDropDown={setToggleDropDown}
                   setSelected={setSelectedProcedure}
                 />

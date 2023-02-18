@@ -1,4 +1,7 @@
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
+
+//
 import MessengersList from '@/components/MessengersList/MessengersList';
 import ContactsForm from '@/components/forms/ContactsForm';
 import Logo from '@/components/Logo/Logo';
@@ -12,13 +15,15 @@ import './contacts.scss';
 import { contacts } from '@/styles/contacts';
 
 const Contacts: FC = () => {
+  const { t } = useTranslation();
+
   return (
     <div className={contacts.contactsContainer}>
       <div className={contacts.contactsSubContainer}>
         <div className='relative'>
           <div>
-            <h2 className={contacts.titleContacts}>Контакти</h2>
-            <p className={contacts.subtitleContacts}>Будь з нами на зв'язку!</p>
+            <h2 className={contacts.titleContacts}>{t('contacts')}</h2>
+            <p className={contacts.subtitleContacts}>{t('beInTouch')}</p>
           </div>
           <Logo
             imgModificator='w-[80px] h-[85px]'
@@ -28,7 +33,7 @@ const Contacts: FC = () => {
         </div>
         <div>
           <div className={contacts.block}>
-            <img className='mr-[10px]' src={phoneIcon} alt='' />
+            <img className='mr-[10px]' src={phoneIcon} alt='phoneIcon' />
             <div className={contacts.blockWithPhons}>
               <p className='text-s leading-s mb-[5px]'>+380 12 345 67 89</p>
               <p className='text-s leading-s'>+380 98 765 43 21</p>
@@ -36,23 +41,20 @@ const Contacts: FC = () => {
           </div>
           <div className={contacts.blockWithAdress}>
             <img className='mr-[10px]' src={geoPositionIcon} alt='' />
-            <p>м. Дніпро, пр. Гагаріна, 198</p>
+            <p>{t('address')}</p>
           </div>
           <div className={contacts.blockWithTime}>
             <img className='mr-[10px]' src={timeIcon} alt='' />
             <div>
-              <p className='text-white text-s'>Пн - Сб</p>
+              <p className='text-white text-s'>{t('workDays')}</p>
               <p className='text-gold text-s'>08:00 - 20:00</p>
             </div>
           </div>
         </div>
         <MessengersList modificator='flex mb-[10px] items-center gap-[15px]' />
         <div className='mb-[15px]'>
-          <h2 className={contacts.blockWhithFeedback}>Зворотній зв'язок</h2>
-          <p className={contacts.blockWithQuestion}>
-            У вас є питання? Залишіть нам свої контакти, і наш менеджер
-            зв'яжеться з вами найближчим часом
-          </p>
+          <h2 className={contacts.blockWhithFeedback}>{t('feedBack')}</h2>
+          <p className={contacts.blockWithQuestion}>{t('haveQuestion')}</p>
         </div>
         <ContactsForm />
       </div>

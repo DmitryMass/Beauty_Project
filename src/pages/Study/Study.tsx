@@ -66,7 +66,7 @@ const Study: FC = () => {
               <DropDown
                 options={options}
                 styles={study.option}
-                modificator='absolute top-[90px] left-0 w-full bg-darkGrey border-[1px] border-gold  px-[15px] py-[20px] [&>*:nth-child(4)]:mb-0'
+                modificator='absolute top-[80px] left-0 w-full bg-darkGrey border-[1px] border-gold  px-[15px] py-[20px] [&>*:nth-child(4)]:mb-0 rounded-[6px]'
                 setToggleDropDown={setToggleDropDown}
                 setSelected={setSelected}
               />

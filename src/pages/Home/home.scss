@@ -1,0 +1,20 @@
+.list__wrapper {
+  transition: all 0.2s linear;
+  &:hover > .list {
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.2s linear;
+  }
+}
+
+.list {
+  transition: all 0.2s linear;
+  visibility: hidden;
+  opacity: 0;
+  background: linear-gradient(
+    140.16deg,
+    rgba(240, 221, 163, 0.44) -37.8%,
+    rgba(38, 36, 32, 0.44) 161.76%,
+    rgba(56, 54, 44, 0.44) 161.76%
+  );
+}

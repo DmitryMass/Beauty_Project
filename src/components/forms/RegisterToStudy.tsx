@@ -130,26 +130,28 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({
             </div>
             {isError ? (
               <div className='mb-[25px] text-white'>
-                <span>Набору до даного курсу наразі немає.</span>
+                <span>{t('noGroupEntry')}</span>
                 <br />
-                <span>Або вы ще не обрали курс.</span>
+                <span>{t('didntChoose')}</span>
               </div>
             ) : data ? (
               <div className='flex gap-[15px] items-center mb-[25px]'>
                 <div className='flex flex-col justify-start'>
-                  <p className={study.dataTitle}>Ціна</p>
+                  <p className={study.dataTitle}>{t('price')}</p>
                   <div className={study.dataWrapper}>
-                    <p className={study.dataBoxInfo}>{data.price} ГРН</p>
+                    <p className={study.dataBoxInfo}>
+                      {data.price} {t('money')}
+                    </p>
                   </div>
                 </div>
                 <div>
-                  <p className={study.dataTitle}>Вільні місця</p>
+                  <p className={study.dataTitle}>{t('freePlaces')}</p>
                   <div className={study.dataWrapper}>
                     <p className={study.dataBoxInfo}>{data.countPlaces}</p>
                   </div>
                 </div>
                 <div>
-                  <p className={study.dataTitle}>Дата початку</p>
+                  <p className={study.dataTitle}>{t('startDate')}</p>
                   <div className={study.dataWrapper}>
                     <p className={study.dataBoxInfo}>{data.whenStart}</p>
                   </div>
@@ -158,7 +160,7 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({
             ) : null}
             <ButtonSubmit
               modificator='max-w-[200px] w-full py-[10px] font-semibold rounded-[6px] hover:bg-hoverGold transition-all duration-100'
-              children={isLoading ? <Loader /> : 'Зареєструватися'}
+              children={isLoading ? <Loader /> : `${t('signUp')}`}
             />
           </form>
         )}

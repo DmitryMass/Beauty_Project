@@ -1,13 +1,16 @@
-import { study } from '@/styles/study';
-import { contactsValidation } from '@/utils/validation/createGroupValidation';
-import { Field, Formik, FormikHelpers } from 'formik';
 import { FC } from 'react';
+import { Field, Formik, FormikHelpers } from 'formik';
+import { useTranslation } from 'react-i18next';
+
+import { useSendFeedbackMutation } from '@/store/api/contactsApi';
+import { contactsValidation } from '@/utils/validation/createGroupValidation';
+//
 import ButtonSubmit from '../ButtonSubmit/ButtonSubmit';
 import Loader from '../Loader/Loader';
 import GeneralErrorHandler from '../ErrorHandler/GeneralErrorHandler';
-import { useSendFeedbackMutation } from '@/store/api/contactsApi';
 import SuccessHandler from '../SuccessHandler/SuccessHandler';
-
+//
+import { study } from '@/styles/study';
 interface IInitalValues {
   name: string;
   email: string;
@@ -15,6 +18,8 @@ interface IInitalValues {
 }
 
 const ContactsForm: FC = () => {
+  const { t } = useTranslation();
+
   const [sendFeedback, { isSuccess, isError, isLoading }] =
     useSendFeedbackMutation();
 
@@ -62,7 +67,7 @@ const ContactsForm: FC = () => {
           <form onSubmit={handleSubmit}>
             <div className='mb-[10px]'>
               <label className={study.label} htmlFor='name'>
-                Ім'я
+                {t('name')}
                 {touched.name && errors.name && (
                   <span className={study.error}>{errors.name}</span>
                 )}
@@ -74,12 +79,12 @@ const ContactsForm: FC = () => {
                   onBlur={handleBlur}
                   value={values.name}
                   name='name'
-                  placeholder="Ваше ім'я"
+                  placeholder={t('namePlaceholder')}
                 />
               </label>
 
               <label className={study.label} htmlFor='email'>
-                Пошта
+                {t('email')}
                 {touched.email && errors.email && (
                   <span className={study.error}>{errors.email}</span>
                 )}
@@ -95,7 +100,7 @@ const ContactsForm: FC = () => {
                 />
               </label>
               <label className={study.label} htmlFor='text'>
-                Ваше питання
+                {t('yourQuestionLabel')}
                 {touched.text && errors.text && (
                   <span className={study.error}>{errors.text}</span>
                 )}
@@ -107,12 +112,12 @@ const ContactsForm: FC = () => {
                   onBlur={handleBlur}
                   value={values.text}
                   name='text'
-                  placeholder='Поставте ваше запитання...'
+                  placeholder={t('yourQuestionPlaceholder')}
                 />
               </label>
             </div>
             <ButtonSubmit
-              children={isLoading ? <Loader /> : 'Відправити'}
+              children={isLoading ? <Loader /> : `${t('sendBtn')}`}
               modificator={
                 'max-w-[160px] flex items-center justify-center w-full py-[5px] font-semibold hover:bg-hoverGold transition-all duration-100 mx-auto'
               }

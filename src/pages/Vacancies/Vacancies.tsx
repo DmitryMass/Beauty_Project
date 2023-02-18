@@ -1,4 +1,6 @@
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
+
 //
 import Requirements from '@/components/vacancy/Requirements/Requirements';
 import GoldTitleBox from '@/components/GoldTitleBox/GoldTitleBox';
@@ -12,19 +14,21 @@ import './vacancies.scss';
 import { vacanciesStyle } from '@/styles/vacanciesStyle';
 
 const Vacancies: FC = () => {
+  const { t } = useTranslation();
+
   return (
     <div className={vacanciesStyle.vacancyWrapper}>
       <img
         className={vacanciesStyle.vacancyLeftBranch}
         src={vacancyLeft}
-        alt=''
+        alt='vacancyBranch'
       />
       <img
         className={vacanciesStyle.vacancyRightBranch}
         src={vacancyRight}
-        alt=''
+        alt='vacancyBranch'
       />
-      <GoldTitleBox>Вакансії</GoldTitleBox>
+      <GoldTitleBox>{t('vacancies')}</GoldTitleBox>
       <BurgerMenu modificator={vacanciesStyle.burgerModificator} />
       <Logo
         imgModificator='w-[80px] h-[85px]'
@@ -32,13 +36,11 @@ const Vacancies: FC = () => {
       />
       <div className={vacanciesStyle.vacancyContainer}>
         <div className='w-full text-center mb-[10px]'>
-          <p className={vacanciesStyle.vacancyTitle}>
-            Приєднуйся до нашої дружної команди професіоналів
-          </p>
+          <p className={vacanciesStyle.vacancyTitle}>{t('vacancyTitle')}</p>
         </div>
         <div className=' w-full bg-gold text-center mx-auto'>
           <p className={vacanciesStyle.vacancySubtitle}>
-            Адже разом ми зробимо цей світ кращим!
+            {t('vacancySubtitle')}
           </p>
         </div>
         <Requirements />

@@ -2,10 +2,10 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTE } from '@/utils/route/route';
 import { useTranslation } from 'react-i18next';
+import LangBtn from '../LangBtn/LangBtn';
 //
 import { home } from '@/styles/home';
 import '../../pages/Home/home.scss';
-import LangBtn from '../LangBtn/LangBtn';
 
 const Navigation: FC = () => {
   const { t } = useTranslation();
@@ -46,9 +46,27 @@ const Navigation: FC = () => {
           </Link>
         </li>
         <li
-          className={` ${home.navLink} ${home.navLinkHoverEffect} inline-block px-[15px]`}
+          className={`${home.navLink} list__wrapper  cursor-pointer relative mx-[15px] block`}
         >
           {t('more')}
+          <ul className='list absolute rounded-[10px] z-[50] top-[25px] left-[-75px] py-[15px] px-[5px]'>
+            <li className='w-full px-[20px] mb-[10px]'>
+              <Link
+                className={`${home.navLink} ${home.navLinkHoverEffect} inline-block`}
+                to={ROUTE.FEEDBACK}
+              >
+                {t('reviews')}
+              </Link>
+            </li>
+            <li className='w-full px-[20px]'>
+              <Link
+                className={`${home.navLink} ${home.navLinkHoverEffect} inline-block cursor-pointer`}
+                to={ROUTE.VACANCIES}
+              >
+                {t('vacancies')}
+              </Link>
+            </li>
+          </ul>
         </li>
       </ul>
       <LangBtn />

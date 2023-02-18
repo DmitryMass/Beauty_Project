@@ -94,4 +94,20 @@ export const ua = {
   requiredFields: 'Будь ласка, заповніть усі необхідні поля',
   courseRegister: 'Зареєструватись на курс',
   courseType: 'Тип курсу',
+  noGroupEntry: 'Набору до даного курсу наразі немає.',
+  didntChoose: 'Або вы ще не обрали курс.',
+  price: 'Ціна',
+  freePlaces: 'Вільні місця',
+  startDate: 'Дата початку',
+  // contacts
+  beInTouch: `Будь з нами на зв'язку!`,
+  workDays: 'Пн - Сб',
+  feedBack: `Зворотній зв'язок`,
+  haveQuestion: `У вас є питання? Залишіть нам свої контакти, і наш менеджер
+  зв'яжеться з вами найближчим часом`,
+  yourQuestionLabel: 'Ваше питання',
+  yourQuestionPlaceholder: 'Поставте ваше запитання...',
+  // vacancies
+  vacancyTitle: 'Приєднуйся до нашої дружної команди професіоналів',
+  vacancySubtitle: 'Адже разом ми зробимо цей світ кращим!',
 };

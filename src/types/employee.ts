@@ -27,3 +27,11 @@ export interface IEmployee {
   workDays?: IWorkDays[];
   options?: IOptions[];
 }
+
+export interface IComments {
+  id: number,
+  name: string,
+  date: string,
+  stars: number,
+  descripton: string
+}

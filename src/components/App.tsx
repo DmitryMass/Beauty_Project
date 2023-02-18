@@ -15,6 +15,7 @@ import EditService from './admin/CreateServices/EditService';
 //
 import '../language/i18n';
 import './app.scss';
+import Comments from '@/pages/Comments/Comments';
 
 // import preview from '@/assets/images/previewStyleLogo.png';
 // import circle from '@/assets/images/previewCircle.png';
@@ -32,6 +33,7 @@ const App: FC = () => {
         <Route path={ROUTE.MASTERS} element={<Masters />} />
         <Route path={ROUTE.STUDY} element={<Study />} />
         <Route path={ROUTE.CONTACTS} element={<Contacts />} />
+        <Route path={ROUTE.COMMENTS} element={<Comments />} />
         <Route path={ROUTE.MASTER} element={<SignUpToMaster />} />
         <Route path={ROUTE.VACANCIES} element={<Vacancies />} />
         <Route path={import.meta.env.VITE_ADMIN} element={<Admin />} />

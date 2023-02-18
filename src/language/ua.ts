@@ -110,4 +110,9 @@ export const ua = {
   // vacancies
   vacancyTitle: 'Приєднуйся до нашої дружної команди професіоналів',
   vacancySubtitle: 'Адже разом ми зробимо цей світ кращим!',
+  // reviews
+  reviewTitle: 'Наші майстри справжні професіонали своєї справи',
+  reviewFooterTitle: 'И самое главное - они влюблены в свою работу',
+  moreReviews: 'Читати більше відгуків',
+  leaveReview: 'Оставить отзыв',
 };

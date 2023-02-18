@@ -17,9 +17,11 @@ import servicesLeftBranch from '@/assets/images/servicesLeftBranch.png';
 import { IServices, IServicesOptions } from '@/types/services';
 import { servicesStyle } from '@/styles/services';
 import './services.scss';
+import { useHideTitle } from '@/components/customHooks/useHideTitle';
 
 const ServicesAndPrice: FC = () => {
   const { t } = useTranslation();
+  const { listenToScroll, visibility } = useHideTitle();
 
   const { data = null, isLoading, isError } = useGetServicesApiQuery('');
   const [active, setActive] = useState<string | null | undefined>('');
@@ -37,6 +39,11 @@ const ServicesAndPrice: FC = () => {
       setActive(data[0]._id);
     }
   }, [data]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', listenToScroll);
+    return () => window.removeEventListener('scroll', listenToScroll);
+  }, []);
 
   return (
     <div>
@@ -56,7 +63,15 @@ const ServicesAndPrice: FC = () => {
           imgModificator='w-[80px] h-[85px]'
           modificator={servicesStyle.logoModificator}
         />
-        <GoldTitleBox>{t('services')}</GoldTitleBox>
+        <GoldTitleBox
+          modificator={`${
+            visibility
+              ? 'visible opacity-1 transition-all duration-150'
+              : 'invisible opacity-0 transition-all duration-150'
+          }`}
+        >
+          {t('services')}
+        </GoldTitleBox>
         {isLoading ? (
           <div className={servicesStyle.loadingWrapper}>
             <Loader />

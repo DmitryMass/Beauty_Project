@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { breakPoints } from '@/utils/swiper/breakPoints';
 import { useTranslation } from 'react-i18next';
 
@@ -22,10 +22,12 @@ import 'swiper/css/pagination';
 import { IEmployee } from '@/types/employee';
 import './masters.scss';
 import { masters } from '@/styles/masters';
+import { useHideTitle } from '@/components/customHooks/useHideTitle';
 
 const Masters: FC = () => {
   const { t } = useTranslation();
   const { data = null, isLoading, isError } = useGetEmployeesQuery();
+  const { listenToScroll, visibility } = useHideTitle();
 
   const pagination = {
     clickable: true,
@@ -34,12 +36,24 @@ const Masters: FC = () => {
     },
   };
 
+  useEffect(() => {
+    window.addEventListener('scroll', listenToScroll);
+    return () => window.removeEventListener('scroll', listenToScroll);
+  }, []);
   return (
     <div className='relative'>
       <img className={masters.decorationImgLeft} src={masterLeft} alt='' />
       <img className={masters.decorationImgRight} src={masterRigth} alt='' />
       <div className={masters.infoWrapper}>
-        <GoldTitleBox>{t('mastersTitle')}</GoldTitleBox>
+        <GoldTitleBox
+          modificator={`${
+            visibility
+              ? 'visible opacity-1 transition-all duration-150'
+              : 'invisible opacity-0 transition-all duration-150'
+          } `}
+        >
+          {t('mastersTitle')}
+        </GoldTitleBox>
         <div className={masters.blurBubble} />
         <BurgerMenu modificator={masters.burgerModificator} />
         <Logo

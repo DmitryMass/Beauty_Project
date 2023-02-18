@@ -108,4 +108,10 @@ export const eng = {
   // vacancies
   vacancyTitle: 'Join our friendly team of professionals',
   vacancySubtitle: 'Together we will make this world a better place!',
+  // reviews
+  reviewTitle: 'Our masters are true professionals in their field',
+  reviewFooterTitle:
+    'And the most important thing is that they are passionate about their work',
+  moreReviews: 'Read more reviews',
+  leaveReview: 'Leave a review',
 };

@@ -9,7 +9,7 @@ export const masters = {
     'w-[85px] h-[85px] absolute top-[15px] right-[30px] justify-end max-[400px]:top-[30px]',
   logoModificator: 'w-[85px] absolute top-[0] right-[30px] max-[992px]:hidden',
   swiperContainer:
-    'flex mt-[50px] max-w-[992px] w-full mx-auto justify-center  h-full py-[20px]',
+    'flex mt-[110px] max-w-[992px] w-full mx-auto justify-center  h-full py-[20px]',
   loaderWrapper:
     'max-w-[200px] w full mx-auto flex justify-center items-center',
   masterCardContainer:
@@ -31,7 +31,7 @@ export const masters = {
   underCardTitleName:
     'text-classic leading-s text-gold mb-[3px] font-medium text-center',
   underCardPosition:
-    'block grow mb-[15px] text-classic leading-s text-white font-medium  text-center',
+    'grow mb-[15px] text-classic leading-s text-white font-medium  text-center',
   btnSignUp:
     'font-semibold text-classic text-darkGrey bg-gold flex items-center justify-center py-[10px] max-w-[190px] w-full rounded-[15px]  leading-classic hover:bg-hoverGold transition-all duration-100',
 };

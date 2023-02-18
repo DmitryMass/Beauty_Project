@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 //
@@ -12,10 +12,16 @@ import vacancyRight from '@/assets/images/vacancyRightBranch.png';
 //
 import './vacancies.scss';
 import { vacanciesStyle } from '@/styles/vacanciesStyle';
+import { useHideTitle } from '@/components/customHooks/useHideTitle';
 
 const Vacancies: FC = () => {
   const { t } = useTranslation();
+  const { listenToScroll, visibility } = useHideTitle();
 
+  useEffect(() => {
+    window.addEventListener('scroll', listenToScroll);
+    return () => window.removeEventListener('scroll', listenToScroll);
+  }, []);
   return (
     <div className={vacanciesStyle.vacancyWrapper}>
       <img
@@ -28,7 +34,15 @@ const Vacancies: FC = () => {
         src={vacancyRight}
         alt='vacancyBranch'
       />
-      <GoldTitleBox>{t('vacancies')}</GoldTitleBox>
+      <GoldTitleBox
+        modificator={`${
+          visibility
+            ? 'visible opacity-1 transition-all duration-150'
+            : 'invisible opacity-0 transition-all duration-150'
+        }`}
+      >
+        {t('vacancies')}
+      </GoldTitleBox>
       <BurgerMenu modificator={vacanciesStyle.burgerModificator} />
       <Logo
         imgModificator='w-[80px] h-[85px]'

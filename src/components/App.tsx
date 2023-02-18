@@ -33,7 +33,7 @@ const App: FC = () => {
         <Route path={ROUTE.MASTERS} element={<Masters />} />
         <Route path={ROUTE.STUDY} element={<Study />} />
         <Route path={ROUTE.CONTACTS} element={<Contacts />} />
-        <Route path={ROUTE.COMMENTS} element={<Comments />} />
+        <Route path={ROUTE.FEEDBACK} element={<Comments />} />
         <Route path={ROUTE.MASTER} element={<SignUpToMaster />} />
         <Route path={ROUTE.VACANCIES} element={<Vacancies />} />
         <Route path={import.meta.env.VITE_ADMIN} element={<Admin />} />

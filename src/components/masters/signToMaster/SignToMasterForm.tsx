@@ -29,6 +29,7 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
     isError,
     refetch,
   } = useGetOneEmployeeQuery(`${id}`);
+
   const [
     fetchVisitMaster,
     { isLoading: visitLoading, isError: visitError, error, isSuccess },
@@ -168,17 +169,16 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
                 <p className={study.label}>{t('date')}</p>
                 <select
                   className={signToMaster.select}
-                  defaultValue={'Оберіть дату'}
                   onChange={(e) => setSelectDay(e.target.value)}
                 >
-                  <option disabled value={'Оберіть дату'}>
-                    {t('chooseDate')}
-                  </option>
+                  <option label={`${t('chooseDate')}`} value={``} />
                   {data?.workDays &&
                     data.workDays.map((data) => (
-                      <option key={data.day} value={data.day}>
-                        {data.day}
-                      </option>
+                      <option
+                        key={data.day}
+                        value={data.day}
+                        label={data.day}
+                      />
                     ))}
                 </select>
               </div>
@@ -186,15 +186,12 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
                 <p className={study.label}>{t('time')}</p>
                 <select
                   className={signToMaster.select}
-                  defaultValue={'Вільний час'}
                   onChange={(e) => setSelectedTime(e.target.value)}
                 >
-                  <option value={'Вільний час'}>{t('chooseTime')}</option>
+                  <option label={`${t('chooseTime')}`} />
                   {selectTime &&
                     selectTime.hours.map((time: string) => (
-                      <option key={time} value={time}>
-                        {time}
-                      </option>
+                      <option key={time} value={time} label={time} />
                     ))}
                 </select>
               </div>

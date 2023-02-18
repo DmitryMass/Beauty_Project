@@ -9,7 +9,7 @@ import Loader from '../Loader/Loader';
 //
 import { clients } from '@/styles/clients';
 import { IClient } from '@/types/clientTypes';
-import { IWorkDays } from '@/types/employee';
+import { IEmployee, IWorkDays } from '@/types/employee';
 
 const DisplayClients: FC = () => {
   const {
@@ -45,7 +45,7 @@ const DisplayClients: FC = () => {
           Оберіть співробітника
         </option>
         {data
-          ? data.map((employee) => (
+          ? data.map((employee: IEmployee) => (
               <option key={employee._id} value={employee._id}>
                 {employee.email}
               </option>

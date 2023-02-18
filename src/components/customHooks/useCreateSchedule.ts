@@ -28,6 +28,7 @@ export const useCreateSchedule = (id: string, refetchEmployee: any) => {
   ] = useDeleteEmployeeScheduleMutation();
 
   const [startDate, setStartDate] = useState(new Date());
+
   const changeDate = useMemo(
     () => transformWithoutYear(startDate),
     [startDate]

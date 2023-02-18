@@ -40,11 +40,7 @@ const CreateServices: FC = () => {
       }
     });
     body.append('options', JSON.stringify([...values.options]));
-    try {
-      await createServicesApi(body);
-    } catch (err) {
-      console.log(`${err} помилка в створенні сервісу.`);
-    }
+    await createServicesApi(body);
   };
 
   return (

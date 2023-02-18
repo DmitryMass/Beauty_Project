@@ -6,6 +6,8 @@ import { useCreateSchedule } from '@/components/customHooks/useCreateSchedule';
 import { createGroup } from '@/styles/forms';
 import 'react-datepicker/dist/react-datepicker.css';
 import { schedule } from '@/styles/schedule';
+import Loader from '@/components/Loader/Loader';
+import GeneralErrorHandler from '@/components/ErrorHandler/GeneralErrorHandler';
 
 interface ICreateSchedulteProps {
   id?: string;
@@ -25,10 +27,19 @@ const CreateSchedule: FC<ICreateSchedulteProps> = ({ id, refetchEmployee }) => {
     changeDate,
     employeeWorkTime,
     deleteSchedule,
+    isError,
+    isLoading,
   } = useCreateSchedule(id!, refetchEmployee);
 
   return (
     <div className={schedule.container}>
+      {isLoading ? <Loader /> : null}
+      {isError ? (
+        <GeneralErrorHandler
+          isError={isError}
+          data='Вибайчте сервер не працює або виникла помилка.'
+        />
+      ) : null}
       <div className='mb-[35px]'>
         <h2>Оберіть дату роботи</h2>
         <DatePicker

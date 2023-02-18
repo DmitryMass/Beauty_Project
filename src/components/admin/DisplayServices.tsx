@@ -20,7 +20,7 @@ const DisplayServices: FC = () => {
   const navigate = useNavigate();
   const { data = null, isLoading, isError } = useGetServicesApiQuery('');
 
-  const [deleteService, { isLoading: deleteLoading }] =
+  const [deleteService, { isLoading: deleteLoading, isError: deleteError }] =
     useDeleteServiceMutation();
 
   const handleEdit = (id: string) => {
@@ -29,31 +29,25 @@ const DisplayServices: FC = () => {
   };
 
   const handleDelete = async (id: string) => {
-    try {
-      await deleteService(id);
-    } catch (err) {
-      console.log(`${err} помилка в видаленні сервісу`);
-    }
+    await deleteService(id);
   };
 
   return (
     <div className='text-white grid grid-cols-2 mt-[30px] gap-[10px] max-[576px]:grid-cols-1'>
-      {isError ? (
+      {isError || deleteError ? (
         <GeneralErrorHandler
-          isError={isError}
+          isError={isError || deleteError}
           data={
             'Вибачте йдуть технічні роботи. Перезавантажте сторінку або спробуйте пізніше.'
           }
         />
       ) : null}
-      {isLoading ? (
+      {isLoading || deleteLoading ? (
         <div className='max-w-[200px] w-full mx-auto flex justify-center items-center min-h-[300px] h-full'>
           <Loader />
         </div>
       ) : null}
-      {deleteLoading ? (
-        <p className='text-gold text-s mb-[5px]'>Deleting service...</p>
-      ) : null}
+
       {data
         ? data.map((service: IServices) => (
             <div key={service._id} className='bg-burgerLink  p-[10px] relative'>

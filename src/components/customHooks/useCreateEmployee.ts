@@ -1,7 +1,4 @@
-import {
-  useCreateEmployeeMutation,
-  useGetEmployeesQuery,
-} from '@/store/api/adminApi';
+import { useCreateEmployeeMutation } from '@/store/api/adminApi';
 import { FormikHelpers } from 'formik';
 
 interface IOptions {
@@ -36,12 +33,7 @@ export const useCreateEmployee = () => {
     body.append('file', values.img);
     body.append('options', JSON.stringify([...values.options]));
     actions.resetForm();
-
-    try {
-      await createEmployee(body);
-    } catch (err) {
-      console.log(`${err} create employee error.`);
-    }
+    await createEmployee(body);
   };
 
   return {

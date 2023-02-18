@@ -11,18 +11,25 @@ import SuccessResponse from '@/components/SuccessResponse/SuccessResponse';
 //
 import { createGroup } from '@/styles/forms';
 import 'react-datepicker/dist/react-datepicker.css';
+import GeneralErrorHandler from '@/components/ErrorHandler/GeneralErrorHandler';
 
 const CreateGroup: FC = () => {
   const [startDate, setStartDate] = useState<Date>(new Date());
   const [selected, setSelected] = useState<string>(options[0]);
   const [toggleDropDown, setToggleDropDown] = useState<boolean>(false);
-  const { handleSubmit, isLoading, isSuccess, data } = useCreateGroup(
+  const { handleSubmit, isLoading, isSuccess, data, isError } = useCreateGroup(
     startDate,
     selected
   );
 
   return (
     <div className='p-[10px]'>
+      {isError ? (
+        <GeneralErrorHandler
+          isError={isError}
+          data='Вибачте помилка серверу. Спробуйте пізніше.'
+        />
+      ) : null}
       {isSuccess ? <SuccessResponse success type={data?.type} /> : null}
       <h2 className='text-white text-md leading-sm my-[10px]'>
         Створити групу

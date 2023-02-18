@@ -24,13 +24,8 @@ export const useCreateGroup = (date: Date, type: string) => {
     });
     body.append('whenStart', trainingDate);
     body.append('type', type.toLowerCase());
-
-    try {
-      await createGroupReq(body);
-      await refetch();
-    } catch (err) {
-      console.error(err);
-    }
+    await createGroupReq(body);
+    await refetch();
   };
 
   return {

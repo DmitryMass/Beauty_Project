@@ -57,14 +57,9 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
     body.append('procedure', selectedProcedure);
     body.append('id', id);
 
-    console.log(selectedProcedure);
-    try {
-      const response: any = await fetchVisitMaster(body);
-      if (response.data) {
-        refetch();
-      }
-    } catch (err) {
-      console.log(`${err} помикла в записі на процедуру`);
+    const response: any = await fetchVisitMaster(body);
+    if (response.data) {
+      refetch();
     }
   };
 

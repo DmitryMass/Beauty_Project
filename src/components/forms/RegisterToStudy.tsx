@@ -43,21 +43,16 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({
     body.append('groupId', `${data?._id}`);
     body.append('whenStart', `${data?.whenStart}`);
     body.append('type', `${data?.type}`);
-
-    try {
-      const response: any = await registerClient(body);
-      if (response.data) {
-        await refetch();
-        return;
-      } else if (response?.error?.data?.msg) {
-        setResponseData(response?.error?.data?.msg);
-        return;
-      } else {
-        setResponseData('Sorry failed connect to server...');
-        return;
-      }
-    } catch (err) {
-      console.log(`${err} error in register study`);
+    const response: any = await registerClient(body);
+    if (response.data) {
+      await refetch();
+      return;
+    } else if (response?.error?.data?.msg) {
+      setResponseData(response?.error?.data?.msg);
+      return;
+    } else {
+      setResponseData('Sorry failed connect to server...');
+      return;
     }
   };
 

@@ -5,21 +5,29 @@ import {
 } from '@/store/api/adminApi';
 //
 import CreateSchedule from './CreateSchedule/CreateSchedule';
+import Loader from '../Loader/Loader';
+import GeneralErrorHandler from '../ErrorHandler/GeneralErrorHandler';
 
 const GetEmployee: FC = () => {
-  const { data = null, isLoading } = useGetEmployeesQuery();
-  const [getOneEmployee, { data: employeeData }] = useLazyGetOneEmployeeQuery();
+  const { data = null, isLoading, isError } = useGetEmployeesQuery();
+  const [
+    getOneEmployee,
+    { data: employeeData, isError: employeeError, isLoading: employeeLoading },
+  ] = useLazyGetOneEmployeeQuery();
 
   const handleGetEmployee = async (e: any) => {
-    try {
-      await getOneEmployee(`${e.target.value}`);
-    } catch (err) {
-      console.log(`${err} cannot get employee`);
-    }
+    await getOneEmployee(`${e.target.value}`);
   };
 
   return (
     <div className='relative w-full py-[10px] z-20'>
+      {isLoading || employeeLoading ? <Loader /> : null}
+      {isError || employeeError ? (
+        <GeneralErrorHandler
+          isError={isError || employeeError}
+          data='Вибачте сервер не працює або виникла помилка 500'
+        />
+      ) : null}
       <CreateSchedule id={employeeData?._id} refetchEmployee={getOneEmployee} />
       <div>
         <p className='text-white mb-[10px]'>Дані співробітника</p>

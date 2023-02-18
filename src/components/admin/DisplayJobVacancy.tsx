@@ -13,11 +13,7 @@ const DisplayJobVacancy: FC = () => {
   const { data = null, isLoading, isError } = useGetAllVacanciesQuery('');
   const [deleteVacancy] = useDeleteVacancyMutation();
   const handleDelete = async (id: string) => {
-    try {
-      await deleteVacancy(id);
-    } catch (err) {
-      console.log(`${err} не вдалося видалити вакансію`);
-    }
+    await deleteVacancy(id);
   };
 
   return (

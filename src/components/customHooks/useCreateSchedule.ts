@@ -18,9 +18,14 @@ export const useCreateSchedule = (id: string, refetchEmployee: any) => {
   const employeeWorkTime = useTypedSelector(
     (state) => state.employees.employeeWorkTime
   );
-  const [updateEmployee] = useUpdateEmployeeScheduleMutation();
-  const [setEmployeeSchedule] = useSetEmployeeScheduleMutation();
-  const [deleteEmployeeSchedule] = useDeleteEmployeeScheduleMutation();
+  const [updateEmployee, { isLoading: updateLoading, isError: updateError }] =
+    useUpdateEmployeeScheduleMutation();
+  const [setEmployeeSchedule, { isLoading: setLoading, isError: setError }] =
+    useSetEmployeeScheduleMutation();
+  const [
+    deleteEmployeeSchedule,
+    { isLoading: deleteLoading, isError: deleteError },
+  ] = useDeleteEmployeeScheduleMutation();
 
   const [startDate, setStartDate] = useState(new Date());
   const changeDate = useMemo(
@@ -41,22 +46,19 @@ export const useCreateSchedule = (id: string, refetchEmployee: any) => {
     const sortEmployeeTime = copyWorkTime.sort(
       (a, b) => parseFloat(a) - parseFloat(b)
     );
-    try {
-      if (id) {
-        const response: any = await setEmployeeSchedule({
-          id,
-          data: {
-            day: changeDate,
-            hours: sortEmployeeTime,
-          },
-        });
-        if (response.data) {
-          await refetchEmployee(id);
-          return;
-        }
+
+    if (id) {
+      const response: any = await setEmployeeSchedule({
+        id,
+        data: {
+          day: changeDate,
+          hours: sortEmployeeTime,
+        },
+      });
+      if (response.data) {
+        await refetchEmployee(id);
+        return;
       }
-    } catch (err) {
-      console.log(`${err} error in creating schedule`);
     }
   };
 
@@ -66,43 +68,48 @@ export const useCreateSchedule = (id: string, refetchEmployee: any) => {
       (a, b) => parseFloat(a) - parseFloat(b)
     );
 
-    try {
-      if (id) {
-        const response: any = await updateEmployee({
-          id,
-          data: {
-            day: changeDate,
-            hours: sortEmployeeTime,
-          },
-        });
-        if (response.data) {
-          await refetchEmployee(id);
-          return;
-        }
+    if (id) {
+      const response: any = await updateEmployee({
+        id,
+        data: {
+          day: changeDate,
+          hours: sortEmployeeTime,
+        },
+      });
+      if (response.data) {
+        await refetchEmployee(id);
+        return;
       }
-    } catch (err) {
-      console.log(`${err} error in updateSchedule`);
     }
   };
 
   const deleteSchedule = async () => {
-    try {
-      if (id) {
-        const response: any = await deleteEmployeeSchedule({
-          id,
-          data: {
-            day: changeDate,
-          },
-        });
-        if (response.data) {
-          await refetchEmployee(id);
-          return;
-        }
+    if (id) {
+      const response: any = await deleteEmployeeSchedule({
+        id,
+        data: {
+          day: changeDate,
+        },
+      });
+      if (response.data) {
+        await refetchEmployee(id);
+        return;
       }
-    } catch (err) {
-      console.log(`${err} error in updateSchedule`);
     }
   };
+
+  let isLoading;
+  let isError;
+  if (updateLoading || setLoading || deleteLoading) {
+    isLoading = true;
+  } else {
+    isLoading = false;
+  }
+  if (updateError || setError || deleteError) {
+    isError = true;
+  } else {
+    isError = false;
+  }
 
   return {
     createEmployeeSchedule,
@@ -114,5 +121,7 @@ export const useCreateSchedule = (id: string, refetchEmployee: any) => {
     changeDate,
     employeeWorkTime,
     deleteSchedule,
+    isError,
+    isLoading,
   };
 };

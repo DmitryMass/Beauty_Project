@@ -27,12 +27,7 @@ const ContactsForm: FC = () => {
     Object.entries(values).forEach((item) => {
       body.append(item[0], item[1]);
     });
-    try {
-      const response = await sendFeedback(body);
-      console.log(response);
-    } catch (err) {
-      console.log(`${err} помилка в звороньому зв'язку.`);
-    }
+    await sendFeedback(body);
   };
 
   return (
@@ -119,7 +114,7 @@ const ContactsForm: FC = () => {
             <ButtonSubmit
               children={isLoading ? <Loader /> : 'Відправити'}
               modificator={
-                'flex items-center justify-center max-w-[160px] w-full py-[5px] font-semibold hover:bg-hoverGold  transition-all duration-200 mx-auto'
+                'max-w-[160px] flex items-center justify-center w-full py-[5px] font-semibold hover:bg-hoverGold transition-all duration-100 mx-auto'
               }
             />
           </form>

@@ -48,14 +48,10 @@ const EditService: FC = () => {
     });
     body.append('options', JSON.stringify([...values.options]));
 
-    try {
-      const response: any = await editService({ id: `${id}`, data: body });
-      if (response.data) {
-        await refetch();
-        navigate(import.meta.env.VITE_ADMIN);
-      }
-    } catch (err) {
-      console.log(`${err} помилка в створенні сервісу.`);
+    const response: any = await editService({ id: `${id}`, data: body });
+    if (response.data) {
+      await refetch();
+      navigate(import.meta.env.VITE_ADMIN);
     }
   };
 

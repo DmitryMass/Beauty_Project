@@ -26,13 +26,7 @@ const CreateJobVacancy: FC = () => {
     });
     body.append('requirements', JSON.stringify([...values.requirements]));
     body.append('conditions', JSON.stringify([...values.conditions]));
-    try {
-      const response = await createVacancy(body);
-      console.log(response);
-    } catch (err) {
-      console.log(`${err} помилка у створені вакансії`);
-    }
-    console.log(values);
+    await createVacancy(body);
   };
 
   return (

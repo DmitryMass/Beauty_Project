@@ -32,7 +32,7 @@ const EditEmployeeModal: FC = () => {
     useEditEmployeeMutation();
   const navigate = useNavigate();
 
-  if (!data) return <div>Server not found</div>;
+  if (!data) return <div>Server down.</div>;
 
   const { name, surname, options, position, email, phoneNumber, _id } = data;
   const handleEdit = async (
@@ -48,13 +48,10 @@ const EditEmployeeModal: FC = () => {
     body.append('file', values.img);
     body.append('options', JSON.stringify([...values.options!]));
     resetForm();
-    try {
-      const response: any = await editEmployee({ id: `${_id}`, data: body });
-      if (response.data) {
-        navigate(import.meta.env.VITE_ADMIN);
-      }
-    } catch (err) {
-      console.log(`${err} помилка в редагуванні`);
+
+    const response: any = await editEmployee({ id: `${_id}`, data: body });
+    if (response.data) {
+      navigate(import.meta.env.VITE_ADMIN);
     }
   };
   return (

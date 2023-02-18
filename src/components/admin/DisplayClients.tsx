@@ -5,33 +5,37 @@ import {
 } from '@/store/api/adminApi';
 //
 import GeneralErrorHandler from '../ErrorHandler/GeneralErrorHandler';
+import Loader from '../Loader/Loader';
 //
 import { clients } from '@/styles/clients';
 import { IClient } from '@/types/clientTypes';
 import { IWorkDays } from '@/types/employee';
 
 const DisplayClients: FC = () => {
-  const { data = null, isError } = useGetEmployeesQuery('');
-  const [getOneEmployee, { data: employeeData }] = useLazyGetOneEmployeeQuery();
+  const {
+    data = null,
+    isError: employeesError,
+    isLoading,
+  } = useGetEmployeesQuery();
+  const [
+    getOneEmployee,
+    { data: employeeData, isError, isLoading: oneEmployeeLoading },
+  ] = useLazyGetOneEmployeeQuery();
+
   const handleGetEmployee = async (e: any) => {
-    try {
-      await getOneEmployee(`${e.target.value}`);
-    } catch (err) {
-      console.log(`${err} cannot get employee`);
-    }
+    await getOneEmployee(`${e.target.value}`);
   };
 
   return (
     <div>
-      {isError ? (
+      {isLoading || oneEmployeeLoading ? <Loader /> : null}
+      <h2 className={clients.title}>Оберіть майстра</h2>
+      {isError || employeesError ? (
         <GeneralErrorHandler
-          isError={isError}
-          data={
-            'Вибачте йдуть технічні роботи. Перезавантажте сторінку або спробуйте пізніше.'
-          }
+          isError={isError || employeesError}
+          data={'Вибачте помилка серверу.'}
         />
       ) : null}
-      <h2 className={clients.title}>Оберіть майстра</h2>
       <select
         className={clients.select}
         defaultValue={'Оберіть співробітника'}

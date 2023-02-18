@@ -26,6 +26,7 @@ const Study: FC = () => {
     { id: selected.toLowerCase() },
     {
       refetchOnMountOrArgChange: true,
+      skip: selected === '...' ? true : false,
     }
   );
 

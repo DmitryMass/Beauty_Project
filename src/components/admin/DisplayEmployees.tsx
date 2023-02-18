@@ -11,24 +11,27 @@ import editLogo from '@/assets/icons/editLogo.svg';
 //
 import { employees } from '@/styles/employee';
 import { IEmployee } from '@/types/employee';
+import GeneralErrorHandler from '../ErrorHandler/GeneralErrorHandler';
 
 const DisplayEmployees: FC = () => {
   const navigate = useNavigate();
-  const { data = null, isLoading } = useGetEmployeesQuery('');
-  const [deleteEmployee, { isLoading: deleteLoading }] =
+  const { data = null, isLoading, isError } = useGetEmployeesQuery();
+  const [deleteEmployee, { isLoading: deleteLoading, isError: deleteError }] =
     useDeleteEmployeeMutation();
 
   const handleDelete = async (id: string) => {
-    try {
-      await deleteEmployee(id);
-    } catch (err) {
-      console.log(`${err} помилка у видалинні співробітника`);
-    }
+    await deleteEmployee(id);
   };
 
   return (
     <div className={employees.container}>
       {isLoading ? <div className='text-white'>Loading...</div> : null}
+      {isError || deleteError ? (
+        <GeneralErrorHandler
+          data='Вибачте сервер відключено або отримав помилку'
+          isError={isError || deleteError}
+        />
+      ) : null}
       <h2 className={employees.title}>Перелік співробітників</h2>
       <div className='flex justify-start gap-[25px] w-full'>
         <span className={employees.employeeSpan}>ПІБ</span>

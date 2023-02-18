@@ -8,6 +8,7 @@ import EmployeeSuccess from '@/components/admin/CreateEmployee/EmployeeSuccess';
 import { useCreateEmployee } from '@/components/customHooks/useCreateEmployee';
 //
 import { createGroup } from '@/styles/forms';
+import GeneralErrorHandler from '@/components/ErrorHandler/GeneralErrorHandler';
 
 const CreateEmployee: FC = () => {
   const { handleSubmit, isError, isLoading, isSuccess } = useCreateEmployee();
@@ -16,9 +17,10 @@ const CreateEmployee: FC = () => {
     <div className='text-white'>
       {isSuccess ? <EmployeeSuccess success /> : null}
       {isError ? (
-        <div className='text-white'>
-          Помилка серверу або співробітник вже існує.
-        </div>
+        <GeneralErrorHandler
+          isError={isError}
+          data={'Вибачте сервер не працює. Спробуйте пізніше'}
+        />
       ) : null}
       <Formik
         initialValues={{

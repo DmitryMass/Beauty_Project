@@ -18,11 +18,7 @@ const DisplayGroupData: FC = () => {
     useDeleteGroupMutation();
 
   const handleDelete = async (id: string) => {
-    try {
-      await deleteGroup(id);
-    } catch (err) {
-      console.log(`${err} помилка при видалинні групи`);
-    }
+    await deleteGroup(id);
   };
 
   return (

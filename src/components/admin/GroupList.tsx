@@ -7,6 +7,7 @@ import loaderLogo from '@/assets/icons/loaderLogo.svg';
 //
 import { IGroupmembers, IMembers } from '@/types/admin';
 import { admin } from '@/styles/admin';
+import GeneralErrorHandler from '../ErrorHandler/GeneralErrorHandler';
 
 interface IGroupListProps {
   member: IGroupmembers;
@@ -15,7 +16,8 @@ interface IGroupListProps {
 }
 
 const GroupList: FC<IGroupListProps> = ({ member, active, setActive }) => {
-  const [deleteGroupMembers, { isLoading }] = useDeleteGroupMembersMutation();
+  const [deleteGroupMembers, { isLoading, isError }] =
+    useDeleteGroupMembersMutation();
   const handleClick = () => {
     if (active === member._id) {
       setActive(null);
@@ -25,14 +27,17 @@ const GroupList: FC<IGroupListProps> = ({ member, active, setActive }) => {
   };
 
   const handleDelete = async (id: string) => {
-    try {
-      await deleteGroupMembers(id);
-    } catch (err) {
-      console.log(`${err} error deleting group.`);
-    }
+    await deleteGroupMembers(id);
   };
+
   return (
     <div className='relative'>
+      {isError ? (
+        <GeneralErrorHandler
+          isError={isError}
+          data={'Вибачте сервер не працює. Спробуйте пізніше'}
+        />
+      ) : null}
       <button
         onClick={() => handleDelete(`${member._id}`)}
         className={admin.deleteBtn}

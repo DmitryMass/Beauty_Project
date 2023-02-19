@@ -16,7 +16,7 @@ export const reviews = {
   //   morecommentsPage
   moreWrapper:
     'relative  bg_img max-w-[1320px] w-full mx-auto px-[25px] max-[768px]:px-[15px]',
-  morePaginationContainer: 'max-w-[992px] w-full mx-auto pt-[120px]',
+  morePaginationContainer: 'max-w-[992px] w-full mx-auto pt-[120px] pb-[20px]',
   moreReviewContainer:
     'bg-gold rounded-[30px] py-[15px] px-[30px] max-h-[250px] mb-[30px]',
   btnsWrapper: 'flex justify-center gap-[20px] items-center',

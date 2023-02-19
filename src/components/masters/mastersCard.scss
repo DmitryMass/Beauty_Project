@@ -38,3 +38,14 @@ div.masterDropdown::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
+
+.master__services,
+.masterDropdown {
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}

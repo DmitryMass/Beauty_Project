@@ -17,15 +17,6 @@ body {
   background: #181818;
 }
 
-ul::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-}
-div.masterDropDown::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-}
-
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -39,3 +30,14 @@ select::-ms-expand {
 * {
   box-sizing: border-box;
 }
+
+//  hide scrollbar
+// .master__services {
+//   overflow: auto;
+//   -ms-overflow-style: none;
+//   scrollbar-width: none;
+//   &::-webkit-scrollbar {
+//     width: 0;
+//     height: 0;
+//   }
+// }

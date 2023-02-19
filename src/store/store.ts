@@ -1,4 +1,4 @@
-import { contactsApi } from './api/contactsApi';
+import { contactsApi, reviewsApi } from './api/contactsApi';
 import { visitMasterApi } from './api/visitMasterApi';
 import { employeesSliceReducer } from './slices/employeeSlice';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
@@ -40,6 +40,7 @@ const reducers = combineReducers({
   [adminVacancyApi.reducerPath]: adminVacancyApi.reducer,
   [adminGroupApi.reducerPath]: adminGroupApi.reducer,
   [adminGroupMembersApi.reducerPath]: adminGroupMembersApi.reducer,
+  [reviewsApi.reducerPath]: reviewsApi.reducer,
 });
 
 const store = configureStore({
@@ -56,7 +57,8 @@ const store = configureStore({
       contactsApi.middleware,
       adminVacancyApi.middleware,
       adminGroupApi.middleware,
-      adminGroupMembersApi.middleware
+      adminGroupMembersApi.middleware,
+      reviewsApi.middleware
     ),
 });
 

@@ -15,12 +15,14 @@ const Card: FC = () => {
   const [showFront, setShowFront] = useState<string | null>('');
 
   const handleClick = (id: string) => {
+    console.log(showFront === id);
     if (id === showFront) {
       setShowFront(null);
       return;
     }
     setShowFront(id);
   };
+
   return (
     <>
       {isError ? (
@@ -42,25 +44,37 @@ const Card: FC = () => {
             <div key={vacancy._id} className='card'>
               <div className='card__group group h-[400px] max-w-[320px] w-full [perspective:1000px] mb-[20px] '>
                 <div
-                  className={`card__container relative h-full w-full transition-all duration-500 [transform-style:preserve-3d] ${
+                  className={`card__container relative z-30 h-full w-full transition-all duration-500 [transform-style:preserve-3d]  ${
                     showFront === vacancy._id
                       ? '[transform:rotateY(-180deg)]'
                       : ''
                   }`}
                 >
-                  <div className='card__front absolute inset-0 h-full w-full bg-goldOpacity [backface-visibility:hidden] bg-goldWhite'>
+                  <div
+                    className={`${
+                      showFront === vacancy._id
+                        ? 'card__hidden'
+                        : 'card__visible'
+                    } card__front  absolute inset-0 h-full w-full bg-goldOpacity [backface-visibility:hidden]  bg-goldWhite block`}
+                  >
                     <CardInfo
                       idx={idx}
                       handleClick={handleClick}
                       vacancy={vacancy}
                     />
                   </div>
-                  <div className='card__back absolute  inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)]  bg-gold'>
+                  <div
+                    className={`${
+                      showFront === vacancy._id
+                        ? 'card__visible'
+                        : 'card__hidden'
+                    } card__back absolute  h-full w-full  inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)]  bg-gold block`}
+                  >
                     <CardInfo
                       idx={idx}
                       handleClick={handleClick}
                       vacancy={vacancy}
-                      back
+                      back={true}
                     />
                   </div>
                 </div>

@@ -4,7 +4,7 @@ import dotLogo from '@/assets/images/dot.png';
 import checkMark from '@/assets/images/checkMark.png';
 //
 import './requirements.scss';
-import { IRequirements, IVacancy } from '@/types/vacancies';
+import { IConditions, IRequirements, IVacancy } from '@/types/vacancies';
 
 interface IVacancyProps {
   vacancy: IVacancy;
@@ -21,7 +21,7 @@ const CardInfo: FC<IVacancyProps> = ({
 }) => {
   return (
     <>
-      <div className='card__title ml-auto bg-coal mt-[15px] pointer-events-none'>
+      <div className='card__title ml-auto bg-coal mt-[15px]'>
         <p
           key={vacancy._id}
           className={`text-gold font-semibold text-h3 ml-[15px]`}
@@ -30,18 +30,16 @@ const CardInfo: FC<IVacancyProps> = ({
         </p>
       </div>
       <div className='w-full px-[10px] py-[15px]'>
-        <h3
-          className={`pointer-events-none text-coal text-[16px] font-bold uppercase mb-[10px]`}
-        >
+        <h3 className={` text-coal text-[16px] font-bold uppercase mb-[10px]`}>
           {vacancy.vacancy}
         </h3>
         {back ? (
-          <div className='pointer-events-auto'>
+          <div>
             <h3 className='text-sm leading-sm mb-[10px] font-semibold'>
               Умови роботи:
             </h3>
-            <ul className=' overflow-auto h-[180px] mb-[10px] grow'>
-              {vacancy.conditions.map((condition) => (
+            <ul className=' vacancy__list h-[180px] mb-[10px]'>
+              {vacancy.conditions.map((condition: IConditions) => (
                 <li
                   key={condition.condition}
                   className='flex gap-[5px] pb-[3px]'
@@ -65,11 +63,11 @@ const CardInfo: FC<IVacancyProps> = ({
             </button>
           </div>
         ) : (
-          <div className='pointer-events-auto'>
-            <h3 className='text-sm pointer-events-none leading-sm mb-[10px] font-semibold'>
+          <div className=''>
+            <h3 className='text-sm  leading-sm mb-[10px] font-semibold '>
               Вимоги:
             </h3>
-            <ul className=' overflow-auto h-[180px] mb-[10px]'>
+            <ul className={`vacancy__list h-[180px] mb-[10px]`}>
               {vacancy.requirements.map((require: IRequirements) => (
                 <li key={require.require} className='flex  gap-[5px] pb-[3px]'>
                   <img

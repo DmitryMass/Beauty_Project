@@ -24,3 +24,26 @@
     }
   }
 }
+
+.vacancy__list {
+  display: block;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}
+
+@-moz-document url-prefix() {
+  .card__container {
+    backface-visibility: hidden;
+  }
+  .card__hidden {
+    z-index: 0;
+  }
+  .card__visible {
+    z-index: 10;
+  }
+}

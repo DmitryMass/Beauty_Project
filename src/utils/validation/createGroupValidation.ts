@@ -33,7 +33,7 @@ export const trainingRegistrationValidation = yup.object().shape({
     .string()
     .label('Number')
     .min(6, 'Min 6 symbols')
-    .max(14, 'Max 14 symbols')
+    .max(10, 'Max 10 symbols')
     .matches(/^[0-9+/s]*$/gi, 'Numbers from 0 to 9')
     .required(),
 });
@@ -50,7 +50,7 @@ export const createEmployeeValidation = yup.object().shape({
     .string()
     .label('Name')
     .min(2, 'Мінімум 2 символи')
-    .max(25, 'Максимум 15 символів')
+    .max(25, 'Максимум 25 символів')
     .matches(/^[а-яА-ЯіІєЄїЇ'a-zA-Z/s]*$/gi, 'Only ENG && UA letters')
     .required(),
   surname: yup
@@ -64,13 +64,13 @@ export const createEmployeeValidation = yup.object().shape({
     .string()
     .label('Position')
     .min(2, 'Мінімум 2 символи')
-    .max(25, 'Максимум 50 символів')
+    .max(25, 'Максимум 25 символів')
     .required(),
   phoneNumber: yup
     .string()
     .label('Number')
     .min(6, 'Min 6 symbols')
-    .max(14, 'Max 14 symbols')
+    .max(10, 'Max 10 symbols')
     .matches(/^[0-9+/s]*$/gi, 'Numbers from 0 to 9')
     .required(),
 });
@@ -87,7 +87,7 @@ export const contactsValidation = yup.object().shape({
     .string()
     .label('Name')
     .min(2, 'Мінімум 2 символи')
-    .max(25, 'Максимум 15 символів')
+    .max(25, 'Максимум 25 символів')
     .matches(/^[а-яА-ЯіІєЄїЇ'a-zA-Z/s]*$/gi, 'Only ENG && UA letters')
     .required(),
   text: yup.string(),
@@ -98,14 +98,14 @@ export const visitToMasterValidation = yup.object().shape({
     .string()
     .label('Number')
     .min(6, 'Min 6 symbols')
-    .max(14, 'Max 14 symbols')
+    .max(10, 'Max 10 symbols')
     .matches(/^[0-9+/s]*$/gi, 'Numbers from 0 to 9')
     .required(),
   name: yup
     .string()
     .label('Name')
     .min(2, 'Мінімум 2 символи')
-    .max(25, 'Максимум 15 символів')
+    .max(25, 'Максимум 25 символів')
     .matches(/^[а-яА-ЯіІєЄїЇ'a-zA-Z/s]*$/gi, 'Only ENG && UA letters')
     .required(),
 });

@@ -8,4 +8,6 @@ export const ROUTE = {
   FEEDBACK: '/feedbacks',
   VACANCIES: '/vacancies',
   COMMENTS: '/comments',
+  FEEDBACKMORE: '/feedbacks/more',
+  CLIENTFEEDBACK: '/feedbacks/client',
 };

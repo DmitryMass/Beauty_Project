@@ -30,9 +30,9 @@ const BurgerMenu: FC<IBurgerMenuProps> = ({ modificator }) => {
           burgerMenu
             ? 'translate-x-0 transition-all duration-300 visible'
             : 'translate-x-full transition-all duration-300 invisible'
-        } fixed z-[100]  h-full  top-0 right-0  w-full flex justify-end `}
+        } fixed z-[100]  h-full  top-0 right-0  w-full flex justify-end  `}
       >
-        <div className='burgerBg  bg-coal text-white max-w-[350px] w-full  h-full relative flex flex-col justify-center gap-[30px] z-[20]'>
+        <div className='burgerBg  bg-coal text-white max-w-[350px] w-full  h-full relative flex flex-col justify-center gap-[30px] z-[20] max-[576px]:max-w-full'>
           <button
             className='absolute top-[15px] right-[15px]'
             onClick={() => setBurgerMenu((prev) => !prev)}

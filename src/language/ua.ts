@@ -115,4 +115,6 @@ export const ua = {
   reviewFooterTitle: 'И самое главное - они влюблены в свою работу',
   moreReviews: 'Читати більше відгуків',
   leaveReview: 'Оставить отзыв',
+  back: 'Back',
+  yourReview: 'Залишити відгук',
 };

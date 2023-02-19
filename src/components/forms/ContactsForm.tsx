@@ -11,6 +11,7 @@ import GeneralErrorHandler from '../ErrorHandler/GeneralErrorHandler';
 import SuccessHandler from '../SuccessHandler/SuccessHandler';
 //
 import { study } from '@/styles/study';
+
 interface IInitalValues {
   name: string;
   email: string;

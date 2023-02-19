@@ -12,10 +12,12 @@ import ServicesAndPrice from '@/pages/ServicesAndPrice/ServicesAndPrice';
 import Vacancies from '@/pages/Vacancies/Vacancies';
 import EditEmployeeModal from './admin/CreateEmployee/EditEmployeeModal';
 import EditService from './admin/CreateServices/EditService';
+import Comments from '@/pages/Comments/Comments';
+import MoreComments from '@/pages/MoreComments/MoreComments';
+import ClientReviewForm from '@/pages/ClientReview/ClientReviewForm';
 //
 import '../language/i18n';
 import './app.scss';
-import Comments from '@/pages/Comments/Comments';
 
 // import preview from '@/assets/images/previewStyleLogo.png';
 // import circle from '@/assets/images/previewCircle.png';
@@ -31,11 +33,13 @@ const App: FC = () => {
         <Route path={ROUTE.HOME} element={<Home />} />
         <Route path={ROUTE.SERVICES} element={<ServicesAndPrice />} />
         <Route path={ROUTE.MASTERS} element={<Masters />} />
+        <Route path={ROUTE.MASTER} element={<SignUpToMaster />} />
         <Route path={ROUTE.STUDY} element={<Study />} />
         <Route path={ROUTE.CONTACTS} element={<Contacts />} />
         <Route path={ROUTE.FEEDBACK} element={<Comments />} />
-        <Route path={ROUTE.MASTER} element={<SignUpToMaster />} />
         <Route path={ROUTE.VACANCIES} element={<Vacancies />} />
+        <Route path={ROUTE.FEEDBACKMORE} element={<MoreComments />} />
+        <Route path={ROUTE.CLIENTFEEDBACK} element={<ClientReviewForm />} />
         <Route path={import.meta.env.VITE_ADMIN} element={<Admin />} />
         <Route
           path={import.meta.env.VITE_SETTING_EMPLOYEE}

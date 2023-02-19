@@ -114,4 +114,6 @@ export const eng = {
     'And the most important thing is that they are passionate about their work',
   moreReviews: 'Read more reviews',
   leaveReview: 'Leave a review',
+  back: 'Back',
+  yourReview: 'Leave a review',
 };

@@ -48,7 +48,7 @@ const MasterCard: FC<IMasterCardProps> = ({
           </div>
           <div className='px-[10px]'>
             <h3 className={masters.servicesTitle}>{t('Послуги')}</h3>
-            <ul className='h-[150px] overflow-auto pointer-events-auto'>
+            <ul className='master__services h-[150px] overflow-auto pointer-events-auto'>
               {options?.map((services: IOptions) => (
                 <li
                   className='mb-[5px] pointer-events-none'

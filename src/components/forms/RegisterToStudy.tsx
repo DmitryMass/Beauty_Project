@@ -137,7 +137,7 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({
                 <span>{t('didntChoose')}</span>
               </div>
             ) : data ? (
-              <div className='flex gap-[15px] items-center mb-[25px]'>
+              <div className='flex gap-[15px] items-center mb-[25px] max-[576px]:flex-wrap max-[576px]:justify-center'>
                 <div className='flex flex-col justify-start'>
                   <p className={study.dataTitle}>{t('price')}</p>
                   <div className={study.dataWrapper}>
@@ -161,7 +161,7 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({
               </div>
             ) : null}
             <ButtonSubmit
-              modificator='max-w-[200px] w-full py-[10px] font-semibold rounded-[6px] hover:bg-hoverGold transition-all duration-100'
+              modificator='max-w-[200px]  max-[576px]:flex max-[576px]:justify-center max-[576px]:items-center max-[576px]:mx-auto w-full py-[10px] font-semibold rounded-[6px] hover:bg-hoverGold transition-all duration-100'
               children={isLoading ? <Loader /> : `${t('signUp')}`}
             />
           </form>

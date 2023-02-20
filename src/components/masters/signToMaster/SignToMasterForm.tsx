@@ -177,11 +177,9 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
                   <option label={`${t('chooseDate')}`} value={``} />
                   {data?.workDays &&
                     data.workDays.map((data) => (
-                      <option
-                        key={data.day}
-                        value={data.day}
-                        label={data.day}
-                      />
+                      <option key={data.day} value={data.day} label={data.day}>
+                        {data.day}
+                      </option>
                     ))}
                 </select>
               </div>
@@ -194,7 +192,9 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
                   <option label={`${t('chooseTime')}`} />
                   {selectTime &&
                     selectTime.hours.map((time: string) => (
-                      <option key={time} value={time} label={time} />
+                      <option key={time} value={time} label={time}>
+                        {time}
+                      </option>
                     ))}
                 </select>
               </div>

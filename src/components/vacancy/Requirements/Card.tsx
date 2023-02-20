@@ -42,7 +42,7 @@ const Card: FC = () => {
       {data
         ? data.map((vacancy: IVacancy, idx: number) => (
             <div key={vacancy._id} className='card'>
-              <div className='card__group group h-[400px] max-w-[320px] w-full [perspective:1000px] mb-[20px] '>
+              <div className='card__group group h-[400px] max-w-[320px] max-[992px]:max-w-[440px] w-full [perspective:1000px] mb-[20px] '>
                 <div
                   className={`card__container relative z-30 h-full w-full transition-all duration-500 [transform-style:preserve-3d]  ${
                     showFront === vacancy._id

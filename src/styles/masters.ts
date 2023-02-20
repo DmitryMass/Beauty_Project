@@ -8,7 +8,7 @@ export const masters = {
   blurBubble:
     'max-w-[235px] w-full max-h-[250px] h-full rounded-full bg-goldBlur blur-[200px] absolute top-0 right-0',
   burgerModificator:
-    'w-[85px] h-[85px] absolute top-[15px] right-[30px] justify-end max-[400px]:top-[30px]',
+    'w-[85px] h-[85px] absolute top-[15px] right-[30px] justify-end',
   logoModificator: 'w-[85px] absolute top-[0] right-[30px] max-[992px]:hidden',
   swiperContainer:
     'flex mt-[110px] max-w-[992px] w-full mx-auto justify-center  h-full py-[20px]',

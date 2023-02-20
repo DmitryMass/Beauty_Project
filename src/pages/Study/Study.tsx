@@ -34,15 +34,13 @@ const Study: FC = () => {
     <div className='bg-black w-full h-full'>
       <div className={`${study.container} flex justify-start`}>
         <div className='blur h-[105vh]'></div>
-        <div className='h-full w-[50%] relative z-10'>
-          <div className='study'></div>
-        </div>
+        <div className='study' />
         <div className={`${study.wrapper} relative z-20`}>
           <Logo
             imgModificator='w-[80px] h-[85px]'
-            modificator='w-[85px] ml-auto max-[992px]:hidden'
+            modificator='w-[85px] ml-auto max-[992px]:hidden absolute top-0 right-[15px]'
           />
-          <BurgerMenu modificator='ml-auto justify-end w-[80px] h-[85px]' />
+          <BurgerMenu modificator='ml-auto justify-end w-[80px] h-[85px] max-[576px]:h-[50px] max-[992px]:absolute top-0 right-[15px]' />
           <div>
             <h1 className={study.title}>{t('courseRegister')}</h1>
             <p className={study.subtitle}>{t('requiredFields')}</p>

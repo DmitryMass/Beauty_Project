@@ -1,17 +1,20 @@
 .card {
   max-width: 320px;
   width: 100%;
+  @media screen and (max-width: 992px) {
+    max-width: 440px;
+  }
   &:first-child > .card__group > .card__container {
     & > .card__front,
     .card__back {
       border-bottom-left-radius: 50px;
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 992px) {
         border-radius: 0%;
       }
       & > .card__title {
         width: 98%;
         margin-left: auto;
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 992px) {
           border-radius: 0%;
           width: 100%;
           margin-left: 0;
@@ -24,14 +27,14 @@
     & > .card__front,
     .card__back {
       border-top-right-radius: 50px;
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 992px) {
         border-radius: 0%;
       }
       & > .card__title {
         width: 98%;
         margin-right: 10px;
         border-top-right-radius: 50px;
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 992px) {
           border-radius: 0%;
           width: 100%;
           margin-right: 0;

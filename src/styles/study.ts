@@ -1,6 +1,7 @@
 export const study = {
   container: 'h-full relative max-w-[1340px] mx-auto',
-  wrapper: 'w-[50%] h-full ml-auto  bg-black px-[15px]',
+  wrapper:
+    'max-w-[992px] max-[992px]:max-w-[768px] max-[992px]:mx-auto w-full h-full ml-auto   px-[15px] pb-[30px] pt-[110px]',
   title: 'text-gold text-h2 leading-md mb-[5px] font-bold',
   subtitle: 'text-white text-sm leading-m mb-[15px]',
   select:

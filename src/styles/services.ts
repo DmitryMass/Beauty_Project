@@ -10,7 +10,7 @@ export const servicesStyle = {
   rightBranch: 'fixed top-0 right-0 max-w-[400px] max-[500px]:max-w-[300px] ',
   leftBranch: 'fixed bottom-0 left-0 max-w-[200px]',
   burgerModificator:
-    'w-[85px] h-[85px] absolute top-[15px] right-[30px] justify-end max-[420px]:top-[30px]',
+    'w-[85px] h-[85px] absolute top-[15px] right-[30px] justify-end ',
   logoModificator: 'w-[85px] absolute top-[0] right-[30px] max-[992px]:hidden ',
   procedureContainer:
     'w-full text-gold py-[5px] px-[20px] border-b-[1px] border-gold flex justify-between items-center',

@@ -13,7 +13,7 @@ export const vacanciesStyle = {
   vacancySubtitle:
     'leading-6 tracking-[3px] max-[576px]:tracking-[1px] text-sm font-semibold py-[5px]',
   requirementsWrapper:
-    'w-full grid grid-cols-3 max-[768px]:grid-cols-1 items-center justify-items-center pt-[40px] gap-[13px]',
+    'w-full grid grid-cols-3 max-[992px]:grid-cols-1 items-center justify-items-center pt-[40px] gap-[13px]',
   cardLoading:
     'fixed max-w-[200px] mx-auto inset-0 flex justify-center items-center',
 };

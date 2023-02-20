@@ -1,6 +1,6 @@
 export const reviews = {
   container:
-    'relative  bg_img max-w-[1320px] w-full mx-auto px-[25px] max-[768px]:px-[15px]',
+    'relative  bg_img max-w-[1320px] w-full mx-auto px-[25px] max-[768px]:px-[15px] pb-[20px]',
   burgerModificator:
     'w-[85px] h-[85px] absolute top-[15px] right-[30px] justify-end max-[390px]:top-[30px]',
   logoModificator: 'w-[85px] absolute top-[0] right-[30px] max-[992px]:hidden',
@@ -15,8 +15,8 @@ export const reviews = {
   footerTitle: 'text-white font-medium text-h3 max-[576px]:text-md',
   //   morecommentsPage
   moreWrapper:
-    'relative  bg_img max-w-[1320px] w-full mx-auto px-[25px] max-[768px]:px-[15px]',
-  morePaginationContainer: 'max-w-[992px] w-full mx-auto pt-[120px] pb-[20px]',
+    'relative  bg_img max-w-[1320px] w-full mx-auto px-[25px] max-[768px]:px-[15px] ',
+  morePaginationContainer: 'max-w-[992px] w-full mx-auto pt-[120px] pb-[20px] ',
   moreReviewContainer: 'bg-gold rounded-[30px] py-[15px] px-[30px] mb-[30px]',
   btnsWrapper: 'flex justify-center gap-[20px] items-center',
   btnMoreAndBack:

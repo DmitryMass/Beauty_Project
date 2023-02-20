@@ -56,6 +56,7 @@ const MoreComments: FC = () => {
             <Loader />
           </div>
         ) : null}
+
         {data?.reviews
           ? data.reviews.map((review: IReview) => (
               <div className={reviews.moreReviewContainer} key={review._id}>
@@ -66,6 +67,7 @@ const MoreComments: FC = () => {
               </div>
             ))
           : null}
+
         <div className={reviews.btnsWrapper}>
           <button
             onClick={() => setPage((prev) => prev - 1)}

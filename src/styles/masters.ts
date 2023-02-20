@@ -1,6 +1,8 @@
 export const masters = {
-  decorationImgLeft: 'absolute bottom-0 left-0 max-w-[350px] w-full',
-  decorationImgRight: 'absolute right-0 bottom-0 max-w-[300px] w-full',
+  decorationImgLeft:
+    'fixed bottom-0 left-0 max-w-[350px] max-[500px]:max-w-[200px] w-full',
+  decorationImgRight:
+    'fixed right-0 bottom-0 max-w-[300px] max-[500px]:max-w-[150px] w-full',
   infoWrapper:
     'min-h-[100vh] relative max-w-[1320px] w-full mx-auto px-[30px] relative flex justify-center items-center',
   blurBubble:

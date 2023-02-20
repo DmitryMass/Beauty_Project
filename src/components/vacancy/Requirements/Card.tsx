@@ -9,10 +9,12 @@ import Loader from '@/components/Loader/Loader';
 import { IVacancy } from '@/types/vacancies';
 import './requirements.scss';
 import { vacanciesStyle } from '@/styles/vacanciesStyle';
+import { useTranslation } from 'react-i18next';
 
 const Card: FC = () => {
   const { data = null, isLoading, isError } = useGetAllVacanciesQuery('');
   const [showFront, setShowFront] = useState<string | null>('');
+  const { t } = useTranslation();
 
   const handleClick = (id: string) => {
     if (id === showFront) {
@@ -27,9 +29,7 @@ const Card: FC = () => {
       {isError ? (
         <GeneralErrorHandler
           isError={isError}
-          data={
-            'Вибайте йдуть технічні роботи. Перезавантажте сторінку або спробуйте пізніше'
-          }
+          data={`${t('запис технічка')}`}
         />
       ) : null}
 
@@ -38,6 +38,7 @@ const Card: FC = () => {
           <Loader />
         </div>
       ) : null}
+
       {data
         ? data.map((vacancy: IVacancy, idx: number) => (
             <div key={vacancy._id} className='card'>

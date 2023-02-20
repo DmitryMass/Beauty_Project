@@ -7,8 +7,8 @@ export const servicesStyle = {
     'max-w-[200px] w-full h-full flex justify-center items-center mx-auto',
   serviceContainer:
     'max-w-[1140px] relative w-full h-full mx-auto px-[15px] pt-[130px] max-[576px]:pt-[150px]',
-  rightBranch: 'absolute top-0 right-0 max-w-[400px] ',
-  leftBranch: 'absolute bottom-0 left-0 max-w-[200px]',
+  rightBranch: 'fixed top-0 right-0 max-w-[400px] max-[500px]:max-w-[300px] ',
+  leftBranch: 'fixed bottom-0 left-0 max-w-[200px]',
   burgerModificator:
     'w-[85px] h-[85px] absolute top-[15px] right-[30px] justify-end max-[420px]:top-[30px]',
   logoModificator: 'w-[85px] absolute top-[0] right-[30px] max-[992px]:hidden ',

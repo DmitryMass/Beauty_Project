@@ -4,7 +4,7 @@ import { IServices } from '@/types/services';
 import { IVacancy } from '@/types/vacancies';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const URL = 'http://localhost:5005/admin';
+const URL = `${import.meta.env.VITE_SERVER}/admin`;
 
 // ***********************************************************
 export const adminApi = createApi({

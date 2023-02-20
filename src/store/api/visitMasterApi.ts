@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const URL = 'http://localhost:5005/procedure';
+const URL = `${import.meta.env.VITE_SERVER}/procedure`;
 
 export const visitMasterApi = createApi({
   reducerPath: 'visitMasterApi',

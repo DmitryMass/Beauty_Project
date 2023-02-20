@@ -5,11 +5,11 @@ export const reviews = {
     'w-[85px] h-[85px] absolute top-[15px] right-[30px] justify-end max-[390px]:top-[30px]',
   logoModificator: 'w-[85px] absolute top-[0] right-[30px] max-[992px]:hidden',
   title:
-    'text-white text-h3 font-medium max-[576px]:text-md text-center pt-[150px] mb-[70px] max-[576px]:mb-[50px] max-[576px]:pt-[130px]',
+    'text-white text-h3 font-medium max-[576px]:text-md text-center pt-[150px] max-[576px]:pt-[130px]',
   reviewsSwiperContainer:
-    'flex items-center justify-center w-full  py-[20px] max-h-[280px]',
+    'flex items-center justify-center w-full  py-[20px] min-h-[390px]',
   reviewContainer:
-    'reviews__shadow max-w-[400px] w-full mx-auto bg-gold rounded-[30px] p-[25px] max-h-[280px]',
+    'reviews__shadow max-w-[400px] w-full mx-auto bg-gold rounded-[30px] p-[25px] h-[230px]',
   footerWrapper:
     'max-w-[992px] flex mx-auto justify-between mb-[35px] mt-[50px] items-center max-[768px]:flex-col max-[768px]:gap-[10px] max-[768px]:mt-[50px] max-[768px]:mb-[20px]',
   footerTitle: 'text-white font-medium text-h3 max-[576px]:text-md',

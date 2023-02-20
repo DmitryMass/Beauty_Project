@@ -1,7 +1,7 @@
 import { IReview } from '@/types/review';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const URL = 'http://localhost:5005/contacts';
+const URL = `${import.meta.env.VITE_SERVER}/contacts`;
 
 export const contactsApi = createApi({
   reducerPath: 'contactsApi',

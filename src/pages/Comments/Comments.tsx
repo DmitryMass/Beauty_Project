@@ -59,33 +59,34 @@ const Comments: FC = () => {
         modificator={reviews.logoModificator}
       />
       <p className={reviews.title}>{t('reviewTitle')}</p>
-      {isLoading ? (
-        <div className='max-w-[200px] w-full mx-auto '>
-          <Loader />
-        </div>
-      ) : null}
       <div className={reviews.reviewsSwiperContainer}>
-        <Swiper
-          className='reviews__swiper'
-          freeMode={true}
-          modules={[FreeMode, Pagination]}
-          pagination={pagination}
-          breakpoints={reviewsBreakPoints}
-        >
-          {data
-            ? data.map((item: IReview) => (
-                <SwiperSlide key={item._id}>
-                  <div className={reviews.reviewContainer}>
-                    <ClientReview
-                      item={item}
-                      descriptionModificator='reviews__description'
-                      nameModificator='reviews__name'
-                    />
-                  </div>
-                </SwiperSlide>
-              ))
-            : null}
-        </Swiper>
+        {isLoading ? (
+          <div className='max-w-[200px] w-full mx-auto '>
+            <Loader />
+          </div>
+        ) : (
+          <Swiper
+            className='reviews__swiper'
+            freeMode={true}
+            modules={[FreeMode, Pagination]}
+            pagination={pagination}
+            breakpoints={reviewsBreakPoints}
+          >
+            {data
+              ? data.map((item: IReview) => (
+                  <SwiperSlide key={item._id}>
+                    <div className={reviews.reviewContainer}>
+                      <ClientReview
+                        item={item}
+                        descriptionModificator='reviews__description'
+                        nameModificator='reviews__name'
+                      />
+                    </div>
+                  </SwiperSlide>
+                ))
+              : null}
+          </Swiper>
+        )}
       </div>
       <div className={reviews.footerWrapper}>
         <LinkButton

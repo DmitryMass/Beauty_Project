@@ -31,7 +31,7 @@ const MasterCard: FC<IMasterCardProps> = ({
           />
           <img
             className='absolute w-full h-full object-cover   rounded-[28px] bg-masterBg'
-            src={`http://localhost:5005/assets/${imgPath}`}
+            src={`https://beauty-style-server.onrender.com/assets/${imgPath}`}
             alt=''
           />
         </div>

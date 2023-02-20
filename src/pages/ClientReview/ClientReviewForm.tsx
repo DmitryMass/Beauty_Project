@@ -1,18 +1,21 @@
 import { FC, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Field, Formik, FormikHelpers } from 'formik';
 //
 import { useHideTitle } from '@/components/customHooks/useHideTitle';
 import GeneralErrorHandler from '@/components/ErrorHandler/GeneralErrorHandler';
 import GoldTitleBox from '@/components/GoldTitleBox/GoldTitleBox';
 import BurgerMenu from '@/components/home/BurgerMenu';
 import Logo from '@/components/Logo/Logo';
-//
-import { reviews } from '@/styles/reviews';
-import { Field, Formik, FormikHelpers } from 'formik';
-import { study } from '@/styles/study';
 import ButtonSubmit from '@/components/ButtonSubmit/ButtonSubmit';
 import Loader from '@/components/Loader/Loader';
+//
+import { reviews } from '@/styles/reviews';
+import { study } from '@/styles/study';
 import { signToMaster } from '@/styles/signToMaster';
+import { reviewFormValidation } from '@/utils/validation/createGroupValidation';
+import { useSendReviewMutation } from '@/store/api/contactsApi';
+import SuccessHandler from '@/components/SuccessHandler/SuccessHandler';
 
 interface IInitalValues {
   name: string;
@@ -24,6 +27,8 @@ interface IInitalValues {
 const ClientReviewForm: FC = () => {
   const { t } = useTranslation();
   const { listenToScroll, visibility } = useHideTitle();
+  const [sendReview, { isLoading, isError, isSuccess }] =
+    useSendReviewMutation();
 
   const handleSubmit = async (
     values: IInitalValues,
@@ -34,8 +39,7 @@ const ClientReviewForm: FC = () => {
     Object.entries(values).forEach((item) => {
       body.append(item[0], item[1]);
     });
-
-    console.log(values);
+    await sendReview(body);
   };
 
   useEffect(() => {
@@ -45,12 +49,15 @@ const ClientReviewForm: FC = () => {
 
   return (
     <div className={reviews.container}>
-      {/* {isError ? (
+      {isSuccess ? (
+        <SuccessHandler success={isSuccess} data={`${t('thnxForReview')}`} />
+      ) : null}
+      {isError ? (
         <GeneralErrorHandler
           isError={isError}
           data={`${t('запис технічка')}`}
         />
-      ) : null} */}
+      ) : null}
       <GoldTitleBox
         modificator={`${
           visibility
@@ -65,11 +72,14 @@ const ClientReviewForm: FC = () => {
         imgModificator='w-[80px] h-[85px]'
         modificator={reviews.logoModificator}
       />
-      <div className='pt-[180px] pb-[20px] max-w-[768px] w-full mx-auto'>
+      <div className='pt-[140px] pb-[20px] max-w-[768px] w-full mx-auto'>
+        <h3 className='pb-[30px] text-center text-white text-md'>
+          {t('дякуємо')} <br /> {t('відгук')}
+        </h3>
         <Formik
           initialValues={{ name: '', email: '', stars: '', review: '' }}
           onSubmit={handleSubmit}
-          validationSchema={''}
+          validationSchema={reviewFormValidation}
         >
           {({
             handleSubmit,
@@ -84,7 +94,7 @@ const ClientReviewForm: FC = () => {
                 <label className={study.label} htmlFor='name'>
                   {t('name')}
                   {touched.name && errors.name && (
-                    <span className={study.error}>{errors.name}</span>
+                    <span className={study.error}>{t(`${errors.name}`)}</span>
                   )}
                   <Field
                     id='name'
@@ -101,7 +111,7 @@ const ClientReviewForm: FC = () => {
                 <label className={`${study.label}`} htmlFor='email'>
                   {t('email')}
                   {touched.email && errors.email && (
-                    <span className={study.error}>{errors.email}</span>
+                    <span className={study.error}>{t(`${errors.email}`)}</span>
                   )}
                   <Field
                     className={study.input}
@@ -115,7 +125,10 @@ const ClientReviewForm: FC = () => {
                   />
                 </label>
                 <label htmlFor='stars' className={study.label}>
-                  Оцінка
+                  {t('rate')}
+                  {touched.stars && errors.stars && (
+                    <span className={study.error}>{t(`${errors.stars}`)}</span>
+                  )}
                   <select
                     id='stars'
                     name='stars'
@@ -124,7 +137,7 @@ const ClientReviewForm: FC = () => {
                     onChange={handleChange}
                     value={values.stars}
                   >
-                    <option label='Виберіть оцінку' value='Виберіть оцінку' />
+                    <option label={`${t('chooseRate')}`} />
                     <option label='1' value='1' />
                     <option label='2' value='2' />
                     <option label='3' value='3' />
@@ -133,9 +146,9 @@ const ClientReviewForm: FC = () => {
                   </select>
                 </label>
                 <label className={study.label} htmlFor='review'>
-                  {t('yourQuestionLabel')}
+                  {t('yourReview')}
                   {touched.review && errors.review && (
-                    <span className={study.error}>{errors.review}</span>
+                    <span className={study.error}>{t(`${errors.review}`)}</span>
                   )}
                   <Field
                     id='review'
@@ -145,13 +158,12 @@ const ClientReviewForm: FC = () => {
                     onBlur={handleBlur}
                     value={values.review}
                     name='review'
-                    placeholder={t('yourQuestionPlaceholder')}
+                    placeholder={t('yourReview')}
                   />
                 </label>
               </div>
               <ButtonSubmit
-                // children={isLoading ? <Loader /> : `${t('sendBtn')}`}
-                children={`${t('sendBtn')}`}
+                children={isLoading ? <Loader /> : `${t('sendBtn')}`}
                 modificator={
                   'max-w-[160px] flex items-center justify-center w-full py-[5px] font-semibold hover:bg-hoverGold transition-all duration-100 mx-auto'
                 }

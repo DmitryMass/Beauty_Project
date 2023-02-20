@@ -22,6 +22,14 @@ export const reviewsApi = createApi({
   tagTypes: ['ReviewMore', 'Reviews'],
   baseQuery: fetchBaseQuery({ baseUrl: URL }),
   endpoints: (build) => ({
+    sendReview: build.mutation<any, FormData>({
+      query: (body) => ({
+        url: '/review',
+        method: 'POST',
+        body,
+      }),
+      invalidatesTags: [{ type: 'Reviews', id: 'reviewsList' }],
+    }),
     getReviewsPagination: build.query<
       { reviews: IReview[]; totalReviews: number },
       { page: number; limit?: number }
@@ -45,6 +53,10 @@ export const reviewsApi = createApi({
   }),
 });
 
-export const { useGetReviewsPaginationQuery, useGetReviewsQuery } = reviewsApi;
+export const {
+  useGetReviewsPaginationQuery,
+  useGetReviewsQuery,
+  useSendReviewMutation,
+} = reviewsApi;
 
 export const { useSendFeedbackMutation } = contactsApi;

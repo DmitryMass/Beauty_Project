@@ -70,7 +70,7 @@ const ContactsForm: FC = () => {
               <label className={study.label} htmlFor='name'>
                 {t('name')}
                 {touched.name && errors.name && (
-                  <span className={study.error}>{errors.name}</span>
+                  <span className={study.error}>{t(`${errors.name}`)}</span>
                 )}
                 <Field
                   id='name'
@@ -87,7 +87,7 @@ const ContactsForm: FC = () => {
               <label className={study.label} htmlFor='email'>
                 {t('email')}
                 {touched.email && errors.email && (
-                  <span className={study.error}>{errors.email}</span>
+                  <span className={study.error}>{t(`${errors.email}`)}</span>
                 )}
                 <Field
                   className={study.input}

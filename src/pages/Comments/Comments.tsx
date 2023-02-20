@@ -76,7 +76,11 @@ const Comments: FC = () => {
             ? data.map((item: IReview) => (
                 <SwiperSlide key={item._id}>
                   <div className={reviews.reviewContainer}>
-                    <ClientReview item={item} nameModificator='reviews__name' />
+                    <ClientReview
+                      item={item}
+                      descriptionModificator='reviews__description'
+                      nameModificator='reviews__name'
+                    />
                   </div>
                 </SwiperSlide>
               ))

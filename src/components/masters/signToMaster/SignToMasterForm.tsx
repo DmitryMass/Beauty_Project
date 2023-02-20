@@ -101,7 +101,7 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
               <label className={study.label} htmlFor='name'>
                 {t('name')}
                 {touched.name && errors.name && (
-                  <span className={study.error}>{errors.name}</span>
+                  <span className={study.error}>{t(`${errors.name}`)}</span>
                 )}
                 <Field
                   id='name'
@@ -117,7 +117,9 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
               <label className={study.label} htmlFor='phoneNumber'>
                 {t('number')}
                 {touched.phoneNumber && errors.phoneNumber && (
-                  <span className={study.error}>{errors.phoneNumber}</span>
+                  <span className={study.error}>
+                    {t(`${errors.phoneNumber}`)}
+                  </span>
                 )}
                 <Field
                   id='phoneNumber'

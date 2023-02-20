@@ -8,6 +8,7 @@ const LangBtn: FC = () => {
 
   const changeLanguage = useCallback((lang: string) => {
     i18n.changeLanguage(lang);
+    localStorage.setItem('language', lang);
   }, []);
 
   return (

@@ -6,9 +6,14 @@ import star from '@/assets/images/star.png';
 interface IClientReviewProps {
   item: IReview;
   nameModificator?: string;
+  descriptionModificator?: string;
 }
 
-const ClientReview: FC<IClientReviewProps> = ({ item, nameModificator }) => {
+const ClientReview: FC<IClientReviewProps> = ({
+  item,
+  nameModificator,
+  descriptionModificator,
+}) => {
   return (
     <>
       <div className='flex justify-between items-center'>
@@ -27,7 +32,9 @@ const ClientReview: FC<IClientReviewProps> = ({ item, nameModificator }) => {
         </p>
         <img className='w-[15px] h-[15px]' src={star} alt='star' />
       </div>
-      <p className='reviews__description text-classic font-medium h-[130px] pointer-events-none'>
+      <p
+        className={`${descriptionModificator} text-classic font-medium  pointer-events-none`}
+      >
         {item.review}
       </p>
     </>

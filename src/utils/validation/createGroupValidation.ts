@@ -3,13 +3,14 @@ import * as yup from 'yup';
 export const createGroupValidation = yup.object().shape({
   countPlaces: yup
     .string()
-    .max(3)
+    .label('Count')
+    .max(3, 'Максимум 3 символи')
     .matches(/^[0-9]*$/gi, 'Numbers only')
     .required(),
   price: yup
     .string()
     .label('Price')
-    .max(4)
+    .max(4, 'Максимум 4 символи')
     .matches(/^[0-9]*$/gi, 'Numbers only')
     .required(),
 });
@@ -18,7 +19,7 @@ export const trainingRegistrationValidation = yup.object().shape({
   email: yup
     .string()
     .email('example@gmail.com')
-    .max(70)
+    .max(70, 'Максимум 70 символів')
     .label('Email')
     .matches(/^[0-9_-a-zA-Z.@/s]*$/gi, 'Only ENG && UA letters')
     .required(),
@@ -32,8 +33,8 @@ export const trainingRegistrationValidation = yup.object().shape({
   phoneNumber: yup
     .string()
     .label('Number')
-    .min(6, 'Min 6 symbols')
-    .max(10, 'Max 10 symbols')
+    .min(6, 'Мінімум 6 символи')
+    .max(10, 'Максимум 10 символів')
     .matches(/^[0-9+/s]*$/gi, 'Numbers from 0 to 9')
     .required(),
 });
@@ -42,7 +43,7 @@ export const createEmployeeValidation = yup.object().shape({
   email: yup
     .string()
     .email('example@gmail.com')
-    .max(70)
+    .max(70, 'Максимум 70 символів')
     .label('Email')
     .matches(/^[0-9_-a-zA-Z.@/s]*$/gi, 'Only ENG && UA letters')
     .required(),
@@ -69,8 +70,8 @@ export const createEmployeeValidation = yup.object().shape({
   phoneNumber: yup
     .string()
     .label('Number')
-    .min(6, 'Min 6 symbols')
-    .max(10, 'Max 10 symbols')
+    .min(6, 'Мінімум 6 символи')
+    .max(10, 'Максимум 10 символів')
     .matches(/^[0-9+/s]*$/gi, 'Numbers from 0 to 9')
     .required(),
 });
@@ -79,7 +80,7 @@ export const contactsValidation = yup.object().shape({
   email: yup
     .string()
     .email('example@gmail.com')
-    .max(70)
+    .max(70, 'Максимум 70 символів')
     .label('Email')
     .matches(/^[0-9_-a-zA-Z.@/s]*$/gi, 'Only ENG && UA letters')
     .required(),
@@ -97,8 +98,8 @@ export const visitToMasterValidation = yup.object().shape({
   phoneNumber: yup
     .string()
     .label('Number')
-    .min(6, 'Min 6 symbols')
-    .max(10, 'Max 10 symbols')
+    .min(6, 'Мінімум 6 символи')
+    .max(10, 'Максимум 10 символів')
     .matches(/^[0-9+/s]*$/gi, 'Numbers from 0 to 9')
     .required(),
   name: yup
@@ -108,4 +109,23 @@ export const visitToMasterValidation = yup.object().shape({
     .max(25, 'Максимум 25 символів')
     .matches(/^[а-яА-ЯіІєЄїЇ'a-zA-Z/s]*$/gi, 'Only ENG && UA letters')
     .required(),
+});
+
+export const reviewFormValidation = yup.object().shape({
+  email: yup
+    .string()
+    .email('example@gmail.com')
+    .max(70, 'Максимум 70 символів')
+    .label('Email')
+    .matches(/^[0-9_-a-zA-Z.@/s]*$/gi, 'Only ENG && UA letters')
+    .required(),
+  name: yup
+    .string()
+    .label('Name')
+    .min(2, 'Мінімум 2 символи')
+    .max(25, 'Максимум 25 символів')
+    .matches(/^[а-яА-ЯіІєЄїЇ'a-zA-Z/s]*$/gi, 'Only ENG && UA letters')
+    .required(),
+  stars: yup.string().label('Rate').required(),
+  review: yup.string().label('Review').required(),
 });

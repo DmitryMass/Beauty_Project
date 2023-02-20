@@ -39,8 +39,8 @@ const MoreComments: FC = () => {
       <GoldTitleBox
         modificator={`${
           visibility
-            ? 'visible opacity-1 transition-all duration-150'
-            : 'invisible opacity-0 transition-all duration-150'
+            ? 'visible opacity-1 transition-all duration-75'
+            : 'invisible opacity-0 transition-all duration-75'
         }`}
       >
         {t('reviews')}

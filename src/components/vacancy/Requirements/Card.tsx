@@ -15,7 +15,6 @@ const Card: FC = () => {
   const [showFront, setShowFront] = useState<string | null>('');
 
   const handleClick = (id: string) => {
-    console.log(showFront === id);
     if (id === showFront) {
       setShowFront(null);
       return;

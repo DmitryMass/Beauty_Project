@@ -28,7 +28,7 @@ const SignUpToMaster: FC = () => {
           />
           <BurgerMenu modificator='w-[85px] h-[85px] max-[576px]:h-[50px] ml-auto justify-end' />
         </div>
-        <div className='pt-[50px]'>
+        <div className='pt-[50px] max-[576px]:pt-[20px]'>
           <h2 className={signToMaster.title}>{t('titleMaster')}</h2>
           <p className={signToMaster.subtitle}>{t('subtitleMaster')}</p>
         </div>

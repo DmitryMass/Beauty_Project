@@ -2,7 +2,7 @@ export const reviews = {
   container:
     'relative  bg_img max-w-[1320px] w-full mx-auto px-[25px] max-[768px]:px-[15px] pb-[20px]',
   burgerModificator:
-    'w-[85px] h-[85px] absolute top-[15px] right-[30px] justify-end max-[390px]:top-[30px]',
+    'w-[85px] h-[85px] absolute top-[15px] right-[30px] justify-end ',
   logoModificator: 'w-[85px] absolute top-[0] right-[30px] max-[992px]:hidden',
   title:
     'text-white text-h3 font-medium max-[576px]:text-md text-center pt-[150px] max-[576px]:pt-[130px]',

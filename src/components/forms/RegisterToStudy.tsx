@@ -57,7 +57,7 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({
   };
 
   return (
-    <div>
+    <div className='pb-[30px]'>
       {responseData ? (
         <ErrorHandler data={responseData} setResponseData={setResponseData} />
       ) : null}

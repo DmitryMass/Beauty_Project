@@ -70,7 +70,7 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
   }
 
   return (
-    <div>
+    <div className='pb-[30px]'>
       {isError ? (
         <GeneralErrorHandler isError={isError} data={t('запис технічка')} />
       ) : null}

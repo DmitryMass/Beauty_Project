@@ -165,7 +165,7 @@ const ClientReviewForm: FC = () => {
               <ButtonSubmit
                 children={isLoading ? <Loader /> : `${t('sendBtn')}`}
                 modificator={
-                  'max-w-[160px] flex items-center justify-center w-full py-[5px] font-semibold hover:bg-hoverGold transition-all duration-100 mx-auto'
+                  'bg-gold text-darkGrey text-classic leading-classic max-w-[200px] w-full py-[10px] font-semibold rounded-[6px] hover:bg-hoverGold transition-all duration-100"'
                 }
               />
             </form>

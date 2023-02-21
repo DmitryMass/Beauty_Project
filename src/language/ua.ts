@@ -112,7 +112,7 @@ export const ua = {
   vacancySubtitle: 'Адже разом ми зробимо цей світ кращим!',
   // reviews
   reviewTitle: 'Наші майстри справжні професіонали своєї справи',
-  reviewFooterTitle: 'И самое главное - они влюблены в свою работу',
+  reviewFooterTitle: 'І найголовніше - вони закохані у свою роботу',
   moreReviews: 'Читати більше відгуків',
   leaveReview: 'Оставить отзыв',
   back: 'Назад',

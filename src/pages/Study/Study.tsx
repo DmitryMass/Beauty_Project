@@ -52,7 +52,7 @@ const Study: FC = () => {
           </div>
           <div className='relative'>
             <div className='flex justify-start items-center mb-[10px]'>
-              <p className={`${study.label} w-[100px]`}>{t('courseType')}</p>
+              <p className={`${study.label} w-[130px]`}>{t('courseType')}</p>
               {isFetching ? (
                 <div className='mb-[-2px]'>
                   <Loader />

@@ -137,12 +137,24 @@ const ClientReviewForm: FC = () => {
                     onChange={handleChange}
                     value={values.stars}
                   >
-                    <option label={`${t('chooseRate')}`} />
-                    <option label='1' value='1' />
-                    <option label='2' value='2' />
-                    <option label='3' value='3' />
-                    <option label='4' value='4' />
-                    <option label='5' value='5' />
+                    <option label={`${t('chooseRate')}`}>
+                      {t('chooseRate')}
+                    </option>
+                    <option label='1' value='1'>
+                      1
+                    </option>
+                    <option label='2' value='2'>
+                      2
+                    </option>
+                    <option label='3' value='3'>
+                      3
+                    </option>
+                    <option label='4' value='4'>
+                      4
+                    </option>
+                    <option label='5' value='5'>
+                      5
+                    </option>
                   </select>
                 </label>
                 <label className={study.label} htmlFor='review'>

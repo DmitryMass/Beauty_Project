@@ -24,6 +24,7 @@ import './app.scss';
 import preview from '@/assets/images/previewStyleLogo.png';
 import circle from '@/assets/images/previewCircle.png';
 import { useTranslation } from 'react-i18next';
+import StudyCancel from '@/pages/StudyCancel/StudyCancel';
 
 const App: FC = () => {
   // Тестовий запрос для Preview
@@ -59,6 +60,7 @@ const App: FC = () => {
         <Route path={ROUTE.VACANCIES} element={<Vacancies />} />
         <Route path={ROUTE.FEEDBACKMORE} element={<MoreComments />} />
         <Route path={ROUTE.CLIENTFEEDBACK} element={<ClientReviewForm />} />
+        <Route path={ROUTE.CANCELSTUDY} element={<StudyCancel />} />
         <Route path={import.meta.env.VITE_ADMIN} element={<Admin />} />
         <Route
           path={import.meta.env.VITE_SETTING_EMPLOYEE}

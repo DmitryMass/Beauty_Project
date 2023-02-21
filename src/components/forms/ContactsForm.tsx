@@ -83,7 +83,6 @@ const ContactsForm: FC = () => {
                   placeholder={t('namePlaceholder')}
                 />
               </label>
-
               <label className={study.label} htmlFor='email'>
                 {t('email')}
                 {touched.email && errors.email && (

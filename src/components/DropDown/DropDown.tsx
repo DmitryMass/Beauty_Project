@@ -48,10 +48,12 @@ const DropDown: FC<IDropDownProps> = ({
             options.map((value) => (
               <div
                 className={styles}
-                key={value}
-                onClick={() => hanldeClick(value)}
+                key={value.type}
+                onClick={() => hanldeClick(value.type)}
               >
-                {t(`${value}`)}
+                <p className='block first-letter:uppercase '>
+                  {t(`${value.type}`)}
+                </p>
               </div>
             ))}
         </div>

@@ -40,6 +40,7 @@ const Masters: FC = () => {
     window.addEventListener('scroll', listenToScroll);
     return () => window.removeEventListener('scroll', listenToScroll);
   }, []);
+
   return (
     <div className='relative'>
       <img className={masters.decorationImgLeft} src={masterLeft} alt='' />

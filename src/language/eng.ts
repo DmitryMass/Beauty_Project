@@ -25,6 +25,7 @@ export const eng = {
   leaveRequest: 'Leave a request',
   conditions: 'Conditions',
   requirements: 'Requirements',
+  cancel: 'Cancel',
   //   services and price + masters
   Манікюр: 'Manicure',
   Педікюр: 'Pedicure',
@@ -98,6 +99,8 @@ export const eng = {
   price: 'Price',
   freePlaces: 'Free places',
   startDate: 'Start date',
+  cancelTitle: 'Fill out the form to cancel your appointment',
+  cancelSuccess: 'Appointment cancelled',
   // contacts
   beInTouch: 'Stay in touch with us!',
   workDays: 'Mon - Sat',
@@ -140,4 +143,6 @@ export const eng = {
   'Surname is a required field': 'Surname is a required field',
   'Rate is a required field': 'Rate is a required field',
   'Review is a required field': 'Review is a required field',
+  'Type is a required field': `Type of course is a required field`,
+  'Start is a required field': `Start of course is a required field`,
 };

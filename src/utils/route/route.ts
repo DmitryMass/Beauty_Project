@@ -10,4 +10,5 @@ export const ROUTE = {
   COMMENTS: '/comments',
   FEEDBACKMORE: '/feedbacks/more',
   CLIENTFEEDBACK: '/feedbacks/client',
+  CANCELSTUDY: '/study/cancel',
 };

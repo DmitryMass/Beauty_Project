@@ -14,7 +14,15 @@ export const studyApi = createApi({
         body: body,
       }),
     }),
+    cancelRegister: build.mutation<any, FormData>({
+      query: (body) => ({
+        url: '/study',
+        method: 'DELETE',
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useRegisterClientMutation } = studyApi;
+export const { useRegisterClientMutation, useCancelRegisterMutation } =
+  studyApi;

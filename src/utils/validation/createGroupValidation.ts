@@ -129,3 +129,22 @@ export const reviewFormValidation = yup.object().shape({
   stars: yup.string().label('Rate').required(),
   review: yup.string().label('Review').required(),
 });
+
+export const cancelStudyValidation = yup.object().shape({
+  email: yup
+    .string()
+    .email('example@gmail.com')
+    .max(70, 'Максимум 70 символів')
+    .label('Email')
+    .matches(/^[0-9_-a-zA-Z.@/s]*$/gi, 'Only ENG && UA letters')
+    .required(),
+  name: yup
+    .string()
+    .label('Name')
+    .min(2, 'Мінімум 2 символи')
+    .max(25, 'Максимум 25 символів')
+    .matches(/^[а-яА-ЯіІєЄїЇ'a-zA-Z/s]*$/gi, 'Only ENG && UA letters')
+    .required(),
+  type: yup.string().label('Type').required(),
+  whenStart: yup.string().label('Start').required(),
+});

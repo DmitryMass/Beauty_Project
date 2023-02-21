@@ -1,8 +1,6 @@
 import { FC, useState } from 'react';
-import { options } from '@/utils/data/courses';
-import { useGetGroupQuery } from '@/store/api/adminApi';
+import { useGetGroupQuery, useGetGroupsQuery } from '@/store/api/adminApi';
 import { useTranslation } from 'react-i18next';
-
 //
 import RegisterToStudy from '@/components/forms/RegisterToStudy';
 import Logo from '@/components/Logo/Logo';
@@ -18,13 +16,17 @@ const Study: FC = () => {
 
   const [selected, setSelected] = useState<string>('...');
   const [toggleDropDown, setToggleDropDown] = useState<boolean>(false);
+  const {
+    data: groupData = [],
+    isLoading: groupLoading,
+    isError: groupError,
+  } = useGetGroupsQuery('');
 
   const {
     data = null,
     refetch,
     isError,
     isFetching,
-    isSuccess,
   } = useGetGroupQuery(
     { id: selected.toLowerCase() },
     {
@@ -33,14 +35,12 @@ const Study: FC = () => {
     }
   );
 
-  console.log(isFetching);
-
   return (
     <div className='bg-black w-full h-full'>
       <div className={`${study.container} flex justify-start`}>
         <div className='blur h-[105vh]'></div>
         <div className='study' />
-        <div className={`${study.wrapper} relative z-20`}>
+        <div className={`${study.wrapper} relative z-[19]`}>
           <Logo
             imgModificator='w-[80px] h-[85px]'
             modificator='w-[85px] ml-auto max-[992px]:hidden absolute top-0 right-[15px]'
@@ -58,12 +58,22 @@ const Study: FC = () => {
                   <Loader />
                 </div>
               ) : null}
+              {groupLoading ? (
+                <div className='mb-[-2px]'>
+                  <Loader />
+                </div>
+              ) : null}
+              {groupError ? (
+                <p className='text-[12px] text-red-500'>
+                  {t('запис технічка')}
+                </p>
+              ) : null}
             </div>
             <div
               onClick={() => setToggleDropDown((prev) => !prev)}
               className={`${study.select} flex justify-between mt-[5px]`}
             >
-              <p>{t(`${selected}`)}</p>
+              <p className='block first-letter:uppercase'>{t(`${selected}`)}</p>
               <p
                 className={`${
                   toggleDropDown ? 'rotate-[0deg]' : 'rotate-[180deg]'
@@ -74,7 +84,7 @@ const Study: FC = () => {
             </div>
             {toggleDropDown ? (
               <DropDown
-                options={options}
+                options={groupData ? groupData : []}
                 styles={study.option}
                 modificator='absolute top-[80px] left-0 w-full bg-darkGrey border-[1px] border-gold  px-[15px] py-[20px] [&>*:nth-child(4)]:mb-0 rounded-[6px]'
                 setToggleDropDown={setToggleDropDown}

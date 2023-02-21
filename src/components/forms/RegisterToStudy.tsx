@@ -13,6 +13,8 @@ import { IGroup } from '@/types/admin';
 import { ITrainingRegister } from '@/types/user';
 import { trainingRegistrationValidation } from '@/utils/validation/createGroupValidation';
 import { study } from '@/styles/study';
+import LinkButton from '../LinkButton/LinkButton';
+import { ROUTE } from '@/utils/route/route';
 
 interface IRegisterToStudyProps {
   data: IGroup | null;
@@ -160,10 +162,18 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({
                 </div>
               </div>
             ) : null}
-            <ButtonSubmit
-              modificator='max-w-[200px]  max-[576px]:flex max-[576px]:justify-center max-[576px]:items-center max-[576px]:mx-auto w-full py-[10px] font-semibold rounded-[6px] hover:bg-hoverGold transition-all duration-100'
-              children={isLoading ? <Loader /> : `${t('signUp')}`}
-            />
+            <div className=' flex gap-[30px] items-center max-[576px]:flex-col max-[576px]:gap-[20px]'>
+              <ButtonSubmit
+                modificator='max-w-[200px]  max-[576px]:flex max-[576px]:justify-center max-[576px]:items-center max-[576px]:mx-auto w-full py-[10px] font-semibold rounded-[6px] hover:bg-hoverGold transition-all duration-100'
+                children={isLoading ? <Loader /> : `${t('signUp')}`}
+              />
+              <LinkButton
+                route={ROUTE.CANCELSTUDY}
+                modificator='bg-transparent text-[#F0DDA3]'
+              >
+                Скасувати запис
+              </LinkButton>
+            </div>
           </form>
         )}
       </Formik>

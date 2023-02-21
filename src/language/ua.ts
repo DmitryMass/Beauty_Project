@@ -26,6 +26,7 @@ export const ua = {
   leaveRequest: 'Залишити заявку',
   conditions: 'Умови роботи',
   requirements: 'Вимоги',
+  cancel: 'Відмінити',
   //   services and price + masters
   Манікюр: 'Манікюр',
   Педікюр: 'Педікюр',
@@ -99,6 +100,9 @@ export const ua = {
   price: 'Ціна',
   freePlaces: 'Вільні місця',
   startDate: 'Дата початку',
+  cancelTitle: 'Заповніть форму для скасування запису',
+  cancelSuccess: 'Запис скасовано',
+
   // contacts
   beInTouch: `Будь з нами на зв'язку!`,
   workDays: 'Пн - Сб',
@@ -140,4 +144,6 @@ export const ua = {
   'Surname is a required field': `Фамілія обов'язкове поле`,
   'Rate is a required field': `Оцінка обов'язкове поле`,
   'Review is a required field': `Відгук обов'язкове поле`,
+  'Type is a required field': `Тип курсу обов'язкове поле`,
+  'Start is a required field': `Початок курсу обов'язкове поле`,
 };

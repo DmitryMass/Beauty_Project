@@ -11,6 +11,7 @@ import BurgerMenu from '@/components/home/BurgerMenu';
 //
 import { study } from '@/styles/study';
 import './study.scss';
+import Loader from '@/components/Loader/Loader';
 
 const Study: FC = () => {
   const { t } = useTranslation();
@@ -22,6 +23,8 @@ const Study: FC = () => {
     data = null,
     refetch,
     isError,
+    isFetching,
+    isSuccess,
   } = useGetGroupQuery(
     { id: selected.toLowerCase() },
     {
@@ -29,6 +32,8 @@ const Study: FC = () => {
       skip: selected === '...' ? true : false,
     }
   );
+
+  console.log(isFetching);
 
   return (
     <div className='bg-black w-full h-full'>
@@ -46,7 +51,14 @@ const Study: FC = () => {
             <p className={study.subtitle}>{t('requiredFields')}</p>
           </div>
           <div className='relative'>
-            <p className={study.label}>{t('courseType')}</p>
+            <div className='flex justify-start items-center mb-[10px]'>
+              <p className={`${study.label} w-[100px]`}>{t('courseType')}</p>
+              {isFetching ? (
+                <div className='mb-[-2px]'>
+                  <Loader />
+                </div>
+              ) : null}
+            </div>
             <div
               onClick={() => setToggleDropDown((prev) => !prev)}
               className={`${study.select} flex justify-between mt-[5px]`}

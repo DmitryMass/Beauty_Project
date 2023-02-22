@@ -34,6 +34,12 @@ export const eng = {
     'You have already left a review with such a rating.',
   'Помилка серверу при отправці відгуку. Спробуйте пізніше.':
     'Error sending feedback. Please try again later.',
+  'Такого майстра не знайдено.': 'Master not found',
+  'Такого робочого дня не іcнує.': 'There is no such working day.',
+  'Вибачте але ви не записувались на цей день та час.': `I'm sorry but you were not scheduled for this day and time.`,
+  'Ви успішно відмінили запис.':
+    'You have successfully cancelled your appointment.',
+
   //   navigation
   main: 'Home',
   services: 'Services and prices',

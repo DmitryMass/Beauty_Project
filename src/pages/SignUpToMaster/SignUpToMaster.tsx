@@ -6,11 +6,11 @@ import { useTranslation } from 'react-i18next';
 import Logo from '@/components/Logo/Logo';
 import BurgerMenu from '@/components/home/BurgerMenu';
 import SignToMasterForm from '@/components/masters/signToMaster/SignToMasterForm';
+import BackBtn from '@/components/BackBtn/BackBtn';
 //
 
-import './signUpToMaster.scss';
 import { signToMaster } from '@/styles/signToMaster';
-import BackBtn from '@/components/BackBtn/BackBtn';
+import './signUpToMaster.scss';
 
 const SignUpToMaster: FC = () => {
   const { t } = useTranslation();

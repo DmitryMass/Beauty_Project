@@ -13,7 +13,15 @@ export const visitMasterApi = createApi({
         body: body,
       }),
     }),
+    cancelVisit: build.mutation<any, any>({
+      query: (body) => ({
+        url: `/procedure/${body.id}`,
+        method: 'DELETE',
+        body: body.data,
+      }),
+    }),
   }),
 });
 
-export const { useFetchVisitMasterMutation } = visitMasterApi;
+export const { useFetchVisitMasterMutation, useCancelVisitMutation } =
+  visitMasterApi;

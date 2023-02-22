@@ -1,43 +1,29 @@
 import { FC, useMemo, useState } from 'react';
 import { Field, Formik, FormikHelpers } from 'formik';
 import { useTranslation } from 'react-i18next';
-import {
-  useCancelVisitMutation,
-  useFetchVisitMasterMutation,
-} from '@/store/api/visitMasterApi';
-import { visitToMasterValidation } from '@/utils/validation/createGroupValidation';
-
-//
-import ButtonSubmit from '../../ButtonSubmit/ButtonSubmit';
-import Loader from '../../Loader/Loader';
 import { useGetOneEmployeeQuery } from '@/store/api/adminApi';
-import DropDown from '../../DropDown/DropDown';
-import SuccessHandler from '@/components/SuccessHandler/SuccessHandler';
-import GeneralErrorHandler from '@/components/ErrorHandler/GeneralErrorHandler';
+import { useCancelVisitMutation } from '@/store/api/visitMasterApi';
 //
-import { study } from '@/styles/study';
+import ButtonSubmit from '@/components/ButtonSubmit/ButtonSubmit';
+import DropDown from '@/components/DropDown/DropDown';
+import GeneralErrorHandler from '@/components/ErrorHandler/GeneralErrorHandler';
+import Loader from '@/components/Loader/Loader';
+import SuccessHandler from '@/components/SuccessHandler/SuccessHandler';
+//
 import { signToMaster } from '@/styles/signToMaster';
-import '../mastersCard.scss';
-import LinkButton from '@/components/LinkButton/LinkButton';
-import { ROUTE } from '@/utils/route/route';
+import { study } from '@/styles/study';
 
+interface ICancelFormProps {
+  id?: string;
+}
 interface IInitialValues {
   name: string;
   phoneNumber: string;
 }
 
-const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
+const CancelVisitToMaster: FC<ICancelFormProps> = ({ id }) => {
   const { t } = useTranslation();
-  const {
-    data = null,
-    isLoading,
-    isError,
-    refetch,
-  } = useGetOneEmployeeQuery(`${id}`);
-  const [
-    fetchVisitMaster,
-    { isLoading: visitLoading, isError: visitError, error, isSuccess },
-  ]: any = useFetchVisitMasterMutation();
+  const { data = null, isLoading, isError } = useGetOneEmployeeQuery(`${id}`);
 
   const [selectedProcedure, setSelectedProcedure] = useState<any>('...');
   const [toggleDropDown, setToggleDropDown] = useState<boolean>(false);
@@ -45,9 +31,14 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
   const [selectedTime, setSelectedTime] = useState('');
 
   const selectTime = useMemo(
-    () => data?.workDays!.find(({ day }) => day === selectDay),
+    () => data?.schedule!.find(({ day }) => day === selectDay),
     [selectDay, data]
   );
+
+  const [
+    cancelVisit,
+    { isError: cancelError, error, isSuccess, isLoading: cancelLoading },
+  ]: any = useCancelVisitMutation();
 
   const handleSubmit = async (
     values: IInitialValues,
@@ -61,38 +52,40 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
     body.append('hour', selectedTime);
     body.append('day', selectDay);
     body.append('procedure', selectedProcedure);
-    body.append('id', id);
-
-    const response: any = await fetchVisitMaster(body);
-    if (response.data) {
-      refetch();
-    }
+    await cancelVisit({ data: body, id });
   };
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
   return (
-    <div className='pb-[30px]'>
+    <div className='pt-[50px] max-w-[992px] w-full mx-auto relative z-[19] pb-[30px]'>
       {isError ? (
         <GeneralErrorHandler isError={isError} data={t('запис технічка')} />
       ) : null}
-      {visitError ? (
+      {cancelError ? (
         <GeneralErrorHandler
-          isError={visitError}
+          isError={cancelError}
           data={
             error?.data ? `${t(`${error.data.msg}`)}` : `${t('запис технічка')}`
           }
         />
       ) : null}
       {isSuccess ? (
-        <SuccessHandler success={isSuccess} data={t('запис успішний')} />
+        <SuccessHandler
+          success={isSuccess}
+          data={t('Ви успішно відмінили запис.')}
+        />
+      ) : null}
+      <h3 className='text-h3 font-medium max-[576px]:text-md mb-[20px] max-[576px]:mb-[30px] text-center text-white'>
+        {t('cancelTitle')}
+      </h3>
+      {isLoading ? (
+        <div className='flex justify-center items-center max-w-[200px] w-full mx-auto'>
+          <Loader />
+        </div>
       ) : null}
       <Formik
         initialValues={{ name: '', phoneNumber: '' }}
         onSubmit={handleSubmit}
-        validationSchema={visitToMasterValidation}
+        validationSchema={''}
       >
         {({
           handleSubmit,
@@ -181,8 +174,8 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
                   onChange={(e) => setSelectDay(e.target.value)}
                 >
                   <option label={`${t('chooseDate')}`} value={``} />
-                  {data?.workDays &&
-                    data.workDays.map((data) => (
+                  {data?.schedule &&
+                    data.schedule.map((data) => (
                       <option key={data.day} value={data.day} label={data.day}>
                         {data.day}
                       </option>
@@ -205,18 +198,14 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
                 </select>
               </div>
             </div>
-            <div className=' flex gap-[30px] items-center max-[450px]:flex-col max-[576px]:gap-[20px]'>
+            <div className='w-full max-[450px]:flex max-[450px]:justify-center'>
               <ButtonSubmit
                 isDisabled={data ? false : true}
-                modificator='max-w-[200px] w-full py-[10px] font-semibold rounded-[6px] hover:bg-hoverGold transition-all duration-100'
-                children={visitLoading ? <Loader /> : `${t('signUp')}`}
+                modificator='max-w-[200px] w-full py-[10px] font-semibold rounded-[6px] hover:bg-hoverGold transition-all duration-100 '
+                children={
+                  cancelLoading ? <Loader /> : `${t('Скасувати запис')}`
+                }
               />
-              <LinkButton
-                route={`${ROUTE.MASTERS}/${id}${ROUTE.CANCELVISIT}`}
-                modificator='bg-transparent text-[#F0DDA3] border-b-[1px] border-gold max-[576px]'
-              >
-                {t('Скасування запису')}
-              </LinkButton>
             </div>
           </form>
         )}
@@ -225,4 +214,4 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
   );
 };
 
-export default SignToMasterForm;
+export default CancelVisitToMaster;

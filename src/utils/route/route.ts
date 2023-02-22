@@ -4,6 +4,7 @@ export const ROUTE = {
   SERVICES: '/services',
   MASTERS: '/masters',
   MASTER: '/masters/:id',
+  CANCELVISIT: '/cancel',
   CONTACTS: '/contacts',
   FEEDBACK: '/feedbacks',
   VACANCIES: '/vacancies',

@@ -174,7 +174,7 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({
                 route={ROUTE.CANCELSTUDY}
                 modificator='bg-transparent text-[#F0DDA3] border-b-[1px] border-gold'
               >
-                Скасувати запис
+                {t('Скасування запису')}
               </LinkButton>
             </div>
           </form>

@@ -14,12 +14,12 @@ const CancelVisit: FC = () => {
     <div className='relative max-w-[1320px] mx-auto w-full px-[25px] max-[992px]:px-[15px]'>
       <div className='cancelVisitBgc' />
       <div className='cancelVisitGradient' />
-      <BackBtn modificator='w-[35px] h-[35px] absolute top-[40px] left-[15px] z-[50] max-[992px]:hidden' />
+      <BackBtn modificator='w-[35px] h-[35px] absolute top-[40px] max-[992px]:top-[25px] left-[15px] z-[50] ' />
       <Logo
         imgModificator='w-[80px] h-[85px]'
         modificator='w-[85px] ml-auto  max-[992px]:hidden relative z-[20]'
       />
-      <BurgerMenu modificator='w-[85px] h-[85px] max-[576px]:h-[50px] ml-auto justify-end relative z-[20]' />
+      <BurgerMenu modificator='w-[85px] h-[85px]  ml-auto justify-end relative z-[20]' />
       <CancelVisitToMaster id={id!} />
     </div>
   );

@@ -27,19 +27,19 @@ const CreateSchedule: FC<ICreateSchedulteProps> = ({ id, refetchEmployee }) => {
     changeDate,
     employeeWorkTime,
     deleteSchedule,
-    isError,
-    isLoading,
+    updateLoading,
+    setLoading,
+    deleteLoading,
   } = useCreateSchedule(id!, refetchEmployee);
 
   return (
     <div className={schedule.container}>
-      {isLoading ? <Loader /> : null}
-      {isError ? (
+      {/* {isError ? (
         <GeneralErrorHandler
           isError={isError}
           data='Вибайчте сервер не працює або виникла помилка.'
         />
-      ) : null}
+      ) : null} */}
       <div className='mb-[35px]'>
         <h2>Оберіть дату роботи</h2>
         <DatePicker
@@ -90,26 +90,27 @@ const CreateSchedule: FC<ICreateSchedulteProps> = ({ id, refetchEmployee }) => {
           </ul>
         </div>
       </div>
-
-      <button
-        className={`${schedule.sendBtn}  bg-green`}
-        disabled={employeeWorkTime.length === 0}
-        onClick={createEmployeeSchedule}
-      >
-        Додати робочий день
-      </button>
-      <button
-        className={`${schedule.sendBtn}  bg-slate-500`}
-        onClick={updateEmployeeSchedule}
-      >
-        Оновити графік
-      </button>
-      <button
-        className={`${schedule.sendBtn}  bg-slate-500`}
-        onClick={deleteSchedule}
-      >
-        Видалити день з графіку
-      </button>
+      <div className='flex justify-center gap-[20px] max-[576px]:flex-col max-[768px]:items-stretch max-[576px]:gap-[0px]'>
+        <button
+          className={`${schedule.sendBtn}  bg-green max-w-[200px] w-full max-[576px]:max-w-none`}
+          disabled={employeeWorkTime.length === 0}
+          onClick={createEmployeeSchedule}
+        >
+          {setLoading ? <Loader /> : 'Додати робочий день'}
+        </button>
+        <button
+          className={`${schedule.sendBtn}  bg-slate-500 max-w-[200px] w-full max-[576px]:max-w-none`}
+          onClick={updateEmployeeSchedule}
+        >
+          {updateLoading ? <Loader /> : 'Оновити графік'}
+        </button>
+        <button
+          className={`${schedule.sendBtn}  bg-slate-500 max-w-[200px] w-full max-[576px]:max-w-none`}
+          onClick={deleteSchedule}
+        >
+          {deleteLoading ? <Loader /> : 'Видалити день з графіку'}
+        </button>
+      </div>
     </div>
   );
 };

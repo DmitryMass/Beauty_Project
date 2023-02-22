@@ -1,6 +1,7 @@
 export const schedule = {
   container: 'text-white flex flex-col w-full mb-[30px]',
-  workHoursWrapper: 'grid grid-cols-2 mb-[25px]',
+  workHoursWrapper:
+    'grid grid-cols-2 mb-[25px] max-[576px]:grid-cols-1 max-[576px]:justify-items-center gap-[20px]',
   hour: 'flex justify-center items-center max-w-[60px] w-full px-[10px] bg-slate-300 text-coal font-medium text-sm leading-sm',
   hourContainer: 'flex justify-between items-center my-[5px] gap-[10px]',
   addBtn:

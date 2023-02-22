@@ -99,19 +99,6 @@ export const useCreateSchedule = (id: string, refetchEmployee: any) => {
     }
   };
 
-  let isLoading;
-  let isError;
-  if (updateLoading || setLoading || deleteLoading) {
-    isLoading = true;
-  } else {
-    isLoading = false;
-  }
-  if (updateError || setError || deleteError) {
-    isError = true;
-  } else {
-    isError = false;
-  }
-
   return {
     createEmployeeSchedule,
     updateEmployeeSchedule,
@@ -122,7 +109,8 @@ export const useCreateSchedule = (id: string, refetchEmployee: any) => {
     changeDate,
     employeeWorkTime,
     deleteSchedule,
-    isError,
-    isLoading,
+    updateLoading,
+    setLoading,
+    deleteLoading,
   };
 };

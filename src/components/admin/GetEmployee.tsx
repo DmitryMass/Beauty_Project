@@ -12,7 +12,7 @@ const GetEmployee: FC = () => {
   const { data = null, isLoading, isError } = useGetEmployeesQuery();
   const [
     getOneEmployee,
-    { data: employeeData, isError: employeeError, isLoading: employeeLoading },
+    { data: employeeData, isError: employeeError, isFetching },
   ] = useLazyGetOneEmployeeQuery();
 
   const handleGetEmployee = async (e: any) => {
@@ -21,7 +21,6 @@ const GetEmployee: FC = () => {
 
   return (
     <div className='relative w-full py-[10px] z-20'>
-      {isLoading || employeeLoading ? <Loader /> : null}
       {isError || employeeError ? (
         <GeneralErrorHandler
           isError={isError || employeeError}
@@ -47,6 +46,8 @@ const GetEmployee: FC = () => {
               ))
             : null}
         </select>
+        {isFetching || isLoading ? <Loader /> : null}
+
         {employeeData ? (
           <div className='text-white flex gap-[20px]'>
             <div>

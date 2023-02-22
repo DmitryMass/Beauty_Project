@@ -70,7 +70,7 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({
         <SuccessResponse register success type={registerResponse?.type} />
       ) : null}
       <Formik
-        initialValues={{ email: '', name: '', phoneNumber: '' }}
+        initialValues={{ email: '', name: '', phoneNumber: '0' }}
         onSubmit={handleSubmit}
         validationSchema={trainingRegistrationValidation}
       >
@@ -109,7 +109,7 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({
                 )}
                 <Field
                   id='phoneNumber'
-                  type='number'
+                  type='string'
                   className={study.input}
                   onChange={handleChange}
                   onBlur={handleBlur}

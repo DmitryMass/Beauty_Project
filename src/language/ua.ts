@@ -174,4 +174,7 @@ export const ua = {
   'Review is a required field': `Відгук обов'язкове поле`,
   'Type is a required field': `Тип курсу обов'язкове поле`,
   'Start is a required field': `Початок курсу обов'язкове поле`,
+  'Number must be between 6 and 10 digits':
+    'Номер повинен бути від 6 до 10 символів',
+  'Numbers from 0 to 9': 'Цифри від 0 до 9',
 };

@@ -126,7 +126,7 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
                 )}
                 <Field
                   id='phoneNumber'
-                  type='number'
+                  type='string'
                   className={study.input}
                   onChange={handleChange}
                   onBlur={handleBlur}

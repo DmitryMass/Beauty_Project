@@ -10,6 +10,7 @@ import SignToMasterForm from '@/components/masters/signToMaster/SignToMasterForm
 
 import './signUpToMaster.scss';
 import { signToMaster } from '@/styles/signToMaster';
+import BackBtn from '@/components/BackBtn/BackBtn';
 
 const SignUpToMaster: FC = () => {
   const { t } = useTranslation();
@@ -22,6 +23,7 @@ const SignUpToMaster: FC = () => {
       <div className='visitGradient' />
       <div className={signToMaster.dataWrapper}>
         <div>
+          <BackBtn modificator='w-[35px] h-[35px] absolute top-[40px] left-[15px] z-[50] max-[992px]:hidden' />
           <Logo
             imgModificator='w-[80px] h-[85px]'
             modificator='w-[85px] ml-auto  max-[992px]:hidden'

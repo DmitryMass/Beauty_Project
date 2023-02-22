@@ -32,9 +32,16 @@ export const trainingRegistrationValidation = yup.object().shape({
     .required(),
   phoneNumber: yup
     .string()
-    .label('Number')
-    .min(6, 'Мінімум 6 символи')
-    .max(10, 'Максимум 10 символів')
+    .test(
+      'len',
+      'Number must be between 6 and 10 digits',
+      (val: string | undefined) => {
+        if (val === '0') return true;
+        if (val?.length) {
+          return val.length >= 6 && val.length <= 10;
+        } else return false;
+      }
+    )
     .matches(/^[0-9+/s]*$/gi, 'Numbers from 0 to 9')
     .required(),
 });
@@ -69,9 +76,16 @@ export const createEmployeeValidation = yup.object().shape({
     .required(),
   phoneNumber: yup
     .string()
-    .label('Number')
-    .min(6, 'Мінімум 6 символи')
-    .max(10, 'Максимум 10 символів')
+    .test(
+      'len',
+      'Number must be between 6 and 10 digits',
+      (val: string | undefined) => {
+        if (val === '0') return true;
+        if (val?.length) {
+          return val.length >= 6 && val.length <= 10;
+        } else return false;
+      }
+    )
     .matches(/^[0-9+/s]*$/gi, 'Numbers from 0 to 9')
     .required(),
 });
@@ -97,9 +111,16 @@ export const contactsValidation = yup.object().shape({
 export const visitToMasterValidation = yup.object().shape({
   phoneNumber: yup
     .string()
-    .label('Number')
-    .min(6, 'Мінімум 6 символи')
-    .max(10, 'Максимум 10 символів')
+    .test(
+      'len',
+      'Number must be between 6 and 10 digits',
+      (val: string | undefined) => {
+        if (val === '0') return true;
+        if (val?.length) {
+          return val.length >= 6 && val.length <= 10;
+        } else return false;
+      }
+    )
     .matches(/^[0-9+/s]*$/gi, 'Numbers from 0 to 9')
     .required(),
   name: yup

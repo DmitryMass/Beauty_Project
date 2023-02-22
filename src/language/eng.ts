@@ -171,4 +171,7 @@ export const eng = {
   'Review is a required field': 'Review is a required field',
   'Type is a required field': `Type of course is a required field`,
   'Start is a required field': `Start of course is a required field`,
+  'Number must be between 6 and 10 digits':
+    'Number must be between 6 and 10 digits',
+  'Numbers from 0 to 9': 'Numbers from 0 to 9',
 };

@@ -13,6 +13,7 @@ import timeIcon from '@/assets/icons/timeIcon.svg';
 //
 import './contacts.scss';
 import { contacts } from '@/styles/contacts';
+import BackBtn from '@/components/BackBtn/BackBtn';
 
 const Contacts: FC = () => {
   const { t } = useTranslation();
@@ -25,6 +26,7 @@ const Contacts: FC = () => {
             <h2 className={contacts.titleContacts}>{t('contacts')}</h2>
             <p className={contacts.subtitleContacts}>{t('beInTouch')}</p>
           </div>
+          <BackBtn modificator='w-[35px] h-[35px] absolute top-[10px] left-[-65px] z-[50] max-[992px]:hidden' />
           <Logo
             imgModificator='w-[80px] h-[85px]'
             modificator={contacts.logoModificator}

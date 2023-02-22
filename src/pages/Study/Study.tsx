@@ -10,6 +10,7 @@ import BurgerMenu from '@/components/home/BurgerMenu';
 import { study } from '@/styles/study';
 import './study.scss';
 import Loader from '@/components/Loader/Loader';
+import BackBtn from '@/components/BackBtn/BackBtn';
 
 const Study: FC = () => {
   const { t } = useTranslation();
@@ -41,6 +42,7 @@ const Study: FC = () => {
         <div className='blur h-[105vh]'></div>
         <div className='study' />
         <div className={`${study.wrapper} relative z-[19]`}>
+          <BackBtn modificator='w-[35px] h-[35px] absolute top-[40px] left-[15px] z-[50] max-[992px]:hidden' />
           <Logo
             imgModificator='w-[80px] h-[85px]'
             modificator='w-[85px] ml-auto max-[992px]:hidden absolute top-0 right-[15px]'

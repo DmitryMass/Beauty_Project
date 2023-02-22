@@ -53,7 +53,7 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({
       setResponseData(response?.error?.data?.msg);
       return;
     } else {
-      setResponseData('Sorry failed connect to server...');
+      setResponseData('запис технічка');
       return;
     }
   };
@@ -61,7 +61,10 @@ const RegisterToStudy: FC<IRegisterToStudyProps> = ({
   return (
     <div className='pb-[30px]'>
       {responseData ? (
-        <ErrorHandler data={responseData} setResponseData={setResponseData} />
+        <ErrorHandler
+          data={`${t(`${responseData}`)}`}
+          setResponseData={setResponseData}
+        />
       ) : null}
       {isSuccess ? (
         <SuccessResponse register success type={registerResponse?.type} />

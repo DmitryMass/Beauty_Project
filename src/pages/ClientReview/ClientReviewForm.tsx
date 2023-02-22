@@ -27,7 +27,7 @@ interface IInitalValues {
 const ClientReviewForm: FC = () => {
   const { t } = useTranslation();
   const { listenToScroll, visibility } = useHideTitle();
-  const [sendReview, { isLoading, isError, isSuccess }] =
+  const [sendReview, { isLoading, isError, isSuccess, error }]: any =
     useSendReviewMutation();
 
   const handleSubmit = async (
@@ -55,7 +55,9 @@ const ClientReviewForm: FC = () => {
       {isError ? (
         <GeneralErrorHandler
           isError={isError}
-          data={`${t('запис технічка')}`}
+          data={
+            error?.data ? `${t(`${error.data.msg}`)}` : `${t('запис технічка')}`
+          }
         />
       ) : null}
       <GoldTitleBox

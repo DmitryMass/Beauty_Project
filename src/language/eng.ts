@@ -16,6 +16,24 @@ export const eng = {
   'Співробітника не знайдено': 'Employee not found',
   'Проблеми з отриманням співробітника. Спробуйте пізніше.':
     'Problems with getting an employee. Please try again later.',
+  'Ви вже записані на цей курс.': 'You are already enrolled in this course.',
+  'Всі місця зайняті.': 'All seats are taken.',
+  'Такої групи не існує': 'The group does not exist.',
+  'Такий клієнт не записувався на навчання':
+    'The client did not register for the training.',
+  'Ви успішно відмінили запис на навчання':
+    'Successfully cancelled your course registration.',
+  'Помилка серверу при відміні регістрації на курс. Спробуйте пізніше.':
+    'Error canceling course registration. Please try again later.',
+  'отримали фідбек': 'We have received your message. Thank you.',
+  'Фідбек надісланий. Дякуємо': 'Feedback submitted. Thank you.',
+  'Фідбек не відправлено, помилка серверу. Спробуйте пізніше.':
+    'Feedback not sent, server error. Please try again later.',
+  'Відгук надіслано': 'The feedback has been sent.',
+  'Ви вже залишали відгук з такою оцінкою':
+    'You have already left a review with such a rating.',
+  'Помилка серверу при отправці відгуку. Спробуйте пізніше.':
+    'Error sending feedback. Please try again later.',
   //   navigation
   main: 'Home',
   services: 'Services and prices',
@@ -33,6 +51,7 @@ export const eng = {
   conditions: 'Conditions',
   requirements: 'Requirements',
   cancel: 'Cancel',
+  'Скасування запису': 'Cancellation of reservation.',
   //   services and price + masters
   Манікюр: 'Manicure',
   Педікюр: 'Pedicure',

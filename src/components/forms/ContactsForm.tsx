@@ -21,7 +21,7 @@ interface IInitalValues {
 const ContactsForm: FC = () => {
   const { t } = useTranslation();
 
-  const [sendFeedback, { isSuccess, isError, isLoading }] =
+  const [sendFeedback, { isSuccess, isError, isLoading, error }]: any =
     useSendFeedbackMutation();
 
   const handleSubmit = async (
@@ -39,16 +39,13 @@ const ContactsForm: FC = () => {
   return (
     <div className='max-w-[590px] w-full bg-servicesAndPriceBg px-[20px] py-[10px] rounded-tr-[50px] rounded-bl-[50px] border-[1px] border-gold'>
       {isSuccess ? (
-        <SuccessHandler
-          success={isSuccess}
-          data={'Ми отримали ваше повідомлення. Дякую.'}
-        />
+        <SuccessHandler success={isSuccess} data={`${t('отримали фідбек')}`} />
       ) : null}
       {isError ? (
         <GeneralErrorHandler
           isError={isError}
           data={
-            'Вибачте йдуть технічні роботи. Перезавантажте сторінку або спробуйте пізніше.'
+            error?.data ? `${t(`${error.data.msg}`)}` : `${t('запис технічка')}`
           }
         />
       ) : null}

@@ -28,8 +28,8 @@ const StudyCancel: FC = () => {
   const { t } = useTranslation();
   const [
     cancelRegister,
-    { isLoading: cancelLoading, isError: cancelError, isSuccess },
-  ] = useCancelRegisterMutation();
+    { isLoading: cancelLoading, isError: cancelError, isSuccess, error },
+  ]: any = useCancelRegisterMutation();
   const { data = null, isLoading, isError } = useGetMembersQuery('');
 
   const handleSubmit = async (
@@ -58,10 +58,12 @@ const StudyCancel: FC = () => {
       {cancelError ? (
         <GeneralErrorHandler
           isError={cancelError}
-          data={`${t('запис технічка')}`}
+          data={
+            error?.data ? `${t(`${error.data.msg}`)}` : `${t('запис технічка')}`
+          }
         />
       ) : null}
-      <GoldTitleBox children='Скасування запису' />
+      <GoldTitleBox children={`${t('Скасування запису')}`} />
       <Logo
         imgModificator='w-[80px] h-[85px]'
         modificator='w-[85px] ml-auto max-[992px]:hidden'

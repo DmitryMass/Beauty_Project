@@ -12,8 +12,8 @@ const CancelVisit: FC = () => {
   const { id } = useParams();
   return (
     <div className='relative max-w-[1320px] mx-auto w-full px-[25px] max-[992px]:px-[15px]'>
-      <div className='visitBgc' />
-      <div className='visitGradient' />
+      <div className='cancelVisitBgc' />
+      <div className='cancelVisitGradient' />
       <BackBtn modificator='w-[35px] h-[35px] absolute top-[40px] left-[15px] z-[50] max-[992px]:hidden' />
       <Logo
         imgModificator='w-[80px] h-[85px]'

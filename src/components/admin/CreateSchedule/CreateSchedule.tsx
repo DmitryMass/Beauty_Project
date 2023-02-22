@@ -30,16 +30,13 @@ const CreateSchedule: FC<ICreateSchedulteProps> = ({ id, refetchEmployee }) => {
     updateLoading,
     setLoading,
     deleteLoading,
+    setError,
+    deleteError,
+    updateError,
   } = useCreateSchedule(id!, refetchEmployee);
 
   return (
     <div className={schedule.container}>
-      {/* {isError ? (
-        <GeneralErrorHandler
-          isError={isError}
-          data='Вибайчте сервер не працює або виникла помилка.'
-        />
-      ) : null} */}
       <div className='mb-[35px]'>
         <h2>Оберіть дату роботи</h2>
         <DatePicker
@@ -91,6 +88,12 @@ const CreateSchedule: FC<ICreateSchedulteProps> = ({ id, refetchEmployee }) => {
         </div>
       </div>
       <div className='flex justify-center gap-[20px] max-[576px]:flex-col max-[768px]:items-stretch max-[576px]:gap-[0px]'>
+        {setError ? (
+          <GeneralErrorHandler
+            isError={setError}
+            data='Помилка при додаванні графіку'
+          />
+        ) : null}
         <button
           className={`${schedule.sendBtn}  bg-green max-w-[200px] w-full max-[576px]:max-w-none`}
           disabled={employeeWorkTime.length === 0}
@@ -98,12 +101,24 @@ const CreateSchedule: FC<ICreateSchedulteProps> = ({ id, refetchEmployee }) => {
         >
           {setLoading ? <Loader /> : 'Додати робочий день'}
         </button>
+        {updateError ? (
+          <GeneralErrorHandler
+            isError={updateError}
+            data='Помилка при оновленні графіку'
+          />
+        ) : null}
         <button
           className={`${schedule.sendBtn}  bg-slate-500 max-w-[200px] w-full max-[576px]:max-w-none`}
           onClick={updateEmployeeSchedule}
         >
           {updateLoading ? <Loader /> : 'Оновити графік'}
         </button>
+        {deleteError ? (
+          <GeneralErrorHandler
+            isError={deleteError}
+            data='Помилка при видаленні графіку'
+          />
+        ) : null}
         <button
           className={`${schedule.sendBtn}  bg-slate-500 max-w-[200px] w-full max-[576px]:max-w-none`}
           onClick={deleteSchedule}

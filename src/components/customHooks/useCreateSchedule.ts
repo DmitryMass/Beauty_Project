@@ -112,5 +112,8 @@ export const useCreateSchedule = (id: string, refetchEmployee: any) => {
     updateLoading,
     setLoading,
     deleteLoading,
+    setError,
+    deleteError,
+    updateError,
   };
 };

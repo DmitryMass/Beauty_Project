@@ -35,6 +35,7 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
     fetchVisitMaster,
     { isLoading: visitLoading, isError: visitError, error, isSuccess },
   ]: any = useFetchVisitMasterMutation();
+
   const [selectedProcedure, setSelectedProcedure] = useState<any>('...');
   const [toggleDropDown, setToggleDropDown] = useState<boolean>(false);
   const [selectDay, setSelectDay] = useState('');
@@ -77,7 +78,9 @@ const SignToMasterForm: FC<{ id: string }> = ({ id }) => {
       {visitError ? (
         <GeneralErrorHandler
           isError={visitError}
-          data={error?.data ? error.data.msg : `${t('запис технічка')}`}
+          data={
+            error?.data ? `${t(`${error.data.msg}`)}` : `${t('запис технічка')}`
+          }
         />
       ) : null}
       {isSuccess ? (

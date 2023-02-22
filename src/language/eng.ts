@@ -9,6 +9,13 @@ export const eng = {
   'запис успішний': 'Recording successful!',
   'запис технічка': 'Technical work is underway. Sorry for the inconvenience.',
   thnxForReview: 'Review sent. Thank you. Have a nice day!',
+  'Вибачте хтось був швидше. Місце зайнято. Спробуйте інший час.': `I'm sorry, someone was faster. The spot is taken. Please try another time.`,
+  'Вибачте помилка серверу, йдуть технічні роботи, спробуйте пізніше.':
+    'Sorry, a server error has occurred. Technical work is underway, please try again later.',
+  'Такого майстра не існує.': 'This master does not exist.',
+  'Співробітника не знайдено': 'Employee not found',
+  'Проблеми з отриманням співробітника. Спробуйте пізніше.':
+    'Problems with getting an employee. Please try again later.',
   //   navigation
   main: 'Home',
   services: 'Services and prices',

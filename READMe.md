@@ -88,7 +88,7 @@ https://github.com/DmitryMass/Beauty_Server
 
 /////////////////////////////////////////////////////////////
 
-Оставшееся
-
-Оставить заявку кандидата на текущую вакансию.
-Отмена записи на процедуру и на курс.
+![DESKTOP!](./src/assets/githubPreview/preview.png)
+![DESKTOP!](./src/assets/githubPreview/mainPage.png)
+![DESKTOP!](./src/assets/githubPreview/masters.png)
+![DESKTOP!](./src/assets/githubPreview/visit.png)
